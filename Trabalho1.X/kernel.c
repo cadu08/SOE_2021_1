@@ -8,7 +8,7 @@ r_queue_t READY_QUEUE;
 u_int rr_quantum = RR_QUANTUM;
 
 // Tarefa idle
-TASK idle(){
+void idle(){
     TRISDbits.RD3 = 0;
     while (1){
         LATDbits.LATD3 = ~PORTDbits.RD3;

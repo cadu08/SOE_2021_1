@@ -13,7 +13,7 @@ extern r_queue_t READY_QUEUE;
 int index;
 
 // Tarefa idle
-TASK idle();
+void idle();
 
 // Controle de Interrupções
 void __interrupt() ISR_timer();

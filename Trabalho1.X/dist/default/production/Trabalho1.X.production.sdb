@@ -401,7 +401,7 @@ WAITING_SEM 3
 [v _sensoreamento_termostato sensoreamento_termostato `R(v  1 e 1 0 ]
 {
 "15
-[v sensoreamento_termostato@valor_rot_lido valor_rot_lido `ui  1 a 2 0 ]
+[v sensoreamento_termostato@readed_temperature readed_temperature `i  1 a 2 0 ]
 "20
 } 2
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c

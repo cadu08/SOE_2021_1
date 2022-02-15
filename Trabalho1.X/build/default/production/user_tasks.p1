@@ -474,18 +474,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _sensoreamento_termostato ]
 [f ]
 "15
-[; ;user_tasks.c: 15:     u_int valor_rot_lido;
-[v _valor_rot_lido `ui ~T0 @X0 1 a ]
+[; ;user_tasks.c: 15:     int readed_temperature;
+[v _readed_temperature `i ~T0 @X0 1 a ]
 "16
 [; ;user_tasks.c: 16:     while (1) {
 [e :U 290 ]
 {
 "17
-[; ;user_tasks.c: 17:        valor_rot_lido = thermostat_value();
-[e = _valor_rot_lido -> ( _thermostat_value ..  `ui ]
+[; ;user_tasks.c: 17:        readed_temperature = thermostat_value();
+[e = _readed_temperature ( _thermostat_value ..  ]
 "18
-[; ;user_tasks.c: 18:        pipe_write(&pipe_temperature, valor_rot_lido);
-[e ( _pipe_write (2 , &U _pipe_temperature -> _valor_rot_lido `i ]
+[; ;user_tasks.c: 18:        pipe_write(&pipe_temperature, readed_temperature);
+[e ( _pipe_write (2 , &U _pipe_temperature _readed_temperature ]
 "19
 [; ;user_tasks.c: 19:     }
 }

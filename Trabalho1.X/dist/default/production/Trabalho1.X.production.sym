@@ -399,7 +399,7 @@ bssBIGRAM F1 39A BIGRAM F1 1
 %locals
 dist/default/production\Trabalho1.X.production.o
 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-C:\Users\caduc\AppData\Local\Temp\sckk.s
+C:\Users\caduc\AppData\Local\Temp\s7i4.s
 2775 13A0 0 CODE 0
 2777 13A0 0 CODE 0
 2780 13A0 0 CODE 0
@@ -694,7 +694,7 @@ pipe.c
 29 C36 0 CODE 0
 30 C48 0 CODE 0
 31 C4A 0 CODE 0
-C:\Users\caduc\AppData\Local\Temp\sckk.s
+C:\Users\caduc\AppData\Local\Temp\s7i4.s
 7666 8 0 CODE 0
 kernel.c
 96 8 0 CODE 0

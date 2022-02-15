@@ -11,15 +11,15 @@ void config_user_tasks()
    __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
 }
 
-TASK sensoreamento_termostato() {
-    u_int valor_rot_lido;
+void sensoreamento_termostato() {
+    int readed_temperature;
     while (1) {
-       valor_rot_lido = thermostat_value();
-       pipe_write(&pipe_temperature, valor_rot_lido);
+       readed_temperature = thermostat_value();
+       pipe_write(&pipe_temperature, readed_temperature);
     }
 }
 
-TASK ac_controller()
+void ac_controller()
 {
    int room_temperature;
    while (1) {

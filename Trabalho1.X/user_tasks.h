@@ -18,8 +18,8 @@
 
 void config_user_tasks();
 
-TASK sensoreamento_termostato();
-TASK ac_controller();
+void sensoreamento_termostato();
+void ac_controller();
 
 
 #endif	/* USER_TASKS_H */

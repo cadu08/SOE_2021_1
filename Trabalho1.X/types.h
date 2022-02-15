@@ -4,7 +4,6 @@
 #include <xc.h>
 #include "user_config.h"
 
-#define TASK void
 #define HW_STACK 32
 
 #define TRUE 1

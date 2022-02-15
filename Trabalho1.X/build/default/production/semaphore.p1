@@ -30,17 +30,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;semaphore.c: 17:         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = READY_QUEUE.task_running;
 [c E2531 0 1 2 3 .. ]
 [n E2531 . READY RUNNING WAITING WAITING_SEM  ]
-"31 ./types.h
-[; ;./types.h: 31: typedef struct context {
+"30 ./types.h
+[; ;./types.h: 30: typedef struct context {
 [s S281 `ui 1 `ui 1 `ui 1 `um -> 32 `i `ui 1 ]
 [n S281 context STATUS_reg WORK_reg BSR_reg STACK_regs stack_size ]
 [v F2550 `(v ~T0 @X0 0 tf ]
-"39
-[; ;./types.h: 39: typedef struct tcb {
+"38
+[; ;./types.h: 38: typedef struct tcb {
 [s S282 `ui 1 `ui 1 `E2531 1 `S281 1 `*F2550 1 `ui 1 ]
 [n S282 tcb task_id task_prior task_state task_context task_func task_delay_time ]
-"48
-[; ;./types.h: 48: typedef struct r_queue {
+"47
+[; ;./types.h: 47: typedef struct r_queue {
 [s S283 `S282 -> 6 `i `ui 1 `ui 1 ]
 [n S283 r_queue QUEUE task_running nr_of_tasks ]
 "12 ./kernel.h

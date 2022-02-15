@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.20 build 20200408173844 
-                                                                                               Tue Feb 15 19:02:51 2022
+                                                                                               Tue Feb 15 19:07:17 2022
 
 Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1 
      1                           	processor	18F4520
@@ -98,7 +98,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
     84 ;;___wmul@product	offset	0
     85 ;;___wmul@multiplier	offset=-2 (param)
     86 ;;___wmul@multiplicand	offset=-4 (param)
-    87 ;;sensoreamento_termostato@valor_rot_lido	offset	0
+    87 ;;sensoreamento_termostato@readed_temperature	offset	0
     88 ;;thermostat_value@temperatura_ambiente	offset	0
     89 ;;thermostat_value@resultadoAD	offset	2
     90 ;;___awdiv@quotient	offset	0
@@ -1220,7 +1220,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
   1202 ;; Parameters:    Size  Location     Type
   1203 ;;		None
   1204 ;; Auto vars:     Size  Location     Type
-  1205 ;;  valor_rot_li    2  [STACK] unsigned int 
+  1205 ;;  readed_tempe    2  [STACK] int 
   1206 ;; Return value:  Size  Location     Type
   1207 ;;                  1  [STACK] void 
   1208 ;; Registers used:
@@ -1258,17 +1258,17 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
   1238  00141A  52E6               	movf	postinc1,f,c
   1239  00141C                     l198:
   1240  00141C                     
-  1241                           ;user_tasks.c: 17:        valor_rot_lido = thermostat_value();
+  1241                           ;user_tasks.c: 17:        readed_temperature = thermostat_value();
   1242  00141C  EC93  F008         	call	_thermostat_value	;wreg free
   1243                           
-  1244                           ;stkvar	sensoreamento_termostato@valor_rot_lido @ sp[(-2)+0]
+  1244                           ;stkvar	sensoreamento_termostato@readed_temperature @ sp[(-2)+0]
   1245  001420  0EFE               	movlw	-2
   1246  001422  C043  FFE3         	movff	btemp,plusw1
   1247  001426  0EFF               	movlw	-1
   1248  001428  C044  FFE3         	movff	btemp+1,plusw1
   1249  00142C                     
-  1250                           ;user_tasks.c: 18:        pipe_write(&pipe_temperature, valor_rot_lido);
-  1251                           ;stkvar	sensoreamento_termostato@valor_rot_lido @ sp[(-2)+0]
+  1250                           ;user_tasks.c: 18:        pipe_write(&pipe_temperature, readed_temperature);
+  1251                           ;stkvar	sensoreamento_termostato@readed_temperature @ sp[(-2)+0]
   1252  00142C  0EFE               	movlw	-2
   1253  00142E  CFE3 FFE6          	movff	plusw1,postinc1
   1254  001432  CFE3 FFE6          	movff	plusw1,postinc1
@@ -5073,7 +5073,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.20 build 20200408173844 
-Symbol Table                                                                                   Tue Feb 15 19:02:51 2022
+Symbol Table                                                                                   Tue Feb 15 19:07:17 2022
 
         __end_of_config_user_tasks 14D0                                 l40 0D80  
                                l17 1398                                 l18 1398  
