@@ -5,16 +5,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _OS_config `(v ~T0 @X0 0 e? ]
 [v F2723 `(v ~T0 @X0 0 tf ]
 "26
-[; ;./kernel.h: 26: void OS_create_task(u_int id, u_int prior, task_ptr func);
-[v _OS_create_task `(v ~T0 @X0 0 ef3`ui`ui`*F2723 ]
+[; ;./kernel.h: 26: void OS_create_task(u_int prior, task_ptr func);
+[v _OS_create_task `(v ~T0 @X0 0 ef2`ui`*F2723 ]
 "21 ./user_tasks.h
 [; ;./user_tasks.h: 21: void sensoreamento_termostato();
 [v _sensoreamento_termostato `(v ~T0 @X0 0 e? ]
-[v F2776 `(v ~T0 @X0 0 tf ]
+[v F2775 `(v ~T0 @X0 0 tf ]
 "22
 [; ;./user_tasks.h: 22: void ac_controller();
 [v _ac_controller `(v ~T0 @X0 0 e? ]
-[v F2778 `(v ~T0 @X0 0 tf ]
+[v F2777 `(v ~T0 @X0 0 tf ]
 "24 ./kernel.h
 [; ;./kernel.h: 24: void OS_start();
 [v _OS_start `(v ~T0 @X0 0 e? ]
@@ -446,11 +446,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 16:     OS_config();
 [e ( _OS_config ..  ]
 "20
-[; ;main.c: 20:     OS_create_task(1, 4, sensoreamento_termostato);
-[e ( _OS_create_task (3 , , -> -> 1 `i `ui -> -> 4 `i `ui -> &U _sensoreamento_termostato `*F2776 ]
+[; ;main.c: 20:     OS_create_task(4, sensoreamento_termostato);
+[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _sensoreamento_termostato `*F2775 ]
 "21
-[; ;main.c: 21:     OS_create_task(2, 4, ac_controller);
-[e ( _OS_create_task (3 , , -> -> 2 `i `ui -> -> 4 `i `ui -> &U _ac_controller `*F2778 ]
+[; ;main.c: 21:     OS_create_task(4, ac_controller);
+[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller `*F2777 ]
 "23
 [; ;main.c: 23:     OS_start();
 [e ( _OS_start ..  ]

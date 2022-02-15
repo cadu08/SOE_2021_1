@@ -25,7 +25,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16
 [; ;./kernel.h: 16: void idle();
 [v _idle `(v ~T0 @X0 0 e? ]
-[v F2585 `(v ~T0 @X0 0 tf ]
+[v F2584 `(v ~T0 @X0 0 tf ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -504,7 +504,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32
 [; ;scheduler.c: 32:    } while (READY_QUEUE.QUEUE[task_selected].task_state != READY ||
 }
-[e $ || != -> . *U + &U . _READY_QUEUE 0 * -> _task_selected `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 `ui -> . `E2531 0 `ui == . *U + &U . _READY_QUEUE 0 * -> _task_selected `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 4 -> &U _idle `*F2585 288  ]
+[e $ || != -> . *U + &U . _READY_QUEUE 0 * -> _task_selected `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 `ui -> . `E2531 0 `ui == . *U + &U . _READY_QUEUE 0 * -> _task_selected `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 4 -> &U _idle `*F2584 288  ]
 [e :U 287 ]
 "35
 [; ;scheduler.c: 35:    return task_selected;

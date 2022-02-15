@@ -4594,7 +4594,7 @@ void __attribute__((picinterrupt(("")))) ISR_timer();
 void OS_config();
 void OS_start();
 void OS_delay(u_int time);
-void OS_create_task(u_int id, u_int prior, task_ptr func);
+void OS_create_task(u_int prior, task_ptr func);
 u_int get_task_id();
 
 
@@ -4709,7 +4709,7 @@ void OS_config(){
     READY_QUEUE.task_running = 0;
 
 
-    OS_create_task(1, 1, idle);
+    OS_create_task(1, idle);
     __asm("GLOBAL _idle");
 
 
@@ -4744,11 +4744,10 @@ void OS_delay(u_int time){
     (INTCONbits.GIE = 1);
 }
 
-void OS_create_task(u_int id, u_int prior, task_ptr func){
+void OS_create_task(u_int prior, task_ptr func){
 
     tcb_t new_task;
 
-    new_task.task_id = id;
     new_task.task_prior = prior;
     new_task.task_func = func;
     new_task.task_state = READY;

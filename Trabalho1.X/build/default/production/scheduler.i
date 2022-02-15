@@ -4590,7 +4590,7 @@ void __attribute__((picinterrupt(("")))) ISR_timer();
 void OS_config();
 void OS_start();
 void OS_delay(u_int time);
-void OS_create_task(u_int id, u_int prior, task_ptr func);
+void OS_create_task(u_int prior, task_ptr func);
 u_int get_task_id();
 
 

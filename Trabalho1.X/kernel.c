@@ -22,7 +22,7 @@ void OS_config(){
     READY_QUEUE.task_running = 0;
     
     // cria a tarefa idle
-    OS_create_task(1, MIN_PRIOR, idle);
+    OS_create_task(MIN_PRIOR, idle);
     __asm("GLOBAL _idle");
     
     // chama rotina que configura tarefas de usuário
@@ -57,11 +57,10 @@ void OS_delay(u_int time){
     ei();
 }
 
-void OS_create_task(u_int id, u_int prior, task_ptr func){
+void OS_create_task(u_int prior, task_ptr func){
     // Cria uma nova tarefa e a insere na fila de aptos
     tcb_t new_task;
     
-    new_task.task_id = id;
     new_task.task_prior = prior;
     new_task.task_func = func;
     new_task.task_state = READY;
