@@ -8,18 +8,18 @@ void config_user_tasks()
    pipe_init(&pipe_temperature, 1);
    
    // Coloca tarefas como globais
-   __asm("GLOBAL _sensoreamento_termostato, _rot_process");
+   __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
 }
 
 TASK sensoreamento_termostato() {
     u_int valor_rot_lido;
     while (1) {
-       valor_rot_lido = rot_ad_read();
+       valor_rot_lido = thermostat_value();
        pipe_write(&pipe_temperature, valor_rot_lido);
     }
 }
 
-TASK rot_process()
+TASK ac_controller()
 {
    int room_temperature;
    while (1) {

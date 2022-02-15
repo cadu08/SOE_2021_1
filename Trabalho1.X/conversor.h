@@ -6,7 +6,7 @@
 
 #define ROT_PIN PORTAbits.RA1
 
-int rot_ad_read();
+int thermostat_value();
 
 #endif	/* CONVERSOR_H */
 

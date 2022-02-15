@@ -4639,10 +4639,10 @@ int sem_get_value(semaphore_t s);
 
 
 
-int rot_ad_read();
+int thermostat_value();
 # 2 "conversor.c" 2
 
-int rot_ad_read(){
+int thermostat_value(){
     (INTCONbits.GIE = 0);
 
     ADCON0bits.ADON = 1;

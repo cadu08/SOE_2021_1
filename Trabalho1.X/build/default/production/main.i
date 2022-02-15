@@ -4769,14 +4769,14 @@ void turn_on_ac();
 
 
 
-int rot_ad_read();
+int thermostat_value();
 # 17 "./user_tasks.h" 2
 
 
 void config_user_tasks();
 
 void sensoreamento_termostato();
-void rot_process();
+void ac_controller();
 # 10 "main.c" 2
 
 
@@ -4789,7 +4789,7 @@ int main(void) {
 
 
     OS_create_task(1, 4, sensoreamento_termostato);
-    OS_create_task(2, 4, rot_process);
+    OS_create_task(2, 4, ac_controller);
 
     OS_start();
 

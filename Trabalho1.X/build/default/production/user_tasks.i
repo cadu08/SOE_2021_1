@@ -4664,14 +4664,14 @@ void turn_on_ac();
 
 
 
-int rot_ad_read();
+int thermostat_value();
 # 17 "./user_tasks.h" 2
 
 
 void config_user_tasks();
 
 void sensoreamento_termostato();
-void rot_process();
+void ac_controller();
 # 2 "user_tasks.c" 2
 
 pipe_t pipe_temperature;
@@ -4682,18 +4682,18 @@ void config_user_tasks()
    pipe_init(&pipe_temperature, 1);
 
 
-   __asm("GLOBAL _sensoreamento_termostato, _rot_process");
+   __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
 }
 
 void sensoreamento_termostato() {
     u_int valor_rot_lido;
     while (1) {
-       valor_rot_lido = rot_ad_read();
+       valor_rot_lido = thermostat_value();
        pipe_write(&pipe_temperature, valor_rot_lido);
     }
 }
 
-void rot_process()
+void ac_controller()
 {
    int room_temperature;
    while (1) {

@@ -19,7 +19,7 @@
 void config_user_tasks();
 
 TASK sensoreamento_termostato();
-TASK rot_process();
+TASK ac_controller();
 
 
 #endif	/* USER_TASKS_H */

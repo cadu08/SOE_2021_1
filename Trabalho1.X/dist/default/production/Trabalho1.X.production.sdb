@@ -61,7 +61,7 @@ WAITING_SEM 3
 "38
 [v _config_flywheel config_flywheel `(v  1 e 1 0 ]
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-[v _rot_ad_read rot_ad_read `R(i  1 e 2 0 ]
+[v _thermostat_value thermostat_value `R(i  1 e 2 0 ]
 "11 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 [v _idle idle `R(v  1 e 1 0 ]
 "19
@@ -107,7 +107,7 @@ WAITING_SEM 3
 "14
 [v _sensoreamento_termostato sensoreamento_termostato `R(v  1 e 1 0 ]
 "22
-[v _rot_process rot_process `R(v  1 e 1 0 ]
+[v _ac_controller ac_controller `R(v  1 e 1 0 ]
 "13 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X/kernel.h
 [v _index index `i  1 e 2 0 ]
 [s S164 . 1 `uc 1 RD0 1 0 :1:0 
@@ -405,12 +405,12 @@ WAITING_SEM 3
 "20
 } 2
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-[v _rot_ad_read rot_ad_read `R(i  1 e 2 0 ]
+[v _thermostat_value thermostat_value `R(i  1 e 2 0 ]
 {
 "30
-[v rot_ad_read@temperatura_ambiente temperatura_ambiente `i  1 a 2 0 ]
+[v thermostat_value@temperatura_ambiente temperatura_ambiente `i  1 a 2 0 ]
 "26
-[v rot_ad_read@resultadoAD resultadoAD `i  1 a 2 2 ]
+[v thermostat_value@resultadoAD resultadoAD `i  1 a 2 2 ]
 "33
 } 4
 "7 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\awdiv.c
@@ -496,10 +496,10 @@ WAITING_SEM 3
 "68
 } 0
 "22 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
-[v _rot_process rot_process `R(v  1 e 1 0 ]
+[v _ac_controller ac_controller `R(v  1 e 1 0 ]
 {
 "24
-[v rot_process@room_temperature room_temperature `i  1 a 2 0 ]
+[v ac_controller@room_temperature room_temperature `i  1 a 2 0 ]
 "34
 } 2
 "9 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\motores.c

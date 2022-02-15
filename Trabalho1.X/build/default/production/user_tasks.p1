@@ -15,8 +15,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./pipe.h: 21: void pipe_init(pipe_t *pipe, int tamanho);
 [v _pipe_init `(v ~T0 @X0 0 ef2`*S286`i ]
 "9 ./conversor.h
-[; ;./conversor.h: 9: int rot_ad_read();
-[v _rot_ad_read `(i ~T0 @X0 0 e? ]
+[; ;./conversor.h: 9: int thermostat_value();
+[v _thermostat_value `(i ~T0 @X0 0 e? ]
 "23 ./pipe.h
 [; ;./pipe.h: 23: void pipe_write(pipe_t *pipe, int dado);
 [v _pipe_write `(v ~T0 @X0 0 ef2`*S286`i ]
@@ -461,8 +461,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_tasks.c: 8:    pipe_init(&pipe_temperature, 1);
 [e ( _pipe_init (2 , &U _pipe_temperature -> 1 `i ]
 "11
-[; ;user_tasks.c: 11:    __asm("GLOBAL _sensoreamento_termostato, _rot_process");
-[; <" GLOBAL _sensoreamento_termostato, _rot_process ;# ">
+[; ;user_tasks.c: 11:    __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
+[; <" GLOBAL _sensoreamento_termostato, _ac_controller ;# ">
 "12
 [; ;user_tasks.c: 12: }
 [e :UE 287 ]
@@ -481,8 +481,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 290 ]
 {
 "17
-[; ;user_tasks.c: 17:        valor_rot_lido = rot_ad_read();
-[e = _valor_rot_lido -> ( _rot_ad_read ..  `ui ]
+[; ;user_tasks.c: 17:        valor_rot_lido = thermostat_value();
+[e = _valor_rot_lido -> ( _thermostat_value ..  `ui ]
 "18
 [; ;user_tasks.c: 18:        pipe_write(&pipe_temperature, valor_rot_lido);
 [e ( _pipe_write (2 , &U _pipe_temperature -> _valor_rot_lido `i ]
@@ -497,12 +497,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 288 ]
 }
 "22
-[; ;user_tasks.c: 22: void rot_process()
-[v _rot_process `(v ~T0 @X0 1 ef ]
+[; ;user_tasks.c: 22: void ac_controller()
+[v _ac_controller `(v ~T0 @X0 1 ef ]
 "23
 [; ;user_tasks.c: 23: {
 {
-[e :U _rot_process ]
+[e :U _ac_controller ]
 [f ]
 "24
 [; ;user_tasks.c: 24:    int room_temperature;

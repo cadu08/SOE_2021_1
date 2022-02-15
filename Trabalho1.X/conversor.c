@@ -1,6 +1,6 @@
 #include "conversor.h"
 
-int rot_ad_read(){
+int thermostat_value(){
     di(); //Desabilita interrupções
     
     ADCON0bits.ADON = 1;     //Liga o conversor AD

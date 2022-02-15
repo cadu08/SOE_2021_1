@@ -4663,14 +4663,14 @@ void turn_on_ac();
 
 
 
-int rot_ad_read();
+int thermostat_value();
 # 17 "./user_tasks.h" 2
 
 
 void config_user_tasks();
 
 void sensoreamento_termostato();
-void rot_process();
+void ac_controller();
 # 3 "kernel.c" 2
 # 1 "./config_hw.h" 1
 # 13 "./config_hw.h"
