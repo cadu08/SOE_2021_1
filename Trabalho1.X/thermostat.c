@@ -1,4 +1,4 @@
-#include "conversor.h"
+#include "thermostat.h"
 
 int thermostat_value(){
     di(); //Desabilita interrupções

@@ -52,7 +52,7 @@ dataCOMRAM COMRAM 1 63 63 2 1
 bssBIGRAM BIGRAM 1 F1 F1 2AA 1
 bssCOMRAM COMRAM 1 23 23 20 1
 config CONFIG 4 300000 300000 E 1
-$C:\Users\caduc\AppData\Local\Temp\s9bg.o
+$C:\Users\caduc\AppData\Local\Temp\sdk.o
 idloc IDLOC 5 200000 200000 8 1
 stack STACK 2 39B 39B 265 1
 init CODE 0 C C 8 1
@@ -93,7 +93,7 @@ MEDIUMCONST 14EE-7FFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Trabalho1.X.production.o
-8 intcode CODE >7645:C:\Users\caduc\AppData\Local\Temp\s9bg.s
+8 intcode CODE >7645:C:\Users\caduc\AppData\Local\Temp\sdk.s
 8 intcode CODE >95:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 EB6 text28 CODE >81:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 EB6 text28 CODE >82:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
@@ -256,21 +256,21 @@ AE8 text15 CODE >55:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalh
 96C text14 CODE >39:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\awdiv.c
 978 text14 CODE >40:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\awdiv.c
 984 text14 CODE >41:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\awdiv.c
-1126 text13 CODE >3:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-112E text13 CODE >4:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1130 text13 CODE >6:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1132 text13 CODE >7:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1136 text13 CODE >10:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1138 text13 CODE >11:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-113A text13 CODE >14:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1142 text13 CODE >17:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1144 text13 CODE >20:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1146 text13 CODE >23:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1154 text13 CODE >26:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1160 text13 CODE >28:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-1162 text13 CODE >30:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-11A0 text13 CODE >32:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-11AC text13 CODE >33:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
+1126 text13 CODE >3:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+112E text13 CODE >4:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1130 text13 CODE >6:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1132 text13 CODE >7:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1136 text13 CODE >10:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1138 text13 CODE >11:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+113A text13 CODE >14:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1142 text13 CODE >17:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1144 text13 CODE >20:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1146 text13 CODE >23:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1154 text13 CODE >26:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1160 text13 CODE >28:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+1162 text13 CODE >30:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+11A0 text13 CODE >32:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+11AC text13 CODE >33:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
 13C6 text12 CODE >14:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 13CA text12 CODE >16:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 13CA text12 CODE >17:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
@@ -351,37 +351,37 @@ AE8 text15 CODE >55:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalh
 13BA text0 CODE >23:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\main.c
 13BE text0 CODE >25:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\main.c
 13BE text0 CODE >26:C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\main.c
-1350 cinit CODE >2775:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1350 cinit CODE >2777:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1350 cinit CODE >2780:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1350 cinit CODE >2816:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1352 cinit CODE >2817:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1354 cinit CODE >2818:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1356 cinit CODE >2819:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1358 cinit CODE >2820:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-135A cinit CODE >2821:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-135C cinit CODE >2822:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-135E cinit CODE >2823:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1362 cinit CODE >2824:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1364 cinit CODE >2825:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1368 cinit CODE >2829:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-136C cinit CODE >2830:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1370 cinit CODE >2831:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1370 cinit CODE >2832:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1372 cinit CODE >2833:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1374 cinit CODE >2834:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1376 cinit CODE >2835:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1378 cinit CODE >2836:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-137A cinit CODE >2837:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-137C cinit CODE >2840:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1380 cinit CODE >2841:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1382 cinit CODE >2842:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1382 cinit CODE >2843:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1384 cinit CODE >2844:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1386 cinit CODE >2845:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1388 cinit CODE >2851:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-1388 cinit CODE >2853:C:\Users\caduc\AppData\Local\Temp\s9bg.s
-138A cinit CODE >2854:C:\Users\caduc\AppData\Local\Temp\s9bg.s
+1350 cinit CODE >2775:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1350 cinit CODE >2777:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1350 cinit CODE >2780:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1350 cinit CODE >2816:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1352 cinit CODE >2817:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1354 cinit CODE >2818:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1356 cinit CODE >2819:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1358 cinit CODE >2820:C:\Users\caduc\AppData\Local\Temp\sdk.s
+135A cinit CODE >2821:C:\Users\caduc\AppData\Local\Temp\sdk.s
+135C cinit CODE >2822:C:\Users\caduc\AppData\Local\Temp\sdk.s
+135E cinit CODE >2823:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1362 cinit CODE >2824:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1364 cinit CODE >2825:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1368 cinit CODE >2829:C:\Users\caduc\AppData\Local\Temp\sdk.s
+136C cinit CODE >2830:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1370 cinit CODE >2831:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1370 cinit CODE >2832:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1372 cinit CODE >2833:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1374 cinit CODE >2834:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1376 cinit CODE >2835:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1378 cinit CODE >2836:C:\Users\caduc\AppData\Local\Temp\sdk.s
+137A cinit CODE >2837:C:\Users\caduc\AppData\Local\Temp\sdk.s
+137C cinit CODE >2840:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1380 cinit CODE >2841:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1382 cinit CODE >2842:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1382 cinit CODE >2843:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1384 cinit CODE >2844:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1386 cinit CODE >2845:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1388 cinit CODE >2851:C:\Users\caduc\AppData\Local\Temp\sdk.s
+1388 cinit CODE >2853:C:\Users\caduc\AppData\Local\Temp\sdk.s
+138A cinit CODE >2854:C:\Users\caduc\AppData\Local\Temp\sdk.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -402,7 +402,7 @@ __Hspace_2 600 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
 __Hspace_4 60000E 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
 __end_of_ISR_timer 5C0 0 CODE 0 intcode_body dist/default/production\Trabalho1.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\Trabalho1.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\caduc\AppData\Local\Temp\s9bg.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\caduc\AppData\Local\Temp\sdk.o
 __size_of_pipe_write 0 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
 __size_of_ISR_timer 0 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\Trabalho1.X.production.o
@@ -412,12 +412,12 @@ ltemp2 4B 0 COMRAM 1 temp dist/default/production\Trabalho1.X.production.o
 _OS_create_task 123C 0 CODE 0 text9 dist/default/production\Trabalho1.X.production.o
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\Trabalho1.X.production.o
 _WREG FE8 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
-___sp 39B 0 STACK 2 stack C:\Users\caduc\AppData\Local\Temp\s9bg.o
+___sp 39B 0 STACK 2 stack C:\Users\caduc\AppData\Local\Temp\sdk.o
 _idle 142C 0 CODE 0 text11 dist/default/production\Trabalho1.X.production.o
 _main 138E 0 CODE 0 text0 dist/default/production\Trabalho1.X.production.o
 btemp 43 0 COMRAM 1 temp dist/default/production\Trabalho1.X.production.o
 __HbssBIGRAM 0 0 ABS 0 bssBIGRAM dist/default/production\Trabalho1.X.production.o
-start C 0 CODE 0 init C:\Users\caduc\AppData\Local\Temp\s9bg.o
+start C 0 CODE 0 init C:\Users\caduc\AppData\Local\Temp\sdk.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
 _ac_controller 11B6 0 CODE 0 text23 dist/default/production\Trabalho1.X.production.o
 _config_ad_conversor 145C 0 CODE 0 text4 dist/default/production\Trabalho1.X.production.o
@@ -444,11 +444,11 @@ ttemp7 4B 0 COMRAM 1 temp dist/default/production\Trabalho1.X.production.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\Trabalho1.X.production.o
 __LbssBIGRAM 0 0 ABS 0 bssBIGRAM dist/default/production\Trabalho1.X.production.o
 sem_init@s 1B 0 COMRAM 1 cstackCOMRAM dist/default/production\Trabalho1.X.production.o
-__accesstop 80 0 ABS 0 - C:\Users\caduc\AppData\Local\Temp\s9bg.o
-intlevel0 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\s9bg.o
-intlevel1 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\s9bg.o
-intlevel2 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\s9bg.o
-intlevel3 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\s9bg.o
+__accesstop 80 0 ABS 0 - C:\Users\caduc\AppData\Local\Temp\sdk.o
+intlevel0 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\sdk.o
+intlevel1 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\sdk.o
+intlevel2 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\sdk.o
+intlevel3 0 0 CODE 0 text C:\Users\caduc\AppData\Local\Temp\sdk.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\Trabalho1.X.production.o
 __end_of_pipe_init 12FE 0 CODE 0 text7 dist/default/production\Trabalho1.X.production.o
 __end_of_pipe_read C54 0 CODE 0 text26 dist/default/production\Trabalho1.X.production.o
@@ -472,8 +472,8 @@ _ADCON1 FC1 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
 __size_of_config_flywheel 0 0 ABS 0 - dist/default/production\Trabalho1.X.production.o
 _pipe_init 12A8 0 CODE 0 text7 dist/default/production\Trabalho1.X.production.o
 _pipe_read AF2 0 CODE 0 text26 dist/default/production\Trabalho1.X.production.o
-___inthi_sp 468 0 STACK 2 stack C:\Users\caduc\AppData\Local\Temp\s9bg.o
-___intlo_sp 534 0 STACK 2 stack C:\Users\caduc\AppData\Local\Temp\s9bg.o
+___inthi_sp 468 0 STACK 2 stack C:\Users\caduc\AppData\Local\Temp\sdk.o
+___intlo_sp 534 0 STACK 2 stack C:\Users\caduc\AppData\Local\Temp\sdk.o
 delay_release@task_released 5 0 COMRAM 1 cstackCOMRAM dist/default/production\Trabalho1.X.production.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\Trabalho1.X.production.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\Trabalho1.X.production.o
@@ -530,7 +530,7 @@ __Htext9 0 0 ABS 0 text9 dist/default/production\Trabalho1.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\Trabalho1.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production\Trabalho1.X.production.o
 __end_of_sem_get_value 14C6 0 CODE 0 text22 dist/default/production\Trabalho1.X.production.o
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\caduc\AppData\Local\Temp\s9bg.o
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\caduc\AppData\Local\Temp\sdk.o
 __Hcomram 0 0 ABS 0 comram dist/default/production\Trabalho1.X.production.o
 __Hconfig 30000E 0 CONFIG 4 config dist/default/production\Trabalho1.X.production.o
 __Lbank0 0 0 ABS 0 bank0 dist/default/production\Trabalho1.X.production.o
@@ -668,8 +668,8 @@ _turn_on_ac 14E4 0 CODE 0 text24 dist/default/production\Trabalho1.X.production.
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\Trabalho1.X.production.o
 pipe_init@tamanho 21 0 COMRAM 1 cstackCOMRAM dist/default/production\Trabalho1.X.production.o
 _sensoreamento_termostato 13C6 0 CODE 0 text12 dist/default/production\Trabalho1.X.production.o
-stackhi 5FF 0 ABS 0 - C:\Users\caduc\AppData\Local\Temp\s9bg.o
-stacklo 39B 0 ABS 0 - C:\Users\caduc\AppData\Local\Temp\s9bg.o
+stackhi 5FF 0 ABS 0 - C:\Users\caduc\AppData\Local\Temp\sdk.o
+stacklo 39B 0 ABS 0 - C:\Users\caduc\AppData\Local\Temp\sdk.o
 OS_create_task@new_task 80 0 BANK0 1 cstackBANK0 dist/default/production\Trabalho1.X.production.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production\Trabalho1.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production\Trabalho1.X.production.o
@@ -736,7 +736,7 @@ __Ltext25 0 0 ABS 0 text25 dist/default/production\Trabalho1.X.production.o
 __Ltext26 0 0 ABS 0 text26 dist/default/production\Trabalho1.X.production.o
 __Ltext28 0 0 ABS 0 text28 dist/default/production\Trabalho1.X.production.o
 __Ltext29 0 0 ABS 0 text29 dist/default/production\Trabalho1.X.production.o
-__ramtop 600 0 RAM 0 ramtop C:\Users\caduc\AppData\Local\Temp\s9bg.o
+__ramtop 600 0 RAM 0 ramtop C:\Users\caduc\AppData\Local\Temp\sdk.o
 __end_of_turn_on_ac 14E8 0 CODE 0 text24 dist/default/production\Trabalho1.X.production.o
 __Lpowerup C 0 CODE 0 powerup dist/default/production\Trabalho1.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\Trabalho1.X.production.o

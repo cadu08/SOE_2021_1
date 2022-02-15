@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.20 build 20200408173844 
-                                                                                               Tue Feb 15 19:11:59 2022
+                                                                                               Tue Feb 15 19:14:06 2022
 
 Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1 
      1                           	processor	18F4520
@@ -1270,7 +1270,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
   1249                           
   1250 ;; *************** function _thermostat_value *****************
   1251 ;; Defined at:
-  1252 ;;		line 3 in file "conversor.c"
+  1252 ;;		line 3 in file "thermostat.c"
   1253 ;; Parameters:    Size  Location     Type
   1254 ;;		None
   1255 ;; Auto vars:     Size  Location     Type
@@ -1312,52 +1312,52 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
   1290  00112A  52E6               	movf	postinc1,f,c
   1291  00112C  52E6               	movf	postinc1,f,c
   1292  00112E                     
-  1293                           ;conversor.c: 4:     (INTCONbits.GIE = 0);
+  1293                           ;thermostat.c: 4:     (INTCONbits.GIE = 0);
   1294  00112E  9EF2               	bcf	242,7,c	;volatile
   1295                           
-  1296                           ;conversor.c: 6:     ADCON0bits.ADON = 1;
+  1296                           ;thermostat.c: 6:     ADCON0bits.ADON = 1;
   1297  001130  80C2               	bsf	194,0,c	;volatile
   1298  001132                     
-  1299                           ;conversor.c: 7:     ADCON0bits.CHS = 0b0000;
+  1299                           ;thermostat.c: 7:     ADCON0bits.CHS = 0b0000;
   1300  001132  0EC3               	movlw	-61
   1301  001134  16C2               	andwf	194,f,c	;volatile
   1302  001136                     
-  1303                           ;conversor.c: 10:     ADCON1bits.VCFG1 = 0;
+  1303                           ;thermostat.c: 10:     ADCON1bits.VCFG1 = 0;
   1304  001136  9AC1               	bcf	193,5,c	;volatile
   1305  001138                     
-  1306                           ;conversor.c: 11:     ADCON1bits.VCFG0 = 0;
+  1306                           ;thermostat.c: 11:     ADCON1bits.VCFG0 = 0;
   1307  001138  98C1               	bcf	193,4,c	;volatile
   1308                           
-  1309                           ;conversor.c: 14:     ADCON1bits.PCFG = 0b1110;
+  1309                           ;thermostat.c: 14:     ADCON1bits.PCFG = 0b1110;
   1310  00113A  50C1               	movf	193,w,c	;volatile
   1311  00113C  0BF0               	andlw	-16
   1312  00113E  090E               	iorlw	14
   1313  001140  6EC1               	movwf	193,c	;volatile
   1314  001142                     
-  1315                           ;conversor.c: 17:     ADCON2bits.ADFM = 1;
+  1315                           ;thermostat.c: 17:     ADCON2bits.ADFM = 1;
   1316  001142  8EC0               	bsf	192,7,c	;volatile
   1317  001144                     
-  1318                           ;conversor.c: 20:     ADCON0bits.GODONE = 1;
+  1318                           ;thermostat.c: 20:     ADCON0bits.GODONE = 1;
   1319  001144  82C2               	bsf	194,1,c	;volatile
-  1320  001146                     l328:
+  1320  001146                     l336:
   1321  001146  B2C2               	btfsc	194,1,c	;volatile
   1322  001148  EFA8  F008         	goto	u27_21
   1323  00114C  EFAA  F008         	goto	u27_20
   1324  001150                     u27_21:
-  1325  001150  EFA3  F008         	goto	l328
+  1325  001150  EFA3  F008         	goto	l336
   1326  001154                     u27_20:
   1327  001154                     
-  1328                           ;conversor.c: 26:     int resultadoAD = ADRES;
+  1328                           ;thermostat.c: 26:     int resultadoAD = ADRES;
   1329                           ;stkvar	thermostat_value@resultadoAD @ sp[(-4)+2]
   1330  001154  0EFE               	movlw	-2
   1331  001156  CFC3 FFE3          	movff	4035,plusw1	;volatile
   1332  00115A  0EFF               	movlw	-1
   1333  00115C  CFC4 FFE3          	movff	4036,plusw1	;volatile
   1334  001160                     
-  1335                           ;conversor.c: 28:     (INTCONbits.GIE = 1);
+  1335                           ;thermostat.c: 28:     (INTCONbits.GIE = 1);
   1336  001160  8EF2               	bsf	242,7,c	;volatile
   1337  001162                     
-  1338                           ;conversor.c: 30:     int temperatura_ambiente = (150*resultadoAD)/307;
+  1338                           ;thermostat.c: 30:     int temperatura_ambiente = (150*resultadoAD)/307;
   1339  001162  0E33               	movlw	51
   1340  001164  6EE6               	movwf	postinc1,c
   1341  001166  0E01               	movlw	1
@@ -1385,7 +1385,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
   1363  00119A  0EFD               	movlw	-3
   1364  00119C  C044  FFE3         	movff	btemp+1,plusw1
   1365  0011A0                     
-  1366                           ;conversor.c: 32:     return temperatura_ambiente;
+  1366                           ;thermostat.c: 32:     return temperatura_ambiente;
   1367                           ;stkvar	thermostat_value@temperatura_ambiente @ sp[(-4)+0]
   1368  0011A0  0EFC               	movlw	-4
   1369  0011A2  CFE3 F043          	movff	plusw1,btemp
@@ -5052,7 +5052,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.20 build 20200408173844 
-Symbol Table                                                                                   Tue Feb 15 19:11:59 2022
+Symbol Table                                                                                   Tue Feb 15 19:14:06 2022
 
         __end_of_config_user_tasks 14B0                                 l40 0D80  
                                l17 13BE                                 l18 13BE  
@@ -5061,15 +5061,15 @@ Symbol Table                                                                    
                               l301 0C16                                l117 14D6  
                               l231 1498                                l304 0C48  
                               l312 0AE6                                l305 0C4A  
-                              l313 0AE8                                l129 12A6  
-                              l170 07C8                                l234 1480  
-                              l331 11AC                                l172 071C  
+                              l321 14E6                                l313 0AE8  
+                              l129 12A6                                l170 07C8  
+                              l234 1480                                l172 071C  
                               l260 134E                                l309 0AB4  
-                              l237 14DC                                l270 030C  
-                              l342 111C                                l336 14EA  
-                              l176 0808                                l328 1146  
+                              l237 14DC                                l318 14EA  
+                              l270 030C                                l342 111C  
+                              l176 0808                                l336 1146  
                               l169 05C8                                l282 14BC  
-                              l266 0254                                l339 14E6  
+                              l266 0254                                l339 11AC  
                               l195 14AE                                l198 13CA  
                               l279 0EB0                                l297 12FC  
                               l573 0984                                l850 1086  

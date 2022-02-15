@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c scheduler.c kernel.c user_tasks.c config_hw.c semaphore.c pipe.c conversor.c motores.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c scheduler.c kernel.c user_tasks.c config_hw.c semaphore.c pipe.c motores.c thermostat.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/kernel.p1 ${OBJECTDIR}/user_tasks.p1 ${OBJECTDIR}/config_hw.p1 ${OBJECTDIR}/semaphore.p1 ${OBJECTDIR}/pipe.p1 ${OBJECTDIR}/conversor.p1 ${OBJECTDIR}/motores.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/scheduler.p1.d ${OBJECTDIR}/kernel.p1.d ${OBJECTDIR}/user_tasks.p1.d ${OBJECTDIR}/config_hw.p1.d ${OBJECTDIR}/semaphore.p1.d ${OBJECTDIR}/pipe.p1.d ${OBJECTDIR}/conversor.p1.d ${OBJECTDIR}/motores.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/kernel.p1 ${OBJECTDIR}/user_tasks.p1 ${OBJECTDIR}/config_hw.p1 ${OBJECTDIR}/semaphore.p1 ${OBJECTDIR}/pipe.p1 ${OBJECTDIR}/motores.p1 ${OBJECTDIR}/thermostat.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/scheduler.p1.d ${OBJECTDIR}/kernel.p1.d ${OBJECTDIR}/user_tasks.p1.d ${OBJECTDIR}/config_hw.p1.d ${OBJECTDIR}/semaphore.p1.d ${OBJECTDIR}/pipe.p1.d ${OBJECTDIR}/motores.p1.d ${OBJECTDIR}/thermostat.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/kernel.p1 ${OBJECTDIR}/user_tasks.p1 ${OBJECTDIR}/config_hw.p1 ${OBJECTDIR}/semaphore.p1 ${OBJECTDIR}/pipe.p1 ${OBJECTDIR}/conversor.p1 ${OBJECTDIR}/motores.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/kernel.p1 ${OBJECTDIR}/user_tasks.p1 ${OBJECTDIR}/config_hw.p1 ${OBJECTDIR}/semaphore.p1 ${OBJECTDIR}/pipe.p1 ${OBJECTDIR}/motores.p1 ${OBJECTDIR}/thermostat.p1
 
 # Source Files
-SOURCEFILES=main.c scheduler.c kernel.c user_tasks.c config_hw.c semaphore.c pipe.c conversor.c motores.c
+SOURCEFILES=main.c scheduler.c kernel.c user_tasks.c config_hw.c semaphore.c pipe.c motores.c thermostat.c
 
 
 
@@ -150,14 +150,6 @@ ${OBJECTDIR}/pipe.p1: pipe.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/pipe.d ${OBJECTDIR}/pipe.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/pipe.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/conversor.p1: conversor.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/conversor.p1.d 
-	@${RM} ${OBJECTDIR}/conversor.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/conversor.p1 conversor.c 
-	@-${MV} ${OBJECTDIR}/conversor.d ${OBJECTDIR}/conversor.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/conversor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/motores.p1: motores.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/motores.p1.d 
@@ -165,6 +157,14 @@ ${OBJECTDIR}/motores.p1: motores.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/motores.p1 motores.c 
 	@-${MV} ${OBJECTDIR}/motores.d ${OBJECTDIR}/motores.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/motores.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/thermostat.p1: thermostat.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/thermostat.p1.d 
+	@${RM} ${OBJECTDIR}/thermostat.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/thermostat.p1 thermostat.c 
+	@-${MV} ${OBJECTDIR}/thermostat.d ${OBJECTDIR}/thermostat.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/thermostat.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
@@ -223,14 +223,6 @@ ${OBJECTDIR}/pipe.p1: pipe.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/pipe.d ${OBJECTDIR}/pipe.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/pipe.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/conversor.p1: conversor.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/conversor.p1.d 
-	@${RM} ${OBJECTDIR}/conversor.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/conversor.p1 conversor.c 
-	@-${MV} ${OBJECTDIR}/conversor.d ${OBJECTDIR}/conversor.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/conversor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/motores.p1: motores.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/motores.p1.d 
@@ -238,6 +230,14 @@ ${OBJECTDIR}/motores.p1: motores.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/motores.p1 motores.c 
 	@-${MV} ${OBJECTDIR}/motores.d ${OBJECTDIR}/motores.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/motores.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/thermostat.p1: thermostat.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/thermostat.p1.d 
+	@${RM} ${OBJECTDIR}/thermostat.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/thermostat.p1 thermostat.c 
+	@-${MV} ${OBJECTDIR}/thermostat.d ${OBJECTDIR}/thermostat.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/thermostat.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

@@ -1,4 +1,4 @@
-# 1 "conversor.c"
+# 1 "thermostat.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "conversor.c" 2
-# 1 "./conversor.h" 1
+# 1 "thermostat.c" 2
+# 1 "./thermostat.h" 1
 
 
 
@@ -4562,7 +4562,7 @@ typedef struct r_queue {
     u_int task_running;
     u_int nr_of_tasks;
 } r_queue_t;
-# 5 "./conversor.h" 2
+# 5 "./thermostat.h" 2
 # 1 "./semaphore.h" 1
 
 
@@ -4635,12 +4635,12 @@ void sem_wait(semaphore_t* s);
 bool sem_wait_time(semaphore_t* s, int time);
 void sem_post(semaphore_t* s);
 int sem_get_value(semaphore_t s);
-# 6 "./conversor.h" 2
+# 6 "./thermostat.h" 2
 
 
 
 int thermostat_value();
-# 2 "conversor.c" 2
+# 2 "thermostat.c" 2
 
 int thermostat_value(){
     (INTCONbits.GIE = 0);

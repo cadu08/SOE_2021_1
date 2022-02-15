@@ -4760,7 +4760,7 @@ void pipe_write(pipe_t *pipe, int dado);
 void turn_off_ac();
 void turn_on_ac();
 # 16 "./user_tasks.h" 2
-# 1 "./conversor.h" 1
+# 1 "./thermostat.h" 1
 
 
 

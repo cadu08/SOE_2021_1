@@ -398,7 +398,7 @@ bssBIGRAM F1 39A BIGRAM F1 1
 %locals
 dist/default/production\Trabalho1.X.production.o
 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-C:\Users\caduc\AppData\Local\Temp\s9bg.s
+C:\Users\caduc\AppData\Local\Temp\sdk.s
 2775 1350 0 CODE 0
 2777 1350 0 CODE 0
 2780 1350 0 CODE 0
@@ -523,7 +523,7 @@ user_tasks.c
 16 13CA 0 CODE 0
 17 13CA 0 CODE 0
 18 13DA 0 CODE 0
-conversor.c
+thermostat.c
 3 1126 0 CODE 0
 4 112E 0 CODE 0
 6 1130 0 CODE 0
@@ -692,7 +692,7 @@ pipe.c
 29 C36 0 CODE 0
 30 C48 0 CODE 0
 31 C4A 0 CODE 0
-C:\Users\caduc\AppData\Local\Temp\s9bg.s
+C:\Users\caduc\AppData\Local\Temp\sdk.s
 7645 8 0 CODE 0
 kernel.c
 95 8 0 CODE 0

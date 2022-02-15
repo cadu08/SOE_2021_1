@@ -12,8 +12,8 @@
       <itemPath>config_hw.h</itemPath>
       <itemPath>semaphore.h</itemPath>
       <itemPath>pipe.h</itemPath>
-      <itemPath>conversor.h</itemPath>
       <itemPath>motores.h</itemPath>
+      <itemPath>thermostat.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -29,8 +29,8 @@
       <itemPath>config_hw.c</itemPath>
       <itemPath>semaphore.c</itemPath>
       <itemPath>pipe.c</itemPath>
-      <itemPath>conversor.c</itemPath>
       <itemPath>motores.c</itemPath>
+      <itemPath>thermostat.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

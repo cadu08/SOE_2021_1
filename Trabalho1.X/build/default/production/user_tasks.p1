@@ -14,8 +14,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;./pipe.h: 21: void pipe_init(pipe_t *pipe, int tamanho);
 [v _pipe_init `(v ~T0 @X0 0 ef2`*S286`i ]
-"9 ./conversor.h
-[; ;./conversor.h: 9: int thermostat_value();
+"9 ./thermostat.h
+[; ;./thermostat.h: 9: int thermostat_value();
 [v _thermostat_value `(i ~T0 @X0 0 e? ]
 "23 ./pipe.h
 [; ;./pipe.h: 23: void pipe_write(pipe_t *pipe, int dado);

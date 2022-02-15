@@ -13,7 +13,7 @@
 #include "semaphore.h"
 #include "pipe.h"
 #include "motores.h"
-#include "conversor.h"
+#include "thermostat.h"
 
 
 void config_user_tasks();

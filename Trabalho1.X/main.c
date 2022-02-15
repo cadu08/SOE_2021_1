@@ -8,7 +8,7 @@
 #include "kernel.h"
 #include "user_tasks.h"
 #include "motores.h"
-#include "conversor.h"
+#include "thermostat.h"
 
 
 int main(void) {

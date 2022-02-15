@@ -511,59 +511,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
-"3 conversor.c
-[; ;conversor.c: 3: int thermostat_value(){
+"3 thermostat.c
+[; ;thermostat.c: 3: int thermostat_value(){
 [v _thermostat_value `(i ~T0 @X0 1 ef ]
 {
 [e :U _thermostat_value ]
 [f ]
 "4
-[; ;conversor.c: 4:     (INTCONbits.GIE = 0);
+[; ;thermostat.c: 4:     (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 "6
-[; ;conversor.c: 6:     ADCON0bits.ADON = 1;
+[; ;thermostat.c: 6:     ADCON0bits.ADON = 1;
 [e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
 "7
-[; ;conversor.c: 7:     ADCON0bits.CHS = 0b0000;
+[; ;thermostat.c: 7:     ADCON0bits.CHS = 0b0000;
 [e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
 "10
-[; ;conversor.c: 10:     ADCON1bits.VCFG1 = 0;
+[; ;thermostat.c: 10:     ADCON1bits.VCFG1 = 0;
 [e = . . _ADCON1bits 1 5 -> -> 0 `i `uc ]
 "11
-[; ;conversor.c: 11:     ADCON1bits.VCFG0 = 0;
+[; ;thermostat.c: 11:     ADCON1bits.VCFG0 = 0;
 [e = . . _ADCON1bits 1 4 -> -> 0 `i `uc ]
 "14
-[; ;conversor.c: 14:     ADCON1bits.PCFG = 0b1110;
+[; ;thermostat.c: 14:     ADCON1bits.PCFG = 0b1110;
 [e = . . _ADCON1bits 0 0 -> -> 14 `i `uc ]
 "17
-[; ;conversor.c: 17:     ADCON2bits.ADFM = 1;
+[; ;thermostat.c: 17:     ADCON2bits.ADFM = 1;
 [e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
 "20
-[; ;conversor.c: 20:     ADCON0bits.GODONE = 1;
+[; ;thermostat.c: 20:     ADCON0bits.GODONE = 1;
 [e = . . _ADCON0bits 7 1 -> -> 1 `i `uc ]
 "23
-[; ;conversor.c: 23:     while (ADCON0bits.GODONE);
+[; ;thermostat.c: 23:     while (ADCON0bits.GODONE);
 [e $U 287  ]
 [e :U 288 ]
 [e :U 287 ]
 [e $ != -> . . _ADCON0bits 7 1 `i -> 0 `i 288  ]
 [e :U 289 ]
 "26
-[; ;conversor.c: 26:     int resultadoAD = ADRES;
+[; ;thermostat.c: 26:     int resultadoAD = ADRES;
 [v _resultadoAD `i ~T0 @X0 1 a ]
 [e = _resultadoAD -> _ADRES `i ]
 "28
-[; ;conversor.c: 28:     (INTCONbits.GIE = 1);
+[; ;thermostat.c: 28:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 "30
-[; ;conversor.c: 30:     int temperatura_ambiente = (150*resultadoAD)/307;
+[; ;thermostat.c: 30:     int temperatura_ambiente = (150*resultadoAD)/307;
 [v _temperatura_ambiente `i ~T0 @X0 1 a ]
 [e = _temperatura_ambiente / * -> 150 `i _resultadoAD -> 307 `i ]
 "32
-[; ;conversor.c: 32:     return temperatura_ambiente;
+[; ;thermostat.c: 32:     return temperatura_ambiente;
 [e ) _temperatura_ambiente ]
 [e $UE 286  ]
 "33
-[; ;conversor.c: 33: }
+[; ;thermostat.c: 33: }
 [e :UE 286 ]
 }

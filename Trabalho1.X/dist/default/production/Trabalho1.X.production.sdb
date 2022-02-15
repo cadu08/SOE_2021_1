@@ -60,8 +60,6 @@ WAITING_SEM 3
 [v _config_ad_conversor config_ad_conversor `(v  1 e 1 0 ]
 "38
 [v _config_flywheel config_flywheel `(v  1 e 1 0 ]
-"3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
-[v _thermostat_value thermostat_value `R(i  1 e 2 0 ]
 "11 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 [v _idle idle `R(v  1 e 1 0 ]
 "19
@@ -102,6 +100,8 @@ WAITING_SEM 3
 [v _sem_post sem_post `R(v  1 e 1 0 ]
 "66
 [v _sem_get_value sem_get_value `R(i  1 e 2 0 ]
+"3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
+[v _thermostat_value thermostat_value `R(i  1 e 2 0 ]
 "5 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 [v _config_user_tasks config_user_tasks `(v  1 e 1 0 ]
 "14
@@ -403,7 +403,7 @@ WAITING_SEM 3
 [v sensoreamento_termostato@readed_temperature readed_temperature `i  1 a 2 0 ]
 "20
 } 2
-"3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c
+"3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
 [v _thermostat_value thermostat_value `R(i  1 e 2 0 ]
 {
 "30

@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.20\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Trabalho1.X.production.sym \
   --cmf=dist/default/production\Trabalho1.X.production.cmf -z -Q18F4520 \
-  -oC:\Users\caduc\AppData\Local\Temp\s9bg.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\caduc\AppData\Local\Temp\sdk.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Trabalho1.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=039Bh-05FFh -pstack=STACK \
   -ACODE=00h-07FFFh -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\caduc\AppData\Local\Temp\s9bg.o \
+  C:\Users\caduc\AppData\Local\Temp\sdk.o \
   dist/default/production\Trabalho1.X.production.o 
 
 Object code version is 3.11
@@ -31,7 +31,7 @@ Machine type is 18F4520
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\caduc\AppData\Local\Temp\s9bg.o
+C:\Users\caduc\AppData\Local\Temp\sdk.o
                 stack                               39B      39B      265      39B       2
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
@@ -1002,7 +1002,7 @@ Total ram usage:        0 bytes
 
  *************** function _thermostat_value *****************
  Defined at:
-		line 3 in file "conversor.c"
+		line 3 in file "thermostat.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1524,11 +1524,6 @@ semaphore.c
 
 semaphore.c estimated size: 1174
 
-conversor.c
-		_thermostat_value		CODE           	1126	0000	145
-
-conversor.c estimated size: 145
-
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\Umul16.c
 		___wmul        		CODE           	1090	0000	151
 
@@ -1574,6 +1569,11 @@ pipe.c
 		_pipe_write    		CODE           	098E	0000	357
 
 pipe.c estimated size: 799
+
+thermostat.c
+		_thermostat_value		CODE           	1126	0000	145
+
+thermostat.c estimated size: 145
 
 scheduler.c
 		_scheduler     		CODE           	14DE	0000	7

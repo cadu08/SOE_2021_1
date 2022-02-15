@@ -8,4 +8,4 @@ user_tasks.h  \
 semaphore.h  \
 pipe.h  \
 motores.h  \
-conversor.h 
+thermostat.h 
