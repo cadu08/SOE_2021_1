@@ -4670,26 +4670,26 @@ int rot_ad_read();
 
 void config_user_tasks();
 
-void rot_read();
+void sensoreamento_termostato();
 void rot_process();
 # 2 "user_tasks.c" 2
 
-pipe_t pipe_attitude;
+pipe_t pipe_temperature;
 
 void config_user_tasks()
 {
 
-   pipe_init(&pipe_attitude, 1);
+   pipe_init(&pipe_temperature, 1);
 
 
-   __asm("GLOBAL _rot_read, _rot_process");
+   __asm("GLOBAL _sensoreamento_termostato, _rot_process");
 }
 
-void rot_read() {
+void sensoreamento_termostato() {
     u_int valor_rot_lido;
     while (1) {
-        valor_rot_lido = rot_ad_read();
-        pipe_write(&pipe_attitude, valor_rot_lido);
+       valor_rot_lido = rot_ad_read();
+       pipe_write(&pipe_temperature, valor_rot_lido);
     }
 }
 
@@ -4697,7 +4697,7 @@ void rot_process()
 {
    int room_temperature;
    while (1) {
-      pipe_read(&pipe_attitude, &room_temperature);
+      pipe_read(&pipe_temperature, &room_temperature);
 
       if(room_temperature < (32 - 2)){
          turn_off_ac();

@@ -19,7 +19,6 @@ ___sp 39B 0 STACK 2
 btemp 43 0 COMRAM 1
 start C 0 CODE 0
 __end_of_pipe_read C54 0 CODE 0
-_rot_read 1418 0 CODE 0
 OS_create_task@new_task 80 0 BANK0 1
 _config_user_tasks 14BA 0 CODE 0
 __size_of_scheduler 0 0 ABS 0
@@ -73,6 +72,7 @@ __size_of_config_flywheel 0 0 ABS 0
 _ADCON1 FC1 0 ABS 0
 __end_of_pipe_init 1306 0 CODE 0
 sem_init@s 1B 0 COMRAM 1
+__size_of_sensoreamento_termostato 0 0 ABS 0
 __Heeprom_data 0 0 EEDATA 0
 __Leeprom_data 0 0 EEDATA 0
 _sem_wait 14 0 CODE 0
@@ -151,12 +151,13 @@ __size_of_idle 0 0 ABS 0
 __end_of_delay_release FA8 0 CODE 0
 OS_create_task@id 1B 0 COMRAM 1
 _TRISDbits F95 0 ABS 0
+__end_of_sensoreamento_termostato 144C 0 CODE 0
 _PORTDbits F83 0 ABS 0
 _T0CONbits FD5 0 ABS 0
 _pipe_init 12B0 0 CODE 0
-__size_of_rot_read 0 0 ABS 0
 __Hibigdata 0 0 CODE 0
 __Libigdata 0 0 CODE 0
+_pipe_temperature 29 0 COMRAM 1
 __end_of_ISR_timer 5C0 0 CODE 0
 __HbssBIGRAM 0 0 ABS 0
 __LbssBIGRAM 0 0 ABS 0
@@ -354,7 +355,6 @@ _rr_quantum 63 0 COMRAM 1
 pipe_init@pipe 1F 0 COMRAM 1
 __size_of_config_user_tasks 0 0 ABS 0
 __accesstop 80 0 ABS 0
-_pipe_attitude 29 0 COMRAM 1
 __Hintcode_body 0 0 ABS 0
 __Lintcode_body 0 0 ABS 0
 __size_of_ISR_timer 0 0 ABS 0
@@ -376,8 +376,8 @@ __end_of___wmul 1126 0 CODE 0
 __end_of_sem_post EB6 0 CODE 0
 start_initialization 13A0 0 CODE 0
 __size_of_rot_ad_read 0 0 ABS 0
+_sensoreamento_termostato 1418 0 CODE 0
 __end_of_turn_off_ac 150C 0 CODE 0
-__end_of_rot_read 144C 0 CODE 0
 __size_of_RESTORE_CONTEXT 0 0 ABS 0
 __end_of_RESTORE_CONTEXT 812 0 CODE 0
 sem_init@val 1D 0 COMRAM 1
@@ -399,7 +399,7 @@ bssBIGRAM F1 39A BIGRAM F1 1
 %locals
 dist/default/production\Trabalho1.X.production.o
 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-C:\Users\caduc\AppData\Local\Temp\sa58.s
+C:\Users\caduc\AppData\Local\Temp\s1bc.s
 2775 13A0 0 CODE 0
 2777 13A0 0 CODE 0
 2780 13A0 0 CODE 0
@@ -694,7 +694,7 @@ pipe.c
 29 C36 0 CODE 0
 30 C48 0 CODE 0
 31 C4A 0 CODE 0
-C:\Users\caduc\AppData\Local\Temp\sa58.s
+C:\Users\caduc\AppData\Local\Temp\s1bc.s
 7666 8 0 CODE 0
 kernel.c
 96 8 0 CODE 0

@@ -4775,7 +4775,7 @@ int rot_ad_read();
 
 void config_user_tasks();
 
-void rot_read();
+void sensoreamento_termostato();
 void rot_process();
 # 10 "main.c" 2
 
@@ -4788,7 +4788,7 @@ int main(void) {
 
 
 
-    OS_create_task(1, 4, rot_read);
+    OS_create_task(1, 4, sensoreamento_termostato);
     OS_create_task(2, 4, rot_process);
 
     OS_start();

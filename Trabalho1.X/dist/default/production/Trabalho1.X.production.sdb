@@ -105,7 +105,7 @@ WAITING_SEM 3
 "5 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 [v _config_user_tasks config_user_tasks `(v  1 e 1 0 ]
 "14
-[v _rot_read rot_read `R(v  1 e 1 0 ]
+[v _sensoreamento_termostato sensoreamento_termostato `R(v  1 e 1 0 ]
 "22
 [v _rot_process rot_process `R(v  1 e 1 0 ]
 "13 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X/kernel.h
@@ -314,7 +314,7 @@ WAITING_SEM 3
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 [s S499 semaphore 18 `i 1 s_count 2 0 `S494 1 s_queue 16 2 ]
 [s S502 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S499 1 sem 18 8 ]
-[v _pipe_attitude pipe_attitude `S502  1 e 26 0 ]
+[v _pipe_temperature pipe_temperature `S502  1 e 26 0 ]
 "14 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
@@ -398,10 +398,10 @@ WAITING_SEM 3
 "17
 } 0
 "14 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
-[v _rot_read rot_read `R(v  1 e 1 0 ]
+[v _sensoreamento_termostato sensoreamento_termostato `R(v  1 e 1 0 ]
 {
 "15
-[v rot_read@valor_rot_lido valor_rot_lido `ui  1 a 2 0 ]
+[v sensoreamento_termostato@valor_rot_lido valor_rot_lido `ui  1 a 2 0 ]
 "20
 } 2
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\conversor.c

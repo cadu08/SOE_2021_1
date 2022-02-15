@@ -447,8 +447,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
 "3 user_tasks.c
-[; ;user_tasks.c: 3: pipe_t pipe_attitude;
-[v _pipe_attitude `S286 ~T0 @X0 1 e ]
+[; ;user_tasks.c: 3: pipe_t pipe_temperature;
+[v _pipe_temperature `S286 ~T0 @X0 1 e ]
 "5
 [; ;user_tasks.c: 5: void config_user_tasks()
 [v _config_user_tasks `(v ~T0 @X0 1 ef ]
@@ -458,20 +458,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _config_user_tasks ]
 [f ]
 "8
-[; ;user_tasks.c: 8:    pipe_init(&pipe_attitude, 1);
-[e ( _pipe_init (2 , &U _pipe_attitude -> 1 `i ]
+[; ;user_tasks.c: 8:    pipe_init(&pipe_temperature, 1);
+[e ( _pipe_init (2 , &U _pipe_temperature -> 1 `i ]
 "11
-[; ;user_tasks.c: 11:    __asm("GLOBAL _rot_read, _rot_process");
-[; <" GLOBAL _rot_read, _rot_process ;# ">
+[; ;user_tasks.c: 11:    __asm("GLOBAL _sensoreamento_termostato, _rot_process");
+[; <" GLOBAL _sensoreamento_termostato, _rot_process ;# ">
 "12
 [; ;user_tasks.c: 12: }
 [e :UE 287 ]
 }
 "14
-[; ;user_tasks.c: 14: void rot_read() {
-[v _rot_read `(v ~T0 @X0 1 ef ]
+[; ;user_tasks.c: 14: void sensoreamento_termostato() {
+[v _sensoreamento_termostato `(v ~T0 @X0 1 ef ]
 {
-[e :U _rot_read ]
+[e :U _sensoreamento_termostato ]
 [f ]
 "15
 [; ;user_tasks.c: 15:     u_int valor_rot_lido;
@@ -481,11 +481,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 290 ]
 {
 "17
-[; ;user_tasks.c: 17:         valor_rot_lido = rot_ad_read();
+[; ;user_tasks.c: 17:        valor_rot_lido = rot_ad_read();
 [e = _valor_rot_lido -> ( _rot_ad_read ..  `ui ]
 "18
-[; ;user_tasks.c: 18:         pipe_write(&pipe_attitude, valor_rot_lido);
-[e ( _pipe_write (2 , &U _pipe_attitude -> _valor_rot_lido `i ]
+[; ;user_tasks.c: 18:        pipe_write(&pipe_temperature, valor_rot_lido);
+[e ( _pipe_write (2 , &U _pipe_temperature -> _valor_rot_lido `i ]
 "19
 [; ;user_tasks.c: 19:     }
 }
@@ -512,8 +512,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 294 ]
 {
 "26
-[; ;user_tasks.c: 26:       pipe_read(&pipe_attitude, &room_temperature);
-[e ( _pipe_read (2 , &U _pipe_attitude &U _room_temperature ]
+[; ;user_tasks.c: 26:       pipe_read(&pipe_temperature, &room_temperature);
+[e ( _pipe_read (2 , &U _pipe_temperature &U _room_temperature ]
 "28
 [; ;user_tasks.c: 28:       if(room_temperature < (32 - 2)){
 [e $ ! < _room_temperature - -> 32 `i -> 2 `i 296  ]

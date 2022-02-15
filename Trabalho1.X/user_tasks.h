@@ -18,7 +18,7 @@
 
 void config_user_tasks();
 
-TASK rot_read();
+TASK sensoreamento_termostato();
 TASK rot_process();
 
 

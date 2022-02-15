@@ -4669,7 +4669,7 @@ int rot_ad_read();
 
 void config_user_tasks();
 
-void rot_read();
+void sensoreamento_termostato();
 void rot_process();
 # 3 "kernel.c" 2
 # 1 "./config_hw.h" 1
