@@ -9,7 +9,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S285 semaphore s_count s_queue ]
 "9 ./pipe.h
 [; ;./pipe.h: 9: typedef struct pipe {
-[s S286 `ui -> 2 `i `ui 1 `ui 1 `ui 1 `S285 1 ]
+[s S286 `ui -> -> 1 `i `ux `ui 1 `ui 1 `ui 1 `S285 1 ]
 [n S286 pipe msg size read_pos write_pos sem ]
 "21
 [; ;./pipe.h: 21: void pipe_init(pipe_t *pipe, int tamanho);
@@ -24,11 +24,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./pipe.h: 22: void pipe_read(pipe_t * pipe, int *dado);
 [v _pipe_read `(v ~T0 @X0 0 ef2`*S286`*i ]
 "10 ./motores.h
-[; ;./motores.h: 10: void antihorario();
-[v _antihorario `(v ~T0 @X0 0 e? ]
+[; ;./motores.h: 10: void turn_off_ac();
+[v _turn_off_ac `(v ~T0 @X0 0 e? ]
 "11
-[; ;./motores.h: 11: void horario();
-[v _horario `(v ~T0 @X0 0 e? ]
+[; ;./motores.h: 11: void turn_on_ac();
+[v _turn_on_ac `(v ~T0 @X0 0 e? ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -497,42 +497,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 288 ]
 }
 "22
-[; ;user_tasks.c: 22: void rot_process() {
+[; ;user_tasks.c: 22: void rot_process()
 [v _rot_process `(v ~T0 @X0 1 ef ]
+"23
+[; ;user_tasks.c: 23: {
 {
 [e :U _rot_process ]
 [f ]
-"23
-[; ;user_tasks.c: 23:     int room_temperature;
-[v _room_temperature `i ~T0 @X0 1 a ]
 "24
-[; ;user_tasks.c: 24:     while (1) {
+[; ;user_tasks.c: 24:    int room_temperature;
+[v _room_temperature `i ~T0 @X0 1 a ]
+"25
+[; ;user_tasks.c: 25:    while (1) {
 [e :U 294 ]
 {
-"25
-[; ;user_tasks.c: 25:         pipe_read(&pipe_attitude, &room_temperature);
+"26
+[; ;user_tasks.c: 26:       pipe_read(&pipe_attitude, &room_temperature);
 [e ( _pipe_read (2 , &U _pipe_attitude &U _room_temperature ]
-"27
-[; ;user_tasks.c: 27:         if(room_temperature < (32 - 2)){
+"28
+[; ;user_tasks.c: 28:       if(room_temperature < (32 - 2)){
 [e $ ! < _room_temperature - -> 32 `i -> 2 `i 296  ]
 {
-"28
-[; ;user_tasks.c: 28:             antihorario();
-[e ( _antihorario ..  ]
 "29
-[; ;user_tasks.c: 29:         }
+[; ;user_tasks.c: 29:          turn_off_ac();
+[e ( _turn_off_ac ..  ]
+"30
+[; ;user_tasks.c: 30:       }else if(room_temperature > (32 + 2)){
 }
 [e $U 297  ]
-"30
-[; ;user_tasks.c: 30:         else if(room_temperature > (32 + 2)){
 [e :U 296 ]
 [e $ ! > _room_temperature + -> 32 `i -> 2 `i 298  ]
 {
 "31
-[; ;user_tasks.c: 31:             horario();
-[e ( _horario ..  ]
+[; ;user_tasks.c: 31:          turn_on_ac();
+[e ( _turn_on_ac ..  ]
 "32
-[; ;user_tasks.c: 32:         }
+[; ;user_tasks.c: 32:       }
 }
 [e :U 298 ]
 [e :U 297 ]

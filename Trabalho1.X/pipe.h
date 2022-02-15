@@ -4,7 +4,7 @@
 #include "types.h"
 #include "semaphore.h"
 #include "user_config.h"
-#define PIPE_SIZE 2
+#define PIPE_SIZE 1
 
 typedef struct pipe {
 #if HEAP_MEMORY

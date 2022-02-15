@@ -81,9 +81,9 @@ WAITING_SEM 3
 "14 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\main.c
 [v _main main `(i  1 e 2 0 ]
 "5 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\motores.c
-[v _antihorario antihorario `R(v  1 e 1 0 ]
+[v _turn_off_ac turn_off_ac `R(v  1 e 1 0 ]
 "9
-[v _horario horario `R(v  1 e 1 0 ]
+[v _turn_on_ac turn_on_ac `R(v  1 e 1 0 ]
 "4 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\pipe.c
 [v _pipe_init pipe_init `(v  1 e 1 0 ]
 "10
@@ -313,8 +313,8 @@ WAITING_SEM 3
 [s S494 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 [s S499 semaphore 18 `i 1 s_count 2 0 `S494 1 s_queue 16 2 ]
-[s S502 pipe 28 `[2]ui 1 msg 4 0 `ui 1 size 2 4 `ui 1 read_pos 2 6 `ui 1 write_pos 2 8 `S499 1 sem 18 10 ]
-[v _pipe_attitude pipe_attitude `S502  1 e 28 0 ]
+[s S502 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S499 1 sem 18 8 ]
+[v _pipe_attitude pipe_attitude `S502  1 e 26 0 ]
 "14 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
@@ -355,9 +355,9 @@ WAITING_SEM 3
 {
 [s S494 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 [s S499 semaphore 18 `i 1 s_count 2 0 `S494 1 s_queue 16 2 ]
-[s S502 pipe 28 `[2]ui 1 msg 4 0 `ui 1 size 2 4 `ui 1 read_pos 2 6 `ui 1 write_pos 2 8 `S499 1 sem 18 10 ]
-[v pipe_init@pipe pipe `*.39S502  1 p 2 0 ]
-[v pipe_init@tamanho tamanho `i  1 p 2 2 ]
+[s S502 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S499 1 sem 18 8 ]
+[v pipe_init@pipe pipe `*.39S502  1 p 2 30 ]
+[v pipe_init@tamanho tamanho `i  1 p 2 32 ]
 "9
 } 0
 "2 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
@@ -375,7 +375,7 @@ WAITING_SEM 3
 [s S65 context 104 `ui 1 STATUS_reg 2 0 `ui 1 WORK_reg 2 2 `ui 1 BSR_reg 2 4 `[32]um 1 STACK_regs 96 6 `ui 1 stack_size 2 102 ]
 "62
 [s S72 tcb 113 `ui 1 task_id 2 0 `ui 1 task_prior 2 2 `E2531 1 task_state 1 4 `S65 1 task_context 104 5 `*.37R(v 1 task_func 2 109 `ui 1 task_delay_time 2 111 ]
-[v OS_create_task@new_task new_task `S72  1 a 113 2 ]
+[v OS_create_task@new_task new_task `S72  1 a 113 0 ]
 "60
 [v OS_create_task@id id `ui  1 p 2 26 ]
 [v OS_create_task@prior prior `ui  1 p 2 28 ]
@@ -434,7 +434,7 @@ WAITING_SEM 3
 [s S494 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 "32
 [s S499 semaphore 18 `i 1 s_count 2 0 `S494 1 s_queue 16 2 ]
-[s S502 pipe 28 `[2]ui 1 msg 4 0 `ui 1 size 2 4 `ui 1 read_pos 2 6 `ui 1 write_pos 2 8 `S499 1 sem 18 10 ]
+[s S502 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S499 1 sem 18 8 ]
 [v pipe_write@pipe pipe `*.39S502  1 p 2 -2 ]
 [v pipe_write@dado dado `i  1 p 2 -4 ]
 "55
@@ -498,10 +498,20 @@ WAITING_SEM 3
 "22 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 [v _rot_process rot_process `R(v  1 e 1 0 ]
 {
-"23
+"24
 [v rot_process@room_temperature room_temperature `i  1 a 2 0 ]
 "34
 } 2
+"9 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\motores.c
+[v _turn_on_ac turn_on_ac `R(v  1 e 1 0 ]
+{
+"11
+} 0
+"5
+[v _turn_off_ac turn_off_ac `R(v  1 e 1 0 ]
+{
+"7
+} 0
 "10 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\pipe.c
 [v _pipe_read pipe_read `R(v  1 e 1 0 ]
 {
@@ -510,21 +520,11 @@ WAITING_SEM 3
 [s S494 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 "10
 [s S499 semaphore 18 `i 1 s_count 2 0 `S494 1 s_queue 16 2 ]
-[s S502 pipe 28 `[2]ui 1 msg 4 0 `ui 1 size 2 4 `ui 1 read_pos 2 6 `ui 1 write_pos 2 8 `S499 1 sem 18 10 ]
+[s S502 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S499 1 sem 18 8 ]
 [v pipe_read@pipe pipe `*.39S502  1 p 2 -2 ]
 [v pipe_read@dado dado `*.39i  1 p 2 -4 ]
 "31
 } 1
-"9 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\motores.c
-[v _horario horario `R(v  1 e 1 0 ]
-{
-"11
-} 0
-"5
-[v _antihorario antihorario `R(v  1 e 1 0 ]
-{
-"7
-} 0
 "96 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 [v _ISR_timer ISR_timer `IIH(v  1 e 1 0 ]
 {

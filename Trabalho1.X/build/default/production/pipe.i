@@ -4643,7 +4643,7 @@ typedef struct pipe {
 
 
 
-    u_int msg[2];
+    u_int msg[1];
 
     u_int size;
     u_int read_pos;
@@ -4671,7 +4671,7 @@ void pipe_read(pipe_t * pipe, int *dado){
     do{
         if (pipe->size > 0){
             *dado = pipe->msg[pipe->read_pos];
-            pipe->read_pos = (pipe->read_pos + 1) % 2;
+            pipe->read_pos = (pipe->read_pos + 1) % 1;
             pipe->size--;
             read_flag = 1;
             if(sem_get_value(pipe->sem) < 0){
@@ -4691,9 +4691,9 @@ void pipe_write(pipe_t *pipe, int dado){
     bool write_flag = 0;
 
     do{
-        if(pipe->size < 2) {
+        if(pipe->size < 1) {
             pipe->msg[pipe->write_pos] = dado;
-            pipe->write_pos = (pipe->write_pos + 1) % 2;
+            pipe->write_pos = (pipe->write_pos + 1) % 1;
             pipe->size++;
             write_flag = 1;
             if(sem_get_value(pipe->sem) < 0){

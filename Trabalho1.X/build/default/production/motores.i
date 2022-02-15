@@ -4359,14 +4359,14 @@ extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
 
 # 1 "./motores.h" 1
 # 10 "./motores.h"
-void antihorario();
-void horario();
+void turn_off_ac();
+void turn_on_ac();
 # 4 "motores.c" 2
 
-void antihorario(){
+void turn_off_ac(){
     PORTDbits.RD0 = 0;
 }
 
-void horario(){
+void turn_on_ac(){
     PORTDbits.RD0 = 1;
 }

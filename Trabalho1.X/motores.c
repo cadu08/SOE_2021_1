@@ -2,10 +2,10 @@
 
 #include "motores.h"
 
-void antihorario(){
+void turn_off_ac(){
     AIR_CONDITIONER = 0;
 }
 
-void horario(){
+void turn_on_ac(){
     AIR_CONDITIONER = 1;
 }

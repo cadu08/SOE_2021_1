@@ -9,7 +9,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S285 semaphore s_count s_queue ]
 "9 ./pipe.h
 [; ;./pipe.h: 9: typedef struct pipe {
-[s S286 `ui -> 2 `i `ui 1 `ui 1 `ui 1 `S285 1 ]
+[s S286 `ui -> -> 1 `i `ux `ui 1 `ui 1 `ui 1 `S285 1 ]
 [n S286 pipe msg size read_pos write_pos sem ]
 "24 ./semaphore.h
 [; ;./semaphore.h: 24: void sem_init(semaphore_t* s, int val);
@@ -504,8 +504,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pipe.c: 17:             *dado = pipe->msg[pipe->read_pos];
 [e = *U _dado -> *U + &U . *U _pipe 0 * -> . *U _pipe 2 `ux -> -> # *U &U . *U _pipe 0 `ui `ux `i ]
 "18
-[; ;pipe.c: 18:             pipe->read_pos = (pipe->read_pos + 1) % 2;
-[e = . *U _pipe 2 % + . *U _pipe 2 -> -> 1 `i `ui -> -> 2 `i `ui ]
+[; ;pipe.c: 18:             pipe->read_pos = (pipe->read_pos + 1) % 1;
+[e = . *U _pipe 2 % + . *U _pipe 2 -> -> 1 `i `ui -> -> 1 `i `ui ]
 "19
 [; ;pipe.c: 19:             pipe->size--;
 [e -- . *U _pipe 1 -> -> 1 `i `ui ]
@@ -573,15 +573,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 298 ]
 {
 "38
-[; ;pipe.c: 38:         if(pipe->size < 2) {
-[e $ ! < . *U _pipe 1 -> -> 2 `i `ui 299  ]
+[; ;pipe.c: 38:         if(pipe->size < 1) {
+[e $ ! < . *U _pipe 1 -> -> 1 `i `ui 299  ]
 {
 "39
 [; ;pipe.c: 39:             pipe->msg[pipe->write_pos] = dado;
 [e = *U + &U . *U _pipe 0 * -> . *U _pipe 3 `ux -> -> # *U &U . *U _pipe 0 `ui `ux -> _dado `ui ]
 "40
-[; ;pipe.c: 40:             pipe->write_pos = (pipe->write_pos + 1) % 2;
-[e = . *U _pipe 3 % + . *U _pipe 3 -> -> 1 `i `ui -> -> 2 `i `ui ]
+[; ;pipe.c: 40:             pipe->write_pos = (pipe->write_pos + 1) % 1;
+[e = . *U _pipe 3 % + . *U _pipe 3 -> -> 1 `i `ui -> -> 1 `i `ui ]
 "41
 [; ;pipe.c: 41:             pipe->size++;
 [e ++ . *U _pipe 1 -> -> 1 `i `ui ]

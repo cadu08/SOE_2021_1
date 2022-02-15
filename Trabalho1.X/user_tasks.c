@@ -19,16 +19,16 @@ TASK rot_read() {
     }
 }
 
-TASK rot_process() {
-    int room_temperature;
-    while (1) {
-        pipe_read(&pipe_attitude, &room_temperature);
+TASK rot_process()
+{
+   int room_temperature;
+   while (1) {
+      pipe_read(&pipe_attitude, &room_temperature);
      
-        if(room_temperature < (SETTED_TEMPERATURE - 2)){
-            antihorario();
-        }
-        else if(room_temperature > (SETTED_TEMPERATURE + 2)){
-            horario();
-        }
+      if(room_temperature < (SETTED_TEMPERATURE - 2)){
+         turn_off_ac();
+      }else if(room_temperature > (SETTED_TEMPERATURE + 2)){
+         turn_on_ac();
+      }
     }   
 }

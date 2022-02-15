@@ -4743,7 +4743,7 @@ typedef struct pipe {
 
 
 
-    u_int msg[2];
+    u_int msg[1];
 
     u_int size;
     u_int read_pos;
@@ -4757,8 +4757,8 @@ void pipe_write(pipe_t *pipe, int dado);
 # 15 "./user_tasks.h" 2
 # 1 "./motores.h" 1
 # 10 "./motores.h"
-void antihorario();
-void horario();
+void turn_off_ac();
+void turn_on_ac();
 # 16 "./user_tasks.h" 2
 # 1 "./conversor.h" 1
 

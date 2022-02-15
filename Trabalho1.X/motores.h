@@ -7,8 +7,8 @@
 #define ref_MA PORTDbits.RD3
 
 
-void antihorario(); // motor rot rotaciona anti-horario
-void horario();     // motor rotaciona horario
+void turn_off_ac(); // desliga ar-condicionado
+void turn_on_ac();  // liga ar-condicionado
 
 #endif	/* MOTORES_H */
 

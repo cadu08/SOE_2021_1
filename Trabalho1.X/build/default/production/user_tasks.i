@@ -4638,7 +4638,7 @@ typedef struct pipe {
 
 
 
-    u_int msg[2];
+    u_int msg[1];
 
     u_int size;
     u_int read_pos;
@@ -4652,8 +4652,8 @@ void pipe_write(pipe_t *pipe, int dado);
 # 15 "./user_tasks.h" 2
 # 1 "./motores.h" 1
 # 10 "./motores.h"
-void antihorario();
-void horario();
+void turn_off_ac();
+void turn_on_ac();
 # 16 "./user_tasks.h" 2
 # 1 "./conversor.h" 1
 
@@ -4693,16 +4693,16 @@ void rot_read() {
     }
 }
 
-void rot_process() {
-    int room_temperature;
-    while (1) {
-        pipe_read(&pipe_attitude, &room_temperature);
+void rot_process()
+{
+   int room_temperature;
+   while (1) {
+      pipe_read(&pipe_attitude, &room_temperature);
 
-        if(room_temperature < (32 - 2)){
-            antihorario();
-        }
-        else if(room_temperature > (32 + 2)){
-            horario();
-        }
+      if(room_temperature < (32 - 2)){
+         turn_off_ac();
+      }else if(room_temperature > (32 + 2)){
+         turn_on_ac();
+      }
     }
 }
