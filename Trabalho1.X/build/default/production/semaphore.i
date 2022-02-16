@@ -4642,8 +4642,8 @@ void sem_init(semaphore_t* s, int val){
     s->s_queue.queue_size = s->s_queue.queue_wait_pos = s->s_queue.queue_post_pos = 0;
 
     (INTCONbits.GIE = 1);
-
 }
+
 void sem_wait(semaphore_t* s){
     (INTCONbits.GIE = 0);
 
@@ -4657,47 +4657,19 @@ void sem_wait(semaphore_t* s){
         do{ (INTCONbits.GIE = 0); if(READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size > 0){ index=0; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_state = WAITING_SEM; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.WORK_reg = WREG; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.BSR_reg = BSR; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STATUS_reg = STATUS; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size = 0; do{ READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
         RESTORE_CONTEXT();
     }
-
-
-
     (INTCONbits.GIE = 1);
-}
-
-bool sem_wait_time(semaphore_t* s, int time){
-    (INTCONbits.GIE = 0);
-
-    s->s_count--;
-    if(s->s_count < 0){
-        OS_delay(time);
-        if(s->s_count < 0) return 0;
-    }
-
-    (INTCONbits.GIE = 1);
-
-    return 1;
 }
 
 void sem_post(semaphore_t* s){
     (INTCONbits.GIE = 0);
-
     s->s_count++;
     if(s->s_count <= 0) {
 
         READY_QUEUE.QUEUE[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
-
         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;
         s->s_queue.queue_size--;
-
-
-
-
-
     }
-
-
-
     (INTCONbits.GIE = 1);
-
 }
 
 int sem_get_value(semaphore_t s){

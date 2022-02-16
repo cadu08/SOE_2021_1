@@ -405,7 +405,7 @@ bssBIGRAM 11A 3C3 BIGRAM 11A 1
 %locals
 dist/default/production\Trabalho1.X.production.o
 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-C:\Users\caduc\AppData\Local\Temp\s2c8.s
+C:\Users\caduc\AppData\Local\Temp\s450.s
 3055 1354 0 CODE 0
 3057 1354 0 CODE 0
 3060 1354 0 CODE 0
@@ -510,7 +510,7 @@ semaphore.c
 4 1302 0 CODE 0
 5 1312 0 CODE 0
 7 1350 0 CODE 0
-9 1352 0 CODE 0
+8 1352 0 CODE 0
 kernel.c
 60 123C 0 CODE 0
 64 123C 0 CODE 0
@@ -607,8 +607,8 @@ semaphore.c
 19 EE 0 CODE 0
 20 10C 0 CODE 0
 21 306 0 CODE 0
-26 30A 0 CODE 0
-27 30C 0 CODE 0
+23 30A 0 CODE 0
+24 30C 0 CODE 0
 kernel.c
 125 5C0 0 CODE 0
 126 5C8 0 CODE 0
@@ -647,15 +647,15 @@ scheduler.c
 35 D74 0 CODE 0
 36 D80 0 CODE 0
 semaphore.c
-43 D8A 0 CODE 0
-44 D8A 0 CODE 0
-46 D8C 0 CODE 0
-47 D9E 0 CODE 0
-49 DC8 0 CODE 0
-51 E34 0 CODE 0
-52 E90 0 CODE 0
-62 EAE 0 CODE 0
-64 EB0 0 CODE 0
+26 D8A 0 CODE 0
+27 D8A 0 CODE 0
+28 D8C 0 CODE 0
+29 D9E 0 CODE 0
+31 DC8 0 CODE 0
+32 E34 0 CODE 0
+33 E90 0 CODE 0
+35 EAE 0 CODE 0
+36 EB0 0 CODE 0
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\lwmod.c
 7 FA8 0 CODE 0
 12 FAA 0 CODE 0
@@ -671,9 +671,9 @@ C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\lwmod.c
 24 107A 0 CODE 0
 25 1086 0 CODE 0
 semaphore.c
-66 14F4 0 CODE 0
-67 14F4 0 CODE 0
-68 1500 0 CODE 0
+38 14F4 0 CODE 0
+39 14F4 0 CODE 0
+40 1500 0 CODE 0
 user_tasks.c
 26 11B6 0 CODE 0
 29 11BA 0 CODE 0
@@ -707,7 +707,7 @@ pipe.c
 29 C36 0 CODE 0
 30 C48 0 CODE 0
 31 C4A 0 CODE 0
-C:\Users\caduc\AppData\Local\Temp\s2c8.s
+C:\Users\caduc\AppData\Local\Temp\s450.s
 7993 8 0 CODE 0
 kernel.c
 95 8 0 CODE 0

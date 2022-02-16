@@ -64,9 +64,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "102 ./kernel.h
 [; ;./kernel.h: 102: void RESTORE_CONTEXT();
 [v _RESTORE_CONTEXT `(v ~T0 @X0 0 e? ]
-"25
-[; ;./kernel.h: 25: void OS_delay(u_int time);
-[v _OS_delay `(v ~T0 @X0 0 ef1`ui ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -504,8 +501,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7
 [; ;semaphore.c: 7:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"9
-[; ;semaphore.c: 9: }
+"8
+[; ;semaphore.c: 8: }
 [e :UE 286 ]
 }
 "10
@@ -572,104 +569,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;semaphore.c: 22:     }
 }
 [e :U 288 ]
-"26
-[; ;semaphore.c: 26:     (INTCONbits.GIE = 1);
+"23
+[; ;semaphore.c: 23:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"27
-[; ;semaphore.c: 27: }
+"24
+[; ;semaphore.c: 24: }
 [e :UE 287 ]
 }
-"29
-[; ;semaphore.c: 29: bool sem_wait_time(semaphore_t* s, int time){
-[v _sem_wait_time `(uc ~T0 @X0 1 ef2`*S285`i ]
-{
-[e :U _sem_wait_time ]
-[v _s `*S285 ~T0 @X0 1 r1 ]
-[v _time `i ~T0 @X0 1 r2 ]
-[f ]
-"30
-[; ;semaphore.c: 30:     (INTCONbits.GIE = 0);
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"32
-[; ;semaphore.c: 32:     s->s_count--;
-[e -- . *U _s 0 -> 1 `i ]
-"33
-[; ;semaphore.c: 33:     if(s->s_count < 0){
-[e $ ! < . *U _s 0 -> 0 `i 298  ]
-{
-"34
-[; ;semaphore.c: 34:         OS_delay(time);
-[e ( _OS_delay (1 -> _time `ui ]
-"35
-[; ;semaphore.c: 35:         if(s->s_count < 0) return 0;
-[e $ ! < . *U _s 0 -> 0 `i 299  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 297  ]
-[e :U 299 ]
-"36
-[; ;semaphore.c: 36:     }
-}
-[e :U 298 ]
-"38
-[; ;semaphore.c: 38:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"40
-[; ;semaphore.c: 40:     return 1;
-[e ) -> -> 1 `i `uc ]
-[e $UE 297  ]
-"41
-[; ;semaphore.c: 41: }
-[e :UE 297 ]
-}
-"43
-[; ;semaphore.c: 43: void sem_post(semaphore_t* s){
+"26
+[; ;semaphore.c: 26: void sem_post(semaphore_t* s){
 [v _sem_post `(v ~T0 @X0 1 ef1`*S285 ]
 {
 [e :U _sem_post ]
 [v _s `*S285 ~T0 @X0 1 r1 ]
 [f ]
-"44
-[; ;semaphore.c: 44:     (INTCONbits.GIE = 0);
+"27
+[; ;semaphore.c: 27:     (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"46
-[; ;semaphore.c: 46:     s->s_count++;
+"28
+[; ;semaphore.c: 28:     s->s_count++;
 [e ++ . *U _s 0 -> 1 `i ]
-"47
-[; ;semaphore.c: 47:     if(s->s_count <= 0) {
-[e $ ! <= . *U _s 0 -> 0 `i 301  ]
+"29
+[; ;semaphore.c: 29:     if(s->s_count <= 0) {
+[e $ ! <= . *U _s 0 -> 0 `i 298  ]
 {
-"49
-[; ;semaphore.c: 49:         READY_QUEUE.QUEUE[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
+"31
+[; ;semaphore.c: 31:         READY_QUEUE.QUEUE[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
 [e = . *U + &U . _READY_QUEUE 0 * -> *U + &U . . *U _s 1 0 * -> . . *U _s 1 3 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 . `E2531 0 ]
-"51
-[; ;semaphore.c: 51:         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;
+"32
+[; ;semaphore.c: 32:         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;
 [e = . . *U _s 1 3 % + . . *U _s 1 3 -> -> 1 `i `ui -> -> 5 `i `ui ]
-"52
-[; ;semaphore.c: 52:         s->s_queue.queue_size--;
+"33
+[; ;semaphore.c: 33:         s->s_queue.queue_size--;
 [e -- . . *U _s 1 1 -> -> 1 `i `ui ]
-"58
-[; ;semaphore.c: 58:     }
+"34
+[; ;semaphore.c: 34:     }
 }
-[e :U 301 ]
-"62
-[; ;semaphore.c: 62:     (INTCONbits.GIE = 1);
+[e :U 298 ]
+"35
+[; ;semaphore.c: 35:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"64
-[; ;semaphore.c: 64: }
-[e :UE 300 ]
+"36
+[; ;semaphore.c: 36: }
+[e :UE 297 ]
 }
-"66
-[; ;semaphore.c: 66: int sem_get_value(semaphore_t s){
+"38
+[; ;semaphore.c: 38: int sem_get_value(semaphore_t s){
 [v _sem_get_value `(i ~T0 @X0 1 ef1`S285 ]
 {
 [e :U _sem_get_value ]
 [v _s `S285 ~T0 @X0 1 r1 ]
 [f ]
-"67
-[; ;semaphore.c: 67:     return s.s_count;
+"39
+[; ;semaphore.c: 39:     return s.s_count;
 [e ) . _s 0 ]
-[e $UE 302  ]
-"68
-[; ;semaphore.c: 68: }
-[e :UE 302 ]
+[e $UE 299  ]
+"40
+[; ;semaphore.c: 40: }
+[e :UE 299 ]
 }

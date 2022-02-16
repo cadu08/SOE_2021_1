@@ -10,7 +10,7 @@ void sensoreamento_termostato_2()
 {   
    while(1)
    {
-      //Decrementa o semáforo binário de escrita em t_ambiente
+      //Decrementa o semáforo binário de escrita
       //Apenas será possível escrever novamente quando este semáforo for incrementado (for dado um post)
       //Será dado um post neste semáforo quando a task do controlador estiver em processamento
       sem_wait(&sem_temp_w);

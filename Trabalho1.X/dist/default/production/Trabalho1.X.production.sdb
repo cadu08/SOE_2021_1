@@ -66,8 +66,6 @@ WAITING_SEM 3
 [v _OS_config OS_config `(v  1 e 1 0 ]
 "32
 [v _OS_start OS_start `(v  1 e 1 0 ]
-"49
-[v _OS_delay OS_delay `(v  1 e 1 0 ]
 "60
 [v _OS_create_task OS_create_task `(v  1 e 1 0 ]
 "81
@@ -96,9 +94,9 @@ WAITING_SEM 3
 [v _sem_init sem_init `(v  1 e 1 0 ]
 "10
 [v _sem_wait sem_wait `R(v  1 e 1 0 ]
-"43
+"26
 [v _sem_post sem_post `R(v  1 e 1 0 ]
-"66
+"38
 [v _sem_get_value sem_get_value `R(i  1 e 2 0 ]
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\thermostat.c
 [v _thermostat_value thermostat_value `R(i  1 e 2 0 ]
@@ -373,7 +371,7 @@ WAITING_SEM 3
 [s S29 semaphore 18 `i 1 s_count 2 0 `S24 1 s_queue 16 2 ]
 [v sem_init@s s `*.39S29  1 p 2 0 ]
 [v sem_init@val val `i  1 p 2 2 ]
-"9
+"8
 } 0
 "60 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 [v _OS_create_task OS_create_task `(v  1 e 1 0 ]
@@ -450,7 +448,7 @@ WAITING_SEM 3
 [s S24 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 [s S29 semaphore 18 `i 1 s_count 2 0 `S24 1 s_queue 16 2 ]
 [v sem_wait@s s `*.39S29  1 p 2 -2 ]
-"27
+"24
 } 0
 "125 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 [v _RESTORE_CONTEXT RESTORE_CONTEXT `R(v  1 e 1 0 ]
@@ -474,13 +472,13 @@ WAITING_SEM 3
 [v ROUND_ROBIN_sched@try try `ui  1 a 2 2 ]
 "36
 } 4
-"43 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
+"26 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
 [v _sem_post sem_post `R(v  1 e 1 0 ]
 {
 [s S24 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 [s S29 semaphore 18 `i 1 s_count 2 0 `S24 1 s_queue 16 2 ]
 [v sem_post@s s `*.39S29  1 p 2 -2 ]
-"64
+"36
 } 0
 "7 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\lwmod.c
 [v ___lwmod __lwmod `R(ui  1 e 2 0 ]
@@ -492,13 +490,13 @@ WAITING_SEM 3
 [v ___lwmod@divisor divisor `ui  1 p 2 -4 ]
 "25
 } 1
-"66 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
+"38 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
 [v _sem_get_value sem_get_value `R(i  1 e 2 0 ]
 {
 [s S24 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 [s S29 semaphore 18 `i 1 s_count 2 0 `S24 1 s_queue 16 2 ]
 [v sem_get_value@s s `S29  1 p 18 -18 ]
-"68
+"40
 } 0
 "26 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 [v _ac_controller ac_controller `R(v  1 e 1 0 ]

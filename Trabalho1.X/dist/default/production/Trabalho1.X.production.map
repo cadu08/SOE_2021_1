@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.20\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Trabalho1.X.production.sym \
   --cmf=dist/default/production\Trabalho1.X.production.cmf -z -Q18F4520 \
-  -oC:\Users\caduc\AppData\Local\Temp\s2c8.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\caduc\AppData\Local\Temp\s450.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Trabalho1.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=03C4h-05FFh -pstack=STACK \
   -ACODE=00h-07FFFh -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\caduc\AppData\Local\Temp\s2c8.o \
+  C:\Users\caduc\AppData\Local\Temp\s450.o \
   dist/default/production\Trabalho1.X.production.o 
 
 Object code version is 3.11
@@ -31,7 +31,7 @@ Machine type is 18F4520
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\caduc\AppData\Local\Temp\s2c8.o
+C:\Users\caduc\AppData\Local\Temp\s450.o
                 stack                               3C4      3C4      23C      3C4       2
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
@@ -1244,7 +1244,7 @@ Total ram usage:        0 bytes
 
  *************** function _sem_post *****************
  Defined at:
-		line 43 in file "semaphore.c"
+		line 26 in file "semaphore.c"
  Parameters:    Size  Location     Type
   s               2  [STACK] PTR struct semaphore
 		 -> sem_temp_r(18), sem_temp_w(18), pipe_temperature(26), 
@@ -1312,7 +1312,7 @@ Total ram usage:        0 bytes
 
  *************** function _sem_get_value *****************
  Defined at:
-		line 66 in file "semaphore.c"
+		line 38 in file "semaphore.c"
  Parameters:    Size  Location     Type
   s              18  [STACK] struct semaphore
  Auto vars:     Size  Location     Type
