@@ -4783,8 +4783,10 @@ int thermostat_value();
 
 
 void config_user_tasks();
-void sensoreamento_termostato();
-void ac_controller();
+void thermostat_sensing_1();
+void thermostat_sensing_2();
+void ac_controller_1();
+void ac_controller_2();
 
 semaphore_t sem_temp_w;
 semaphore_t sem_temp_r;
@@ -4802,12 +4804,12 @@ int main(void) {
 
     if(1 == 1)
     {
-      OS_create_task(4, sensoreamento_termostato);
-      OS_create_task(4, ac_controller);
+      OS_create_task(4, thermostat_sensing_1);
+      OS_create_task(4, ac_controller_1);
     }else if(1 == 2)
     {
-      OS_create_task(4, sensoreamento_termostato);
-      OS_create_task(4, ac_controller);
+      OS_create_task(4, thermostat_sensing_2);
+      OS_create_task(4, ac_controller_2);
     }
 
 

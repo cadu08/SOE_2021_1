@@ -16,15 +16,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./kernel.h: 26: void OS_create_task(u_int prior, task_ptr func);
 [v _OS_create_task `(v ~T0 @X0 0 ef2`ui`*F2723 ]
 "22 ./user_tasks.h
-[; ;./user_tasks.h: 22: void sensoreamento_termostato();
-[v _sensoreamento_termostato `(v ~T0 @X0 0 e? ]
-[v F2777 `(v ~T0 @X0 0 tf ]
-"23
-[; ;./user_tasks.h: 23: void ac_controller();
-[v _ac_controller `(v ~T0 @X0 0 e? ]
+[; ;./user_tasks.h: 22: void thermostat_sensing_1();
+[v _thermostat_sensing_1 `(v ~T0 @X0 0 e? ]
 [v F2779 `(v ~T0 @X0 0 tf ]
+"24
+[; ;./user_tasks.h: 24: void ac_controller_1();
+[v _ac_controller_1 `(v ~T0 @X0 0 e? ]
 [v F2781 `(v ~T0 @X0 0 tf ]
+"23
+[; ;./user_tasks.h: 23: void thermostat_sensing_2();
+[v _thermostat_sensing_2 `(v ~T0 @X0 0 e? ]
 [v F2783 `(v ~T0 @X0 0 tf ]
+"25
+[; ;./user_tasks.h: 25: void ac_controller_2();
+[v _ac_controller_2 `(v ~T0 @X0 0 e? ]
+[v F2785 `(v ~T0 @X0 0 tf ]
 "24 ./kernel.h
 [; ;./kernel.h: 24: void OS_start();
 [v _OS_start `(v ~T0 @X0 0 e? ]
@@ -445,11 +451,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
-"25 ./user_tasks.h
-[; ;./user_tasks.h: 25: semaphore_t sem_temp_w;
+"27 ./user_tasks.h
+[; ;./user_tasks.h: 27: semaphore_t sem_temp_w;
 [v _sem_temp_w `S290 ~T0 @X0 1 e ]
-"26
-[; ;./user_tasks.h: 26: semaphore_t sem_temp_r;
+"28
+[; ;./user_tasks.h: 28: semaphore_t sem_temp_r;
 [v _sem_temp_r `S290 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "14 main.c
@@ -468,11 +474,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 21:     {
 {
 "22
-[; ;main.c: 22:       OS_create_task(4, sensoreamento_termostato);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _sensoreamento_termostato `*F2777 ]
+[; ;main.c: 22:       OS_create_task(4, thermostat_sensing_1);
+[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _thermostat_sensing_1 `*F2779 ]
 "23
-[; ;main.c: 23:       OS_create_task(4, ac_controller);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller `*F2779 ]
+[; ;main.c: 23:       OS_create_task(4, ac_controller_1);
+[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller_1 `*F2781 ]
 "24
 [; ;main.c: 24:     }else if(1 == 2)
 }
@@ -483,11 +489,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 25:     {
 {
 "26
-[; ;main.c: 26:       OS_create_task(4, sensoreamento_termostato);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _sensoreamento_termostato `*F2781 ]
+[; ;main.c: 26:       OS_create_task(4, thermostat_sensing_2);
+[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _thermostat_sensing_2 `*F2783 ]
 "27
-[; ;main.c: 27:       OS_create_task(4, ac_controller);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller `*F2783 ]
+[; ;main.c: 27:       OS_create_task(4, ac_controller_2);
+[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller_2 `*F2785 ]
 "28
 [; ;main.c: 28:     }
 }

@@ -6,7 +6,7 @@ int room_temperature;
 // O mecanismo para acesso a t_ambiente baseia-se no pipe implementado em aula
 // t_ambiente está funcionando como se fosse um pipe de tamanho 1
 
-void sensoreamento_termostato_2()
+void thermostat_sensing_2()
 {   
    while(1)
    {
@@ -25,7 +25,7 @@ void sensoreamento_termostato_2()
    }
 }
 
-void controlador_ar_condicionado_2()
+void ac_controller_2()
 {
    while(1)
    {

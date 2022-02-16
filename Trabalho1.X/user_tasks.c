@@ -12,10 +12,15 @@ void config_user_tasks()
    sem_init(&sem_temp_r, 0);
   
    // Coloca tarefas como globais
-   __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
+   if(EXAMPLE == 1){
+      __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
+   }else if(EXAMPLE ==2){
+      __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");
+   }
+   
 }
 
-void sensoreamento_termostato() {
+void thermostat_sensing_1() {
     int readed_temperature;
     while (1) {
        readed_temperature = thermostat_value();
@@ -23,7 +28,7 @@ void sensoreamento_termostato() {
     }
 }
 
-void ac_controller()
+void ac_controller_1()
 {
    int room_temperature;
    while (1) {

@@ -449,11 +449,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
-"25 ./user_tasks.h
-[; ;./user_tasks.h: 25: semaphore_t sem_temp_w;
+"27 ./user_tasks.h
+[; ;./user_tasks.h: 27: semaphore_t sem_temp_w;
 [v _sem_temp_w `S285 ~T0 @X0 1 e ]
-"26
-[; ;./user_tasks.h: 26: semaphore_t sem_temp_r;
+"28
+[; ;./user_tasks.h: 28: semaphore_t sem_temp_r;
 [v _sem_temp_r `S285 ~T0 @X0 1 e ]
 "3 user_tasks.c
 [; ;user_tasks.c: 3: pipe_t pipe_temperature;
@@ -476,88 +476,107 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_tasks.c: 12:    sem_init(&sem_temp_r, 0);
 [e ( _sem_init (2 , &U _sem_temp_r -> 0 `i ]
 "15
-[; ;user_tasks.c: 15:    __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
-[; <" GLOBAL _sensoreamento_termostato, _ac_controller ;# ">
+[; ;user_tasks.c: 15:    if(1 == 1){
+[e $ ! == -> 1 `i -> 1 `i 288  ]
+{
 "16
-[; ;user_tasks.c: 16: }
+[; ;user_tasks.c: 16:       __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
+[; <" GLOBAL _thermostat_sensing_1, _ac_controller_1 ;# ">
+"17
+[; ;user_tasks.c: 17:    }else if(1 ==2){
+}
+[e $U 289  ]
+[e :U 288 ]
+[e $ ! == -> 1 `i -> 2 `i 290  ]
+{
+"18
+[; ;user_tasks.c: 18:       __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");
+[; <" GLOBAL _thermostat_sensing_2, _ac_controller_2 ;# ">
+"19
+[; ;user_tasks.c: 19:    }
+}
+[e :U 290 ]
+[e :U 289 ]
+"21
+[; ;user_tasks.c: 21: }
 [e :UE 287 ]
 }
-"18
-[; ;user_tasks.c: 18: void sensoreamento_termostato() {
-[v _sensoreamento_termostato `(v ~T0 @X0 1 ef ]
-{
-[e :U _sensoreamento_termostato ]
-[f ]
-"19
-[; ;user_tasks.c: 19:     int readed_temperature;
-[v _readed_temperature `i ~T0 @X0 1 a ]
-"20
-[; ;user_tasks.c: 20:     while (1) {
-[e :U 290 ]
-{
-"21
-[; ;user_tasks.c: 21:        readed_temperature = thermostat_value();
-[e = _readed_temperature ( _thermostat_value ..  ]
-"22
-[; ;user_tasks.c: 22:        pipe_write(&pipe_temperature, readed_temperature);
-[e ( _pipe_write (2 , &U _pipe_temperature _readed_temperature ]
 "23
-[; ;user_tasks.c: 23:     }
-}
-[e :U 289 ]
-[e $U 290  ]
-[e :U 291 ]
-"24
-[; ;user_tasks.c: 24: }
-[e :UE 288 ]
-}
-"26
-[; ;user_tasks.c: 26: void ac_controller()
-[v _ac_controller `(v ~T0 @X0 1 ef ]
-"27
-[; ;user_tasks.c: 27: {
+[; ;user_tasks.c: 23: void thermostat_sensing_1() {
+[v _thermostat_sensing_1 `(v ~T0 @X0 1 ef ]
 {
-[e :U _ac_controller ]
+[e :U _thermostat_sensing_1 ]
 [f ]
+"24
+[; ;user_tasks.c: 24:     int readed_temperature;
+[v _readed_temperature `i ~T0 @X0 1 a ]
+"25
+[; ;user_tasks.c: 25:     while (1) {
+[e :U 293 ]
+{
+"26
+[; ;user_tasks.c: 26:        readed_temperature = thermostat_value();
+[e = _readed_temperature ( _thermostat_value ..  ]
+"27
+[; ;user_tasks.c: 27:        pipe_write(&pipe_temperature, readed_temperature);
+[e ( _pipe_write (2 , &U _pipe_temperature _readed_temperature ]
 "28
-[; ;user_tasks.c: 28:    int room_temperature;
-[v _room_temperature `i ~T0 @X0 1 a ]
-"29
-[; ;user_tasks.c: 29:    while (1) {
-[e :U 294 ]
-{
-"30
-[; ;user_tasks.c: 30:       pipe_read(&pipe_temperature, &room_temperature);
-[e ( _pipe_read (2 , &U _pipe_temperature &U _room_temperature ]
-"32
-[; ;user_tasks.c: 32:       if(room_temperature < (32 - 2)){
-[e $ ! < _room_temperature - -> 32 `i -> 2 `i 296  ]
-{
-"33
-[; ;user_tasks.c: 33:          turn_off_ac();
-[e ( _turn_off_ac ..  ]
-"34
-[; ;user_tasks.c: 34:       }else if(room_temperature > (32 + 2)){
+[; ;user_tasks.c: 28:     }
 }
-[e $U 297  ]
-[e :U 296 ]
-[e $ ! > _room_temperature + -> 32 `i -> 2 `i 298  ]
+[e :U 292 ]
+[e $U 293  ]
+[e :U 294 ]
+"29
+[; ;user_tasks.c: 29: }
+[e :UE 291 ]
+}
+"31
+[; ;user_tasks.c: 31: void ac_controller_1()
+[v _ac_controller_1 `(v ~T0 @X0 1 ef ]
+"32
+[; ;user_tasks.c: 32: {
+{
+[e :U _ac_controller_1 ]
+[f ]
+"33
+[; ;user_tasks.c: 33:    int room_temperature;
+[v _room_temperature `i ~T0 @X0 1 a ]
+"34
+[; ;user_tasks.c: 34:    while (1) {
+[e :U 297 ]
 {
 "35
-[; ;user_tasks.c: 35:          turn_on_ac();
-[e ( _turn_on_ac ..  ]
-"36
-[; ;user_tasks.c: 36:       }
-}
-[e :U 298 ]
-[e :U 297 ]
+[; ;user_tasks.c: 35:       pipe_read(&pipe_temperature, &room_temperature);
+[e ( _pipe_read (2 , &U _pipe_temperature &U _room_temperature ]
 "37
-[; ;user_tasks.c: 37:     }
-}
-[e :U 293 ]
-[e $U 294  ]
-[e :U 295 ]
+[; ;user_tasks.c: 37:       if(room_temperature < (32 - 2)){
+[e $ ! < _room_temperature - -> 32 `i -> 2 `i 299  ]
+{
 "38
-[; ;user_tasks.c: 38: }
-[e :UE 292 ]
+[; ;user_tasks.c: 38:          turn_off_ac();
+[e ( _turn_off_ac ..  ]
+"39
+[; ;user_tasks.c: 39:       }else if(room_temperature > (32 + 2)){
+}
+[e $U 300  ]
+[e :U 299 ]
+[e $ ! > _room_temperature + -> 32 `i -> 2 `i 301  ]
+{
+"40
+[; ;user_tasks.c: 40:          turn_on_ac();
+[e ( _turn_on_ac ..  ]
+"41
+[; ;user_tasks.c: 41:       }
+}
+[e :U 301 ]
+[e :U 300 ]
+"42
+[; ;user_tasks.c: 42:     }
+}
+[e :U 296 ]
+[e $U 297  ]
+[e :U 298 ]
+"43
+[; ;user_tasks.c: 43: }
+[e :UE 295 ]
 }

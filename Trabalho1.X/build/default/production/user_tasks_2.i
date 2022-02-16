@@ -4677,8 +4677,10 @@ int thermostat_value();
 
 
 void config_user_tasks();
-void sensoreamento_termostato();
-void ac_controller();
+void thermostat_sensing_1();
+void thermostat_sensing_2();
+void ac_controller_1();
+void ac_controller_2();
 
 semaphore_t sem_temp_w;
 semaphore_t sem_temp_r;
@@ -4691,7 +4693,7 @@ int room_temperature;
 
 
 
-void sensoreamento_termostato_2()
+void thermostat_sensing_2()
 {
    while(1)
    {
@@ -4710,7 +4712,7 @@ void sensoreamento_termostato_2()
    }
 }
 
-void controlador_ar_condicionado_2()
+void ac_controller_2()
 {
    while(1)
    {

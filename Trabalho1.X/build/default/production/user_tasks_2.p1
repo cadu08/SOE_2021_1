@@ -439,22 +439,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
-"25 ./user_tasks.h
-[; ;./user_tasks.h: 25: semaphore_t sem_temp_w;
+"27 ./user_tasks.h
+[; ;./user_tasks.h: 27: semaphore_t sem_temp_w;
 [v _sem_temp_w `S285 ~T0 @X0 1 e ]
-"26
-[; ;./user_tasks.h: 26: semaphore_t sem_temp_r;
+"28
+[; ;./user_tasks.h: 28: semaphore_t sem_temp_r;
 [v _sem_temp_r `S285 ~T0 @X0 1 e ]
 "4 user_tasks_2.c
 [; ;user_tasks_2.c: 4: int room_temperature;
 [v _room_temperature `i ~T0 @X0 1 e ]
 "9
-[; ;user_tasks_2.c: 9: void sensoreamento_termostato_2()
-[v _sensoreamento_termostato_2 `(v ~T0 @X0 1 ef ]
+[; ;user_tasks_2.c: 9: void thermostat_sensing_2()
+[v _thermostat_sensing_2 `(v ~T0 @X0 1 ef ]
 "10
 [; ;user_tasks_2.c: 10: {
 {
-[e :U _sensoreamento_termostato_2 ]
+[e :U _thermostat_sensing_2 ]
 [f ]
 "11
 [; ;user_tasks_2.c: 11:    while(1)
@@ -482,12 +482,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 287 ]
 }
 "28
-[; ;user_tasks_2.c: 28: void controlador_ar_condicionado_2()
-[v _controlador_ar_condicionado_2 `(v ~T0 @X0 1 ef ]
+[; ;user_tasks_2.c: 28: void ac_controller_2()
+[v _ac_controller_2 `(v ~T0 @X0 1 ef ]
 "29
 [; ;user_tasks_2.c: 29: {
 {
-[e :U _controlador_ar_condicionado_2 ]
+[e :U _ac_controller_2 ]
 [f ]
 "30
 [; ;user_tasks_2.c: 30:    while(1)

@@ -84,7 +84,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26 ./kernel.h
 [; ;./kernel.h: 26: void OS_create_task(u_int prior, task_ptr func);
 [v _OS_create_task `(v ~T0 @X0 0 ef2`ui`*F2570 ]
-[v F2630 `(v ~T0 @X0 0 tf ]
+[v F2632 `(v ~T0 @X0 0 tf ]
 "21 ./user_tasks.h
 [; ;./user_tasks.h: 21: void config_user_tasks();
 [v _config_user_tasks `(v ~T0 @X0 0 e? ]
@@ -146,8 +146,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "102 ./kernel.h
 [; ;./kernel.h: 102: void RESTORE_CONTEXT();
 [v _RESTORE_CONTEXT `(v ~T0 @X0 0 e? ]
-[v F2636 `(v ~T0 @X0 0 tf ]
-[v F2639 `(v ~T0 @X0 0 tf ]
+[v F2638 `(v ~T0 @X0 0 tf ]
+[v F2641 `(v ~T0 @X0 0 tf ]
 [t ~ __interrupt . k ]
 [t T42 __interrupt ]
 "6258 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
@@ -573,11 +573,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
-"25 ./user_tasks.h
-[; ;./user_tasks.h: 25: semaphore_t sem_temp_w;
+"27 ./user_tasks.h
+[; ;./user_tasks.h: 27: semaphore_t sem_temp_w;
 [v _sem_temp_w `S285 ~T0 @X0 1 e ]
-"26
-[; ;./user_tasks.h: 26: semaphore_t sem_temp_r;
+"28
+[; ;./user_tasks.h: 28: semaphore_t sem_temp_r;
 [v _sem_temp_r `S285 ~T0 @X0 1 e ]
 "13 ./config_hw.h
 [p x PBADEN = OFF ]
@@ -647,7 +647,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . _READY_QUEUE 1 -> -> 0 `i `ui ]
 "25
 [; ;kernel.c: 25:     OS_create_task(1, idle);
-[e ( _OS_create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2630 ]
+[e ( _OS_create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2632 ]
 "26
 [; ;kernel.c: 26:     __asm("GLOBAL _idle");
 [; <" GLOBAL _idle ;# ">
@@ -739,11 +739,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "60
 [; ;kernel.c: 60: void OS_create_task(u_int prior, task_ptr func){
-[v _OS_create_task `(v ~T0 @X0 1 ef2`ui`*F2636 ]
+[v _OS_create_task `(v ~T0 @X0 1 ef2`ui`*F2638 ]
 {
 [e :U _OS_create_task ]
 [v _prior `ui ~T0 @X0 1 r1 ]
-[v _func `*F2639 ~T0 @X0 1 r2 ]
+[v _func `*F2641 ~T0 @X0 1 r2 ]
 [f ]
 "62
 [; ;kernel.c: 62:     tcb_t new_task;

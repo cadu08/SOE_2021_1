@@ -4677,8 +4677,10 @@ int thermostat_value();
 
 
 void config_user_tasks();
-void sensoreamento_termostato();
-void ac_controller();
+void thermostat_sensing_1();
+void thermostat_sensing_2();
+void ac_controller_1();
+void ac_controller_2();
 
 semaphore_t sem_temp_w;
 semaphore_t sem_temp_r;
@@ -4697,10 +4699,15 @@ void config_user_tasks()
    sem_init(&sem_temp_r, 0);
 
 
-   __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
+   if(1 == 1){
+      __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
+   }else if(1 ==2){
+      __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");
+   }
+
 }
 
-void sensoreamento_termostato() {
+void thermostat_sensing_1() {
     int readed_temperature;
     while (1) {
        readed_temperature = thermostat_value();
@@ -4708,7 +4715,7 @@ void sensoreamento_termostato() {
     }
 }
 
-void ac_controller()
+void ac_controller_1()
 {
    int room_temperature;
    while (1) {
