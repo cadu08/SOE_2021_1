@@ -468,8 +468,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 16:     OS_config();
 [e ( _OS_config ..  ]
 "20
-[; ;main.c: 20:     if(1 == 1)
-[e $ ! == -> 1 `i -> 1 `i 293  ]
+[; ;main.c: 20:     if(2 == 1)
+[e $ ! == -> 2 `i -> 1 `i 293  ]
 "21
 [; ;main.c: 21:     {
 {
@@ -480,11 +480,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 23:       OS_create_task(4, ac_controller_1);
 [e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller_1 `*F2781 ]
 "24
-[; ;main.c: 24:     }else if(1 == 2)
+[; ;main.c: 24:     }else if(2 == 2)
 }
 [e $U 294  ]
 [e :U 293 ]
-[e $ ! == -> 1 `i -> 2 `i 295  ]
+[e $ ! == -> 2 `i -> 2 `i 295  ]
 "25
 [; ;main.c: 25:     {
 {
@@ -499,24 +499,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 295 ]
 [e :U 294 ]
-"33
-[; ;main.c: 33:     OS_start();
+"31
+[; ;main.c: 31:     OS_start();
 [e ( _OS_start ..  ]
-"35
-[; ;main.c: 35:     while(1){
+"33
+[; ;main.c: 33:     while(1){
 [e :U 297 ]
 {
-"36
-[; ;main.c: 36:     }
+"34
+[; ;main.c: 34:     }
 }
 [e :U 296 ]
 [e $U 297  ]
 [e :U 298 ]
-"38
-[; ;main.c: 38:     return 0;
+"36
+[; ;main.c: 36:     return 0;
 [e ) -> 0 `i ]
 [e $UE 292  ]
-"39
-[; ;main.c: 39: }
+"37
+[; ;main.c: 37: }
 [e :UE 292 ]
 }

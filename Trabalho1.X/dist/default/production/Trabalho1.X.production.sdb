@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F4520 ]
 [d frameptr 4065 ]
-"24 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
+"22 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
 [e E2531 . `uc
 READY 0
 RUNNING 1
@@ -86,9 +86,9 @@ WAITING_SEM 3
 [v _pipe_read pipe_read `R(v  1 e 1 0 ]
 "32
 [v _pipe_write pipe_write `R(v  1 e 1 0 ]
-"13 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
+"11 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
 [v _scheduler scheduler `R(ui  1 e 2 0 ]
-"22
+"20
 [v _ROUND_ROBIN_sched ROUND_ROBIN_sched `R(ui  1 e 2 0 ]
 "2 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
 [v _sem_init sem_init `(v  1 e 1 0 ]
@@ -106,9 +106,9 @@ WAITING_SEM 3
 [v _thermostat_sensing_1 thermostat_sensing_1 `R(v  1 e 1 0 ]
 "31
 [v _ac_controller_1 ac_controller_1 `R(v  1 e 1 0 ]
-"9 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks_2.c
+"10 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks_2.c
 [v _thermostat_sensing_2 thermostat_sensing_2 `R(v  1 e 1 0 ]
-"28
+"23
 [v _ac_controller_2 ac_controller_2 `R(v  1 e 1 0 ]
 "13 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X/kernel.h
 [v _index index `i  1 e 2 0 ]
@@ -314,19 +314,21 @@ WAITING_SEM 3
 [v _READY_QUEUE READY_QUEUE `S110  1 e 682 0 ]
 "8
 [v _rr_quantum rr_quantum `ui  1 e 2 0 ]
-"10 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
+"8 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
 [v _prox_tarefa prox_tarefa `ui  1 e 2 0 ]
-"11
+"9
 [v _possivel possivel `ui  1 e 2 0 ]
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
 [s S542 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
 [v _pipe_temperature pipe_temperature `S542  1 e 26 0 ]
 "4 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks_2.c
 [v _room_temperature room_temperature `i  1 e 2 0 ]
+"5
+[v _bsem_room_temperature bsem_room_temperature `uc  1 e 1 0 ]
 "14 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"39
+"37
 } 0
 "32 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 [v _OS_start OS_start `(v  1 e 1 0 ]
@@ -444,7 +446,7 @@ WAITING_SEM 3
 [s S542 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
 [v pipe_write@pipe pipe `*.39S542  1 p 2 -2 ]
 [v pipe_write@dado dado `i  1 p 2 -4 ]
-"55
+"54
 } 1
 "10 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
 [v _sem_wait sem_wait `R(v  1 e 1 0 ]
@@ -463,18 +465,18 @@ WAITING_SEM 3
 [v RESTORE_CONTEXT@task_running task_running `ui  1 a 2 2 ]
 "149
 } 4
-"13 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
+"11 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
 [v _scheduler scheduler `R(ui  1 e 2 0 ]
 {
-"20
+"18
 } 0
-"22
+"20
 [v _ROUND_ROBIN_sched ROUND_ROBIN_sched `R(ui  1 e 2 0 ]
 {
-"24
+"22
 [v ROUND_ROBIN_sched@task_selected task_selected `ui  1 a 2 0 ]
 [v ROUND_ROBIN_sched@try try `ui  1 a 2 2 ]
-"36
+"34
 } 4
 "26 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
 [v _sem_post sem_post `R(v  1 e 1 0 ]
@@ -532,15 +534,15 @@ WAITING_SEM 3
 [v pipe_read@dado dado `*.39i  1 p 2 -4 ]
 "31
 } 1
-"9 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks_2.c
+"10 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks_2.c
 [v _thermostat_sensing_2 thermostat_sensing_2 `R(v  1 e 1 0 ]
 {
-"26
+"21
 } 0
-"28
+"23
 [v _ac_controller_2 ac_controller_2 `R(v  1 e 1 0 ]
 {
-"50
+"42
 } 0
 "95 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
 [v _ISR_timer ISR_timer `IIH(v  1 e 1 0 ]

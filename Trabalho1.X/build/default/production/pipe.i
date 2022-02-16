@@ -4670,7 +4670,7 @@ void pipe_init(pipe_t *pipe, int tamanho){
     sem_init(&pipe->sem, 1);
 }
 void pipe_read(pipe_t * pipe, int *dado){
-    (INTCONbits.GIE = 0);
+(INTCONbits.GIE = 0);
 
     bool read_flag = 0;
 
@@ -4692,7 +4692,7 @@ void pipe_read(pipe_t * pipe, int *dado){
     (INTCONbits.GIE = 1);
 }
 void pipe_write(pipe_t *pipe, int dado){
-    (INTCONbits.GIE = 0);
+   (INTCONbits.GIE = 0);
 
     bool write_flag = 0;
 
@@ -4713,5 +4713,4 @@ void pipe_write(pipe_t *pipe, int dado){
     } while(!write_flag);
 
     (INTCONbits.GIE = 1);
-
 }

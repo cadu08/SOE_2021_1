@@ -2,10 +2,8 @@
  * Sistema Operacional Embarcado - Projeto de 2021.1
  */
 
-
 #include "scheduler.h"
 #include "kernel.h"
-
 
 u_int prox_tarefa;
 u_int possivel;

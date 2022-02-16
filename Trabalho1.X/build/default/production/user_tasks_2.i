@@ -4689,6 +4689,7 @@ semaphore_t sem_temp_r;
 
 
 int room_temperature;
+bool bsem_room_temperature = 0;
 
 
 
@@ -4697,18 +4698,12 @@ void thermostat_sensing_2()
 {
    while(1)
    {
+      if(bsem_room_temperature == 0)
+      {
 
-
-
-      sem_wait(&sem_temp_w);
-
-
-      room_temperature = thermostat_value();
-
-
-
-
-      sem_post(&sem_temp_r);
+         room_temperature = thermostat_value();
+         bsem_room_temperature = 1;
+      }
    }
 }
 
@@ -4716,22 +4711,19 @@ void ac_controller_2()
 {
    while(1)
    {
-
-
-      sem_wait(&sem_temp_r);
-
-      if(room_temperature >= (32 + 2))
+      if(bsem_room_temperature == 1)
       {
-         turn_on_ac();
+         if(room_temperature >= (32 + 2))
+         {
+            turn_on_ac();
+         }
+
+         if(room_temperature <= (32 - 2))
+         {
+            turn_off_ac();
+         }
+
+         bsem_room_temperature = 0;
       }
-
-      if(room_temperature <= (32 - 2))
-      {
-         turn_off_ac();
-      }
-
-
-
-      sem_post(&sem_temp_w);
    }
 }

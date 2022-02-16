@@ -486,7 +486,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _dado `*i ~T0 @X0 1 r2 ]
 [f ]
 "11
-[; ;pipe.c: 11:     (INTCONbits.GIE = 0);
+[; ;pipe.c: 11: (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 "13
 [; ;pipe.c: 13:     bool read_flag = 0;
@@ -562,7 +562,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _dado `i ~T0 @X0 1 r2 ]
 [f ]
 "33
-[; ;pipe.c: 33:     (INTCONbits.GIE = 0);
+[; ;pipe.c: 33:    (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 "35
 [; ;pipe.c: 35:     bool write_flag = 0;
@@ -625,7 +625,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "53
 [; ;pipe.c: 53:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"55
-[; ;pipe.c: 55: }
+"54
+[; ;pipe.c: 54: }
 [e :UE 295 ]
 }

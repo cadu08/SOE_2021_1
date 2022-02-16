@@ -27,8 +27,6 @@ int main(void) {
       OS_create_task(4, ac_controller_2); 
     }
     
-    
-    
     // Coloca o kernel em execução
     OS_start();
     

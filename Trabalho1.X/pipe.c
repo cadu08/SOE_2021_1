@@ -8,7 +8,7 @@ void pipe_init(pipe_t *pipe, int tamanho){
     sem_init(&pipe->sem, 1);
 }
 void pipe_read(pipe_t * pipe, int *dado){
-    di();
+di();
     
     bool read_flag = FALSE;
     
@@ -30,7 +30,7 @@ void pipe_read(pipe_t * pipe, int *dado){
     ei();
 }
 void pipe_write(pipe_t *pipe, int dado){
-    di();
+   di();
     
     bool write_flag = FALSE;
     
@@ -51,5 +51,4 @@ void pipe_write(pipe_t *pipe, int dado){
     } while(!write_flag);
     
     ei();
-    
 }

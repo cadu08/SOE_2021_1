@@ -4699,9 +4699,9 @@ void config_user_tasks()
    sem_init(&sem_temp_r, 0);
 
 
-   if(1 == 1){
+   if(2 == 1){
       __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
-   }else if(1 ==2){
+   }else if(2 ==2){
       __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");
    }
 

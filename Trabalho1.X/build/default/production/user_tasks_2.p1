@@ -7,15 +7,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./semaphore.h: 18: typedef struct semaphore{
 [s S285 `i 1 `S284 1 ]
 [n S285 semaphore s_count s_queue ]
-"25
-[; ;./semaphore.h: 25: void sem_wait(semaphore_t* s);
-[v _sem_wait `(v ~T0 @X0 0 ef1`*S285 ]
 "9 ./thermostat.h
 [; ;./thermostat.h: 9: int thermostat_value();
 [v _thermostat_value `(i ~T0 @X0 0 e? ]
-"27 ./semaphore.h
-[; ;./semaphore.h: 27: void sem_post(semaphore_t* s);
-[v _sem_post `(v ~T0 @X0 0 ef1`*S285 ]
 "11 ./motores.h
 [; ;./motores.h: 11: void turn_on_ac();
 [v _turn_on_ac `(v ~T0 @X0 0 e? ]
@@ -448,92 +442,112 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4 user_tasks_2.c
 [; ;user_tasks_2.c: 4: int room_temperature;
 [v _room_temperature `i ~T0 @X0 1 e ]
-"9
-[; ;user_tasks_2.c: 9: void thermostat_sensing_2()
-[v _thermostat_sensing_2 `(v ~T0 @X0 1 ef ]
+"5
+[; ;user_tasks_2.c: 5: bool bsem_room_temperature = 0;
+[v _bsem_room_temperature `uc ~T0 @X0 1 e ]
+[i _bsem_room_temperature
+-> -> 0 `i `uc
+]
 "10
-[; ;user_tasks_2.c: 10: {
+[; ;user_tasks_2.c: 10: void thermostat_sensing_2()
+[v _thermostat_sensing_2 `(v ~T0 @X0 1 ef ]
+"11
+[; ;user_tasks_2.c: 11: {
 {
 [e :U _thermostat_sensing_2 ]
 [f ]
-"11
-[; ;user_tasks_2.c: 11:    while(1)
-[e :U 289 ]
 "12
-[; ;user_tasks_2.c: 12:    {
+[; ;user_tasks_2.c: 12:    while(1)
+[e :U 289 ]
+"13
+[; ;user_tasks_2.c: 13:    {
 {
-"16
-[; ;user_tasks_2.c: 16:       sem_wait(&sem_temp_w);
-[e ( _sem_wait (1 &U _sem_temp_w ]
-"19
-[; ;user_tasks_2.c: 19:       room_temperature = thermostat_value();
+"14
+[; ;user_tasks_2.c: 14:       if(bsem_room_temperature == 0)
+[e $ ! == -> _bsem_room_temperature `i -> 0 `i 291  ]
+"15
+[; ;user_tasks_2.c: 15:       {
+{
+"17
+[; ;user_tasks_2.c: 17:          room_temperature = thermostat_value();
 [e = _room_temperature ( _thermostat_value ..  ]
-"24
-[; ;user_tasks_2.c: 24:       sem_post(&sem_temp_r);
-[e ( _sem_post (1 &U _sem_temp_r ]
-"25
-[; ;user_tasks_2.c: 25:    }
+"18
+[; ;user_tasks_2.c: 18:          bsem_room_temperature = 1;
+[e = _bsem_room_temperature -> -> 1 `i `uc ]
+"19
+[; ;user_tasks_2.c: 19:       }
+}
+[e :U 291 ]
+"20
+[; ;user_tasks_2.c: 20:    }
 }
 [e :U 288 ]
 [e $U 289  ]
 [e :U 290 ]
-"26
-[; ;user_tasks_2.c: 26: }
+"21
+[; ;user_tasks_2.c: 21: }
 [e :UE 287 ]
 }
-"28
-[; ;user_tasks_2.c: 28: void ac_controller_2()
+"23
+[; ;user_tasks_2.c: 23: void ac_controller_2()
 [v _ac_controller_2 `(v ~T0 @X0 1 ef ]
-"29
-[; ;user_tasks_2.c: 29: {
+"24
+[; ;user_tasks_2.c: 24: {
 {
 [e :U _ac_controller_2 ]
 [f ]
+"25
+[; ;user_tasks_2.c: 25:    while(1)
+[e :U 294 ]
+"26
+[; ;user_tasks_2.c: 26:    {
+{
+"27
+[; ;user_tasks_2.c: 27:       if(bsem_room_temperature == 1)
+[e $ ! == -> _bsem_room_temperature `i -> 1 `i 296  ]
+"28
+[; ;user_tasks_2.c: 28:       {
+{
+"29
+[; ;user_tasks_2.c: 29:          if(room_temperature >= (32 + 2))
+[e $ ! >= _room_temperature + -> 32 `i -> 2 `i 297  ]
 "30
-[; ;user_tasks_2.c: 30:    while(1)
-[e :U 293 ]
+[; ;user_tasks_2.c: 30:          {
+{
 "31
-[; ;user_tasks_2.c: 31:    {
-{
-"34
-[; ;user_tasks_2.c: 34:       sem_wait(&sem_temp_r);
-[e ( _sem_wait (1 &U _sem_temp_r ]
-"36
-[; ;user_tasks_2.c: 36:       if(room_temperature >= (32 + 2))
-[e $ ! >= _room_temperature + -> 32 `i -> 2 `i 295  ]
-"37
-[; ;user_tasks_2.c: 37:       {
-{
-"38
-[; ;user_tasks_2.c: 38:          turn_on_ac();
+[; ;user_tasks_2.c: 31:             turn_on_ac();
 [e ( _turn_on_ac ..  ]
-"39
-[; ;user_tasks_2.c: 39:       }
+"32
+[; ;user_tasks_2.c: 32:          }
 }
-[e :U 295 ]
-"41
-[; ;user_tasks_2.c: 41:       if(room_temperature <= (32 - 2))
-[e $ ! <= _room_temperature - -> 32 `i -> 2 `i 296  ]
-"42
-[; ;user_tasks_2.c: 42:       {
+[e :U 297 ]
+"34
+[; ;user_tasks_2.c: 34:          if(room_temperature <= (32 - 2))
+[e $ ! <= _room_temperature - -> 32 `i -> 2 `i 298  ]
+"35
+[; ;user_tasks_2.c: 35:          {
 {
-"43
-[; ;user_tasks_2.c: 43:          turn_off_ac();
+"36
+[; ;user_tasks_2.c: 36:             turn_off_ac();
 [e ( _turn_off_ac ..  ]
-"44
-[; ;user_tasks_2.c: 44:       }
+"37
+[; ;user_tasks_2.c: 37:          }
+}
+[e :U 298 ]
+"39
+[; ;user_tasks_2.c: 39:          bsem_room_temperature = 0;
+[e = _bsem_room_temperature -> -> 0 `i `uc ]
+"40
+[; ;user_tasks_2.c: 40:       }
 }
 [e :U 296 ]
-"48
-[; ;user_tasks_2.c: 48:       sem_post(&sem_temp_w);
-[e ( _sem_post (1 &U _sem_temp_w ]
-"49
-[; ;user_tasks_2.c: 49:    }
+"41
+[; ;user_tasks_2.c: 41:    }
 }
-[e :U 292 ]
-[e $U 293  ]
-[e :U 294 ]
-"50
-[; ;user_tasks_2.c: 50: }
-[e :UE 291 ]
+[e :U 293 ]
+[e $U 294  ]
+[e :U 295 ]
+"42
+[; ;user_tasks_2.c: 42: }
+[e :UE 292 ]
 }

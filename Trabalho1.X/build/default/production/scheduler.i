@@ -11,7 +11,6 @@
 
 
 
-
 # 1 "./scheduler.h" 1
 
 
@@ -4575,7 +4574,7 @@ typedef struct r_queue {
 u_int scheduler();
 u_int ROUND_ROBIN_sched();
 u_int PRIORITY_sched();
-# 6 "scheduler.c" 2
+# 5 "scheduler.c" 2
 
 # 1 "./kernel.h" 1
 # 12 "./kernel.h"
@@ -4600,8 +4599,7 @@ u_int get_task_id();
 u_int delay_release();
 # 102 "./kernel.h"
 void RESTORE_CONTEXT();
-# 7 "scheduler.c" 2
-
+# 6 "scheduler.c" 2
 
 
 u_int prox_tarefa;

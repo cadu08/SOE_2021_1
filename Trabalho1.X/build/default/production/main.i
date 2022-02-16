@@ -4802,17 +4802,15 @@ int main(void) {
 
 
 
-    if(1 == 1)
+    if(2 == 1)
     {
       OS_create_task(4, thermostat_sensing_1);
       OS_create_task(4, ac_controller_1);
-    }else if(1 == 2)
+    }else if(2 == 2)
     {
       OS_create_task(4, thermostat_sensing_2);
       OS_create_task(4, ac_controller_2);
     }
-
-
 
 
     OS_start();
