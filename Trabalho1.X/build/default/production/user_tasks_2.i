@@ -4651,13 +4651,17 @@ typedef struct pipe {
     semaphore_t sem;
 } pipe_t;
 
-void pipe_init(pipe_t *pipe, int tamanho);
+void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
 # 16 "./user_tasks.h" 2
 
-# 1 "./motores.h" 1
-# 10 "./motores.h"
+# 1 "./ac_controller.h" 1
+
+
+
+
+
 void turn_off_ac();
 void turn_on_ac();
 # 17 "./user_tasks.h" 2

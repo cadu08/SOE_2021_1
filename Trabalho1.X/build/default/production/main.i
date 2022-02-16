@@ -11,7 +11,6 @@
 
 
 
-
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4522,7 +4521,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 6 "main.c" 2
+# 5 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c99\\time.h" 1 3
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c99\\time.h" 3
@@ -4623,7 +4622,7 @@ extern int daylight;
 extern long timezone;
 extern int getdate_err;
 struct tm *getdate (const char *);
-# 7 "main.c" 2
+# 6 "main.c" 2
 
 # 1 "./kernel.h" 1
 
@@ -4711,7 +4710,7 @@ u_int get_task_id();
 u_int delay_release();
 # 56 "./kernel.h"
 void RESTORE_CONTEXT();
-# 8 "main.c" 2
+# 7 "main.c" 2
 
 # 1 "./user_tasks.h" 1
 # 15 "./user_tasks.h"
@@ -4757,13 +4756,17 @@ typedef struct pipe {
     semaphore_t sem;
 } pipe_t;
 
-void pipe_init(pipe_t *pipe, int tamanho);
+void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
 # 16 "./user_tasks.h" 2
 
-# 1 "./motores.h" 1
-# 10 "./motores.h"
+# 1 "./ac_controller.h" 1
+
+
+
+
+
 void turn_off_ac();
 void turn_on_ac();
 # 17 "./user_tasks.h" 2
@@ -4790,8 +4793,7 @@ void ac_controller_2();
 
 semaphore_t sem_temp_w;
 semaphore_t sem_temp_r;
-# 9 "main.c" 2
-
+# 8 "main.c" 2
 
 
 
@@ -4801,12 +4803,11 @@ int main(void) {
     OS_config();
 
 
-
-    if(2 == 1)
+    if(1 == 1)
     {
       OS_create_task(2, thermostat_sensing_1);
       OS_create_task(3, ac_controller_1);
-    }else if(2 == 2)
+    }else if(1 == 2)
     {
       OS_create_task(2, thermostat_sensing_2);
       OS_create_task(3, ac_controller_2);

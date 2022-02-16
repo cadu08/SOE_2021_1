@@ -1,12 +1,11 @@
 #include "pipe.h"
 #include "user_config.h"
 
-void pipe_init(pipe_t *pipe, int tamanho){
-    // futuramente: tamanho é usado para alocação dinâmica, 
-    // quando tivermos gerenciamento de memória
+void create_pipe(pipe_t *pipe){
     pipe->size = pipe->read_pos = pipe->write_pos = 0;
     sem_init(&pipe->sem, 1);
 }
+
 void pipe_read(pipe_t * pipe, int *dado){
 di();
     

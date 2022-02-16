@@ -18,7 +18,7 @@ typedef struct pipe {
     semaphore_t sem;
 } pipe_t;
 
-void pipe_init(pipe_t *pipe, int tamanho);
+void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
 

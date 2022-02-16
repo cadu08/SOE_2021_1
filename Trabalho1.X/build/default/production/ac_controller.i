@@ -1,4 +1,4 @@
-# 1 "motores.c"
+# 1 "ac_controller.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "motores.c" 2
+# 1 "ac_controller.c" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\proc\\pic18f4520.h" 1 3
 # 44 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\proc\\pic18f4520.h" 3
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\__at.h" 1 3
@@ -4355,14 +4355,18 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 1 "motores.c" 2
+# 1 "ac_controller.c" 2
 
 
-# 1 "./motores.h" 1
-# 10 "./motores.h"
+# 1 "./ac_controller.h" 1
+
+
+
+
+
 void turn_off_ac();
 void turn_on_ac();
-# 3 "motores.c" 2
+# 3 "ac_controller.c" 2
 
 
 void turn_off_ac(){

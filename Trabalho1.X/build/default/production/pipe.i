@@ -4656,19 +4656,18 @@ typedef struct pipe {
     semaphore_t sem;
 } pipe_t;
 
-void pipe_init(pipe_t *pipe, int tamanho);
+void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
 # 1 "pipe.c" 2
 
 
 
-void pipe_init(pipe_t *pipe, int tamanho){
-
-
+void create_pipe(pipe_t *pipe){
     pipe->size = pipe->read_pos = pipe->write_pos = 0;
     sem_init(&pipe->sem, 1);
 }
+
 void pipe_read(pipe_t * pipe, int *dado){
 (INTCONbits.GIE = 0);
 

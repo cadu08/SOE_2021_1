@@ -8,13 +8,13 @@
 #ifndef USER_TASKS_H
 #define	USER_TASKS_H
 
-#define EXAMPLE 2
+#define EXAMPLE 1
 
 #include "types.h"
 #include "kernel.h"
 #include "semaphore.h"
 #include "pipe.h"
-#include "motores.h"
+#include "ac_controller.h"
 #include "thermostat.h"
 
 

@@ -12,8 +12,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [s S286 `ui -> -> 1 `i `ux `ui 1 `ui 1 `ui 1 `S285 1 ]
 [n S286 pipe msg size read_pos write_pos sem ]
 "21
-[; ;./pipe.h: 21: void pipe_init(pipe_t *pipe, int tamanho);
-[v _pipe_init `(v ~T0 @X0 0 ef2`*S286`i ]
+[; ;./pipe.h: 21: void create_pipe(pipe_t *pipe);
+[v _create_pipe `(v ~T0 @X0 0 ef1`*S286 ]
 "24 ./semaphore.h
 [; ;./semaphore.h: 24: void sem_init(semaphore_t* s, int val);
 [v _sem_init `(v ~T0 @X0 0 ef2`*S285`i ]
@@ -26,11 +26,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22
 [; ;./pipe.h: 22: void pipe_read(pipe_t * pipe, int *dado);
 [v _pipe_read `(v ~T0 @X0 0 ef2`*S286`*i ]
-"10 ./motores.h
-[; ;./motores.h: 10: void turn_off_ac();
+"6 ./ac_controller.h
+[; ;./ac_controller.h: 6: void turn_off_ac();
 [v _turn_off_ac `(v ~T0 @X0 0 e? ]
-"11
-[; ;./motores.h: 11: void turn_on_ac();
+"7
+[; ;./ac_controller.h: 7: void turn_on_ac();
 [v _turn_on_ac `(v ~T0 @X0 0 e? ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
@@ -467,8 +467,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _config_user_tasks ]
 [f ]
 "8
-[; ;user_tasks.c: 8:    pipe_init(&pipe_temperature, 1);
-[e ( _pipe_init (2 , &U _pipe_temperature -> 1 `i ]
+[; ;user_tasks.c: 8:    create_pipe(&pipe_temperature);
+[e ( _create_pipe (1 &U _pipe_temperature ]
 "11
 [; ;user_tasks.c: 11:    sem_init(&sem_temp_w, 1);
 [e ( _sem_init (2 , &U _sem_temp_w -> 1 `i ]
@@ -476,18 +476,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_tasks.c: 12:    sem_init(&sem_temp_r, 0);
 [e ( _sem_init (2 , &U _sem_temp_r -> 0 `i ]
 "15
-[; ;user_tasks.c: 15:    if(2 == 1){
-[e $ ! == -> 2 `i -> 1 `i 288  ]
+[; ;user_tasks.c: 15:    if(1 == 1){
+[e $ ! == -> 1 `i -> 1 `i 288  ]
 {
 "16
 [; ;user_tasks.c: 16:       __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
 [; <" GLOBAL _thermostat_sensing_1, _ac_controller_1 ;# ">
 "17
-[; ;user_tasks.c: 17:    }else if(2 ==2){
+[; ;user_tasks.c: 17:    }else if(1 ==2){
 }
 [e $U 289  ]
 [e :U 288 ]
-[e $ ! == -> 2 `i -> 2 `i 290  ]
+[e $ ! == -> 1 `i -> 2 `i 290  ]
 {
 "18
 [; ;user_tasks.c: 18:       __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");

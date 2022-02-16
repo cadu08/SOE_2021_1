@@ -436,29 +436,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"5 motores.c
-[; ;motores.c: 5: void turn_off_ac(){
+"5 ac_controller.c
+[; ;ac_controller.c: 5: void turn_off_ac(){
 [v _turn_off_ac `(v ~T0 @X0 1 ef ]
 {
 [e :U _turn_off_ac ]
 [f ]
 "6
-[; ;motores.c: 6:     PORTDbits.RD0 = 0;
+[; ;ac_controller.c: 6:     PORTDbits.RD0 = 0;
 [e = . . _PORTDbits 0 0 -> -> 0 `i `uc ]
 "7
-[; ;motores.c: 7: }
+[; ;ac_controller.c: 7: }
 [e :UE 276 ]
 }
 "9
-[; ;motores.c: 9: void turn_on_ac(){
+[; ;ac_controller.c: 9: void turn_on_ac(){
 [v _turn_on_ac `(v ~T0 @X0 1 ef ]
 {
 [e :U _turn_on_ac ]
 [f ]
 "10
-[; ;motores.c: 10:     PORTDbits.RD0 = 1;
+[; ;ac_controller.c: 10:     PORTDbits.RD0 = 1;
 [e = . . _PORTDbits 0 0 -> -> 1 `i `uc ]
 "11
-[; ;motores.c: 11: }
+[; ;ac_controller.c: 11: }
 [e :UE 277 ]
 }

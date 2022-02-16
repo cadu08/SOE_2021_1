@@ -5,7 +5,7 @@ pipe_t pipe_temperature;
 void config_user_tasks()
 {   
    // inicializa o pipe
-   pipe_init(&pipe_temperature, 1);
+   create_pipe(&pipe_temperature);
    
    // inicializa o semáforo
    sem_init(&sem_temp_w, 1);

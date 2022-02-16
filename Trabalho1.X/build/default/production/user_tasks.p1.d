@@ -7,5 +7,5 @@ kernel.h  \
 scheduler.h  \
 semaphore.h  \
 pipe.h  \
-motores.h  \
+ac_controller.h  \
 thermostat.h 

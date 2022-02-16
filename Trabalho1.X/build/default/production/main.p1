@@ -18,19 +18,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22 ./user_tasks.h
 [; ;./user_tasks.h: 22: void thermostat_sensing_1();
 [v _thermostat_sensing_1 `(v ~T0 @X0 0 e? ]
-[v F2779 `(v ~T0 @X0 0 tf ]
+[v F2778 `(v ~T0 @X0 0 tf ]
 "24
 [; ;./user_tasks.h: 24: void ac_controller_1();
 [v _ac_controller_1 `(v ~T0 @X0 0 e? ]
-[v F2781 `(v ~T0 @X0 0 tf ]
+[v F2780 `(v ~T0 @X0 0 tf ]
 "23
 [; ;./user_tasks.h: 23: void thermostat_sensing_2();
 [v _thermostat_sensing_2 `(v ~T0 @X0 0 e? ]
-[v F2783 `(v ~T0 @X0 0 tf ]
+[v F2782 `(v ~T0 @X0 0 tf ]
 "25
 [; ;./user_tasks.h: 25: void ac_controller_2();
 [v _ac_controller_2 `(v ~T0 @X0 0 e? ]
-[v F2785 `(v ~T0 @X0 0 tf ]
+[v F2784 `(v ~T0 @X0 0 tf ]
 "24 ./kernel.h
 [; ;./kernel.h: 24: void OS_start();
 [v _OS_start `(v ~T0 @X0 0 e? ]
@@ -458,65 +458,65 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./user_tasks.h: 28: semaphore_t sem_temp_r;
 [v _sem_temp_r `S290 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"14 main.c
-[; ;main.c: 14: int main(void) {
+"12 main.c
+[; ;main.c: 12: int main(void) {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"16
-[; ;main.c: 16:     OS_config();
+"14
+[; ;main.c: 14:     OS_config();
 [e ( _OS_config ..  ]
-"20
-[; ;main.c: 20:     if(2 == 1)
-[e $ ! == -> 2 `i -> 1 `i 293  ]
-"21
-[; ;main.c: 21:     {
+"17
+[; ;main.c: 17:     if(1 == 1)
+[e $ ! == -> 1 `i -> 1 `i 293  ]
+"18
+[; ;main.c: 18:     {
 {
-"22
-[; ;main.c: 22:       OS_create_task(2, thermostat_sensing_1);
-[e ( _OS_create_task (2 , -> -> 2 `i `ui -> &U _thermostat_sensing_1 `*F2779 ]
-"23
-[; ;main.c: 23:       OS_create_task(3, ac_controller_1);
-[e ( _OS_create_task (2 , -> -> 3 `i `ui -> &U _ac_controller_1 `*F2781 ]
-"24
-[; ;main.c: 24:     }else if(2 == 2)
+"19
+[; ;main.c: 19:       OS_create_task(2, thermostat_sensing_1);
+[e ( _OS_create_task (2 , -> -> 2 `i `ui -> &U _thermostat_sensing_1 `*F2778 ]
+"20
+[; ;main.c: 20:       OS_create_task(3, ac_controller_1);
+[e ( _OS_create_task (2 , -> -> 3 `i `ui -> &U _ac_controller_1 `*F2780 ]
+"21
+[; ;main.c: 21:     }else if(1 == 2)
 }
 [e $U 294  ]
 [e :U 293 ]
-[e $ ! == -> 2 `i -> 2 `i 295  ]
-"25
-[; ;main.c: 25:     {
+[e $ ! == -> 1 `i -> 2 `i 295  ]
+"22
+[; ;main.c: 22:     {
 {
-"26
-[; ;main.c: 26:       OS_create_task(2, thermostat_sensing_2);
-[e ( _OS_create_task (2 , -> -> 2 `i `ui -> &U _thermostat_sensing_2 `*F2783 ]
-"27
-[; ;main.c: 27:       OS_create_task(3, ac_controller_2);
-[e ( _OS_create_task (2 , -> -> 3 `i `ui -> &U _ac_controller_2 `*F2785 ]
-"28
-[; ;main.c: 28:     }
+"23
+[; ;main.c: 23:       OS_create_task(2, thermostat_sensing_2);
+[e ( _OS_create_task (2 , -> -> 2 `i `ui -> &U _thermostat_sensing_2 `*F2782 ]
+"24
+[; ;main.c: 24:       OS_create_task(3, ac_controller_2);
+[e ( _OS_create_task (2 , -> -> 3 `i `ui -> &U _ac_controller_2 `*F2784 ]
+"25
+[; ;main.c: 25:     }
 }
 [e :U 295 ]
 [e :U 294 ]
-"31
-[; ;main.c: 31:     OS_start();
+"28
+[; ;main.c: 28:     OS_start();
 [e ( _OS_start ..  ]
-"33
-[; ;main.c: 33:     while(1){
+"30
+[; ;main.c: 30:     while(1){
 [e :U 297 ]
 {
-"34
-[; ;main.c: 34:     }
+"31
+[; ;main.c: 31:     }
 }
 [e :U 296 ]
 [e $U 297  ]
 [e :U 298 ]
-"36
-[; ;main.c: 36:     return 0;
+"33
+[; ;main.c: 33:     return 0;
 [e ) -> 0 `i ]
 [e $UE 292  ]
-"37
-[; ;main.c: 37: }
+"34
+[; ;main.c: 34: }
 [e :UE 292 ]
 }

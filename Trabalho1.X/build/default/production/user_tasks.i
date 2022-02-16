@@ -4651,13 +4651,17 @@ typedef struct pipe {
     semaphore_t sem;
 } pipe_t;
 
-void pipe_init(pipe_t *pipe, int tamanho);
+void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
 # 16 "./user_tasks.h" 2
 
-# 1 "./motores.h" 1
-# 10 "./motores.h"
+# 1 "./ac_controller.h" 1
+
+
+
+
+
 void turn_off_ac();
 void turn_on_ac();
 # 17 "./user_tasks.h" 2
@@ -4692,16 +4696,16 @@ pipe_t pipe_temperature;
 void config_user_tasks()
 {
 
-   pipe_init(&pipe_temperature, 1);
+   create_pipe(&pipe_temperature);
 
 
    sem_init(&sem_temp_w, 1);
    sem_init(&sem_temp_r, 0);
 
 
-   if(2 == 1){
+   if(1 == 1){
       __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
-   }else if(2 ==2){
+   }else if(1 ==2){
       __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");
    }
 

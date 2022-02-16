@@ -84,7 +84,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26 ./kernel.h
 [; ;./kernel.h: 26: void OS_create_task(u_int prior, task_ptr func);
 [v _OS_create_task `(v ~T0 @X0 0 ef2`ui`*F2570 ]
-[v F2632 `(v ~T0 @X0 0 tf ]
+[v F2631 `(v ~T0 @X0 0 tf ]
 "21 ./user_tasks.h
 [; ;./user_tasks.h: 21: void config_user_tasks();
 [v _config_user_tasks `(v ~T0 @X0 0 e? ]
@@ -146,8 +146,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56 ./kernel.h
 [; ;./kernel.h: 56: void RESTORE_CONTEXT();
 [v _RESTORE_CONTEXT `(v ~T0 @X0 0 e? ]
-[v F2638 `(v ~T0 @X0 0 tf ]
-[v F2641 `(v ~T0 @X0 0 tf ]
+[v F2637 `(v ~T0 @X0 0 tf ]
+[v F2640 `(v ~T0 @X0 0 tf ]
 [t ~ __interrupt . k ]
 [t T42 __interrupt ]
 "6258 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
@@ -647,7 +647,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . _f_aptos 1 -> -> 0 `i `ui ]
 "25
 [; ;kernel.c: 25:     OS_create_task(1, idle);
-[e ( _OS_create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2632 ]
+[e ( _OS_create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2631 ]
 "26
 [; ;kernel.c: 26:     __asm("GLOBAL _idle");
 [; <" GLOBAL _idle ;# ">
@@ -739,11 +739,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "60
 [; ;kernel.c: 60: void OS_create_task(u_int prior, task_ptr func){
-[v _OS_create_task `(v ~T0 @X0 1 ef2`ui`*F2638 ]
+[v _OS_create_task `(v ~T0 @X0 1 ef2`ui`*F2637 ]
 {
 [e :U _OS_create_task ]
 [v _prior `ui ~T0 @X0 1 r1 ]
-[v _func `*F2641 ~T0 @X0 1 r2 ]
+[v _func `*F2640 ~T0 @X0 1 r2 ]
 [f ]
 "62
 [; ;kernel.c: 62:     tcb_t new_task;
