@@ -37,7 +37,7 @@ typedef struct context {
 
 typedef struct tcb {
     u_int task_id;
-    u_int task_prior;
+    u_int task_priority;
     state task_state;
     context_t task_context;
     task_ptr task_func;
@@ -45,9 +45,9 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t QUEUE[MAX_TASKS+1]; // Tarefas de usuário mais tarefa idle
+    tcb_t tasks[MAX_TASKS+1]; // Tarefas de usuário mais tarefa idle
     u_int running_task;
-    u_int nr_of_tasks;
+    u_int fila_aptos_size;
 } faptos_t;
 
 #endif	/* TYPES_H */

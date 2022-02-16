@@ -4555,7 +4555,7 @@ typedef struct context {
 
 typedef struct tcb {
     u_int task_id;
-    u_int task_prior;
+    u_int task_priority;
     state task_state;
     context_t task_context;
     task_ptr task_func;
@@ -4563,9 +4563,9 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t QUEUE[5 +1];
+    tcb_t tasks[5 +1];
     u_int running_task;
-    u_int nr_of_tasks;
+    u_int fila_aptos_size;
 } faptos_t;
 # 8 "./semaphore.h" 2
 
@@ -4586,7 +4586,7 @@ typedef struct r_queue {
 
 
 u_int scheduler();
-u_int ROUND_ROBIN_sched();
+u_int round_robin_scheduler();
 u_int PRIORITY_sched();
 # 9 "./kernel.h" 2
 
@@ -4654,7 +4654,7 @@ void sem_wait(semaphore_t* s){
         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = f_aptos.running_task;
         s->s_queue.queue_wait_pos = (s->s_queue.queue_wait_pos + 1) % 5;
         s->s_queue.queue_size++;
-        do{ (INTCONbits.GIE = 0); if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING_SEM; f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
+        do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = WAITING_SEM; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
         RESTORE_CONTEXT();
     }
     (INTCONbits.GIE = 1);
@@ -4665,7 +4665,7 @@ void sem_post(semaphore_t* s){
     s->s_count++;
     if(s->s_count <= 0) {
 
-        f_aptos.QUEUE[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
+        f_aptos.tasks[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;
         s->s_queue.queue_size--;
     }

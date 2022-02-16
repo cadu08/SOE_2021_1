@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "8 ./scheduler.h
-[; ;./scheduler.h: 8: u_int ROUND_ROBIN_sched();
-[v _ROUND_ROBIN_sched `(ui ~T0 @X0 0 e? ]
+[; ;./scheduler.h: 8: u_int round_robin_scheduler();
+[v _round_robin_scheduler `(ui ~T0 @X0 0 e? ]
 "19 scheduler.c
 [; ;scheduler.c: 19:    u_int next_task = f_aptos.running_task, try = 0;
 [c E2531 0 1 2 3 .. ]
@@ -14,11 +14,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;./types.h: 38: typedef struct tcb {
 [s S282 `ui 1 `ui 1 `E2531 1 `S281 1 `*F2550 1 `ui 1 ]
-[n S282 tcb task_id task_prior task_state task_context task_func task_delay_time ]
+[n S282 tcb task_id task_priority task_state task_context task_func task_delay_time ]
 "47
 [; ;./types.h: 47: typedef struct r_queue {
 [s S283 `S282 -> 6 `i `ui 1 `ui 1 ]
-[n S283 r_queue QUEUE running_task nr_of_tasks ]
+[n S283 r_queue tasks running_task fila_aptos_size ]
 "12 ./kernel.h
 [; ;./kernel.h: 12: extern faptos_t f_aptos;
 [v _f_aptos `S283 ~T0 @X0 0 e ]
@@ -452,20 +452,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _scheduler ]
 [f ]
 "11
-[; ;scheduler.c: 11:    return ROUND_ROBIN_sched();
-[e ) ( _ROUND_ROBIN_sched ..  ]
+[; ;scheduler.c: 11:    return round_robin_scheduler();
+[e ) ( _round_robin_scheduler ..  ]
 [e $UE 284  ]
 "15
 [; ;scheduler.c: 15: }
 [e :UE 284 ]
 }
 "17
-[; ;scheduler.c: 17: u_int ROUND_ROBIN_sched()
-[v _ROUND_ROBIN_sched `(ui ~T0 @X0 1 ef ]
+[; ;scheduler.c: 17: u_int round_robin_scheduler()
+[v _round_robin_scheduler `(ui ~T0 @X0 1 ef ]
 "18
 [; ;scheduler.c: 18: {
 {
-[e :U _ROUND_ROBIN_sched ]
+[e :U _round_robin_scheduler ]
 [f ]
 "19
 [; ;scheduler.c: 19:    u_int next_task = f_aptos.running_task, try = 0;
@@ -478,10 +478,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 288 ]
 {
 "22
-[; ;scheduler.c: 22:       next_task = (next_task+1) % f_aptos.nr_of_tasks;
+[; ;scheduler.c: 22:       next_task = (next_task+1) % f_aptos.fila_aptos_size;
 [e = _next_task % + _next_task -> -> 1 `i `ui . _f_aptos 2 ]
 "23
-[; ;scheduler.c: 23:       if (try == f_aptos.nr_of_tasks) {
+[; ;scheduler.c: 23:       if (try == f_aptos.fila_aptos_size) {
 [e $ ! == _try . _f_aptos 2 289  ]
 {
 "24
@@ -496,7 +496,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 26:       try++;
 [e ++ _try -> -> 1 `i `ui ]
 "27
-[; ;scheduler.c: 27:    } while (f_aptos.QUEUE[next_task].task_state != READY ||
+[; ;scheduler.c: 27:    } while (f_aptos.tasks[next_task].task_state != READY ||
 }
 [e $ || != -> . *U + &U . _f_aptos 0 * -> _next_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 `ui -> . `E2531 0 `ui == . *U + &U . _f_aptos 0 * -> _next_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 4 -> &U _idle `*F2582 288  ]
 [e :U 287 ]
@@ -516,7 +516,90 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _PRIORITY_sched ]
 [f ]
+"35
+[; ;scheduler.c: 35:    u_int next_task = f_aptos.running_task;
+[v _next_task `ui ~T0 @X0 1 a ]
+[e = _next_task . _f_aptos 1 ]
 "36
-[; ;scheduler.c: 36: }
+[; ;scheduler.c: 36:    u_int max_priority = f_aptos.tasks[(next_task+1) % f_aptos.fila_aptos_size].task_priority;
+[v _max_priority `ui ~T0 @X0 1 a ]
+[e = _max_priority . *U + &U . _f_aptos 0 * -> % + _next_task -> -> 1 `i `ui . _f_aptos 2 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 1 ]
+"37
+[; ;scheduler.c: 37:    u_int initial_value_max_priority = max_priority;
+[v _initial_value_max_priority `ui ~T0 @X0 1 a ]
+[e = _initial_value_max_priority _max_priority ]
+"38
+[; ;scheduler.c: 38:    u_int initial_position_max_priority = (next_task+1) % f_aptos.fila_aptos_size;
+[v _initial_position_max_priority `ui ~T0 @X0 1 a ]
+[e = _initial_position_max_priority % + _next_task -> -> 1 `i `ui . _f_aptos 2 ]
+"39
+[; ;scheduler.c: 39:    int i = 0;
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+"41
+[; ;scheduler.c: 41:    for(i = 0; i < f_aptos.fila_aptos_size; i++)
+{
+[e = _i -> 0 `i ]
+[e $U 294  ]
+[e :U 291 ]
+"42
+[; ;scheduler.c: 42:    {
+{
+"43
+[; ;scheduler.c: 43:       if(i != f_aptos.running_task)
+[e $ ! != -> _i `ui . _f_aptos 1 295  ]
+"44
+[; ;scheduler.c: 44:       {
+{
+"46
+[; ;scheduler.c: 46:          if(f_aptos.tasks[i].task_priority < max_priority && f_aptos.tasks[i].task_state == READY)
+[e $ ! && < . *U + &U . _f_aptos 0 * -> -> _i `ui `ux -> -> # *U &U . _f_aptos 0 `ui `ux 1 _max_priority == -> . *U + &U . _f_aptos 0 * -> -> _i `ui `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 `ui -> . `E2531 0 `ui 296  ]
+"47
+[; ;scheduler.c: 47:          {
+{
+"48
+[; ;scheduler.c: 48:             max_priority = f_aptos.tasks[i].task_priority;
+[e = _max_priority . *U + &U . _f_aptos 0 * -> -> _i `ui `ux -> -> # *U &U . _f_aptos 0 `ui `ux 1 ]
+"49
+[; ;scheduler.c: 49:             next_task = i;
+[e = _next_task -> _i `ui ]
+"50
+[; ;scheduler.c: 50:          }
+}
+[e :U 296 ]
+"51
+[; ;scheduler.c: 51:       }
+}
+[e :U 295 ]
+"52
+[; ;scheduler.c: 52:    }
+}
+[e ++ _i -> 1 `i ]
+[e :U 294 ]
+[e $ < -> _i `ui . _f_aptos 2 291  ]
+[e :U 292 ]
+}
+"55
+[; ;scheduler.c: 55:    if(max_priority == initial_value_max_priority && f_aptos.tasks[initial_position_max_priority].task_state == READY)
+[e $ ! && == _max_priority _initial_value_max_priority == -> . *U + &U . _f_aptos 0 * -> _initial_position_max_priority `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 `ui -> . `E2531 0 `ui 297  ]
+"56
+[; ;scheduler.c: 56:    {
+{
+"57
+[; ;scheduler.c: 57:      max_priority = initial_value_max_priority;
+[e = _max_priority _initial_value_max_priority ]
+"58
+[; ;scheduler.c: 58:      next_task = initial_position_max_priority;
+[e = _next_task _initial_position_max_priority ]
+"59
+[; ;scheduler.c: 59:    }
+}
+[e :U 297 ]
+"60
+[; ;scheduler.c: 60:    return next_task;
+[e ) _next_task ]
+[e $UE 290  ]
+"61
+[; ;scheduler.c: 61: }
 [e :UE 290 ]
 }

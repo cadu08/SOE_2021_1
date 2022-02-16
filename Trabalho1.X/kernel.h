@@ -34,21 +34,21 @@ u_int delay_release();
 #define SAVE_CONTEXT(state)\
 do{\
     di();\
-    if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){\
+    if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){\
         index=0;\
-        f_aptos.QUEUE[f_aptos.running_task].task_state = state;\
-        f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG;\
-        f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR;\
-        f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS;\
-        f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0;\
+        f_aptos.tasks[f_aptos.running_task].task_state = state;\
+        f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG;\
+        f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR;\
+        f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS;\
+        f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0;\
         do{\
-            f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS;\
+            f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS;\
             index++;\
             __asm("POP");\
         } while(STKPTR);\
     }\
     else{\
-        f_aptos.QUEUE[f_aptos.running_task].task_state = state;\
+        f_aptos.tasks[f_aptos.running_task].task_state = state;\
     }\
     ei();\
 }while(0);

@@ -4551,7 +4551,7 @@ typedef struct context {
 
 typedef struct tcb {
     u_int task_id;
-    u_int task_prior;
+    u_int task_priority;
     state task_state;
     context_t task_context;
     task_ptr task_func;
@@ -4559,9 +4559,9 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t QUEUE[5 +1];
+    tcb_t tasks[5 +1];
     u_int running_task;
-    u_int nr_of_tasks;
+    u_int fila_aptos_size;
 } faptos_t;
 # 4 "./pipe.h" 2
 
@@ -4591,7 +4591,7 @@ typedef struct r_queue {
 
 
 u_int scheduler();
-u_int ROUND_ROBIN_sched();
+u_int round_robin_scheduler();
 u_int PRIORITY_sched();
 # 9 "./kernel.h" 2
 

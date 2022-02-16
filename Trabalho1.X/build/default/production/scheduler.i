@@ -4555,7 +4555,7 @@ typedef struct context {
 
 typedef struct tcb {
     u_int task_id;
-    u_int task_prior;
+    u_int task_priority;
     state task_state;
     context_t task_context;
     task_ptr task_func;
@@ -4563,16 +4563,16 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t QUEUE[5 +1];
+    tcb_t tasks[5 +1];
     u_int running_task;
-    u_int nr_of_tasks;
+    u_int fila_aptos_size;
 } faptos_t;
 # 4 "./scheduler.h" 2
 
 
 
 u_int scheduler();
-u_int ROUND_ROBIN_sched();
+u_int round_robin_scheduler();
 u_int PRIORITY_sched();
 # 5 "scheduler.c" 2
 
@@ -4605,29 +4605,54 @@ void RESTORE_CONTEXT();
 u_int scheduler()
 {
 
-   return ROUND_ROBIN_sched();
+   return round_robin_scheduler();
 
 
 
 }
 
-u_int ROUND_ROBIN_sched()
+u_int round_robin_scheduler()
 {
    u_int next_task = f_aptos.running_task, try = 0;
 
    do {
-      next_task = (next_task+1) % f_aptos.nr_of_tasks;
-      if (try == f_aptos.nr_of_tasks) {
+      next_task = (next_task+1) % f_aptos.fila_aptos_size;
+      if (try == f_aptos.fila_aptos_size) {
          return 0;
       }
       try++;
-   } while (f_aptos.QUEUE[next_task].task_state != READY ||
-            f_aptos.QUEUE[next_task].task_func == idle);
+   } while (f_aptos.tasks[next_task].task_state != READY ||
+           f_aptos.tasks[next_task].task_func == idle);
 
    return next_task;
 }
 
 u_int PRIORITY_sched()
 {
+   u_int next_task = f_aptos.running_task;
+   u_int max_priority = f_aptos.tasks[(next_task+1) % f_aptos.fila_aptos_size].task_priority;
+   u_int initial_value_max_priority = max_priority;
+   u_int initial_position_max_priority = (next_task+1) % f_aptos.fila_aptos_size;
+   int i = 0;
 
+   for(i = 0; i < f_aptos.fila_aptos_size; i++)
+   {
+      if(i != f_aptos.running_task)
+      {
+
+         if(f_aptos.tasks[i].task_priority < max_priority && f_aptos.tasks[i].task_state == READY)
+         {
+            max_priority = f_aptos.tasks[i].task_priority;
+            next_task = i;
+         }
+      }
+   }
+
+
+   if(max_priority == initial_value_max_priority && f_aptos.tasks[initial_position_max_priority].task_state == READY)
+   {
+     max_priority = initial_value_max_priority;
+     next_task = initial_position_max_priority;
+   }
+   return next_task;
 }

@@ -19,11 +19,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;./types.h: 38: typedef struct tcb {
 [s S282 `ui 1 `ui 1 `E2531 1 `S281 1 `*F2550 1 `ui 1 ]
-[n S282 tcb task_id task_prior task_state task_context task_func task_delay_time ]
+[n S282 tcb task_id task_priority task_state task_context task_func task_delay_time ]
 "47
 [; ;./types.h: 47: typedef struct r_queue {
 [s S283 `S282 -> 6 `i `ui 1 `ui 1 ]
-[n S283 r_queue QUEUE running_task nr_of_tasks ]
+[n S283 r_queue tasks running_task fila_aptos_size ]
 "2154 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2154:     struct {
 [s S78 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -640,7 +640,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _OS_config ]
 [f ]
 "21
-[; ;kernel.c: 21:     f_aptos.nr_of_tasks = 0;
+[; ;kernel.c: 21:     f_aptos.fila_aptos_size = 0;
 [e = . _f_aptos 2 -> -> 0 `i `ui ]
 "22
 [; ;kernel.c: 22:     f_aptos.running_task = 0;
@@ -694,7 +694,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 51:     (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 "53
-[; ;kernel.c: 53:     do{ (INTCONbits.GIE = 0); if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING; f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING; } (INTCONbits.GIE = 1);}while(0);;
+[; ;kernel.c: 53:     do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = WAITING; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = WAITING; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 296 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -725,7 +725,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 295 ]
 "54
-[; ;kernel.c: 54:     f_aptos.QUEUE[f_aptos.running_task].task_delay_time = time;
+[; ;kernel.c: 54:     f_aptos.tasks[f_aptos.running_task].task_delay_time = time;
 [e = . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 5 _time ]
 "55
 [; ;kernel.c: 55:     RESTORE_CONTEXT();
@@ -749,7 +749,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 62:     tcb_t new_task;
 [v _new_task `S282 ~T0 @X0 1 a ]
 "64
-[; ;kernel.c: 64:     new_task.task_prior = prior;
+[; ;kernel.c: 64:     new_task.task_priority = prior;
 [e = . _new_task 1 _prior ]
 "65
 [; ;kernel.c: 65:     new_task.task_func = func;
@@ -764,10 +764,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 68:     new_task.task_delay_time = 0;
 [e = . _new_task 5 -> -> 0 `i `ui ]
 "72
-[; ;kernel.c: 72:     f_aptos.QUEUE[f_aptos.nr_of_tasks] = new_task;
+[; ;kernel.c: 72:     f_aptos.tasks[f_aptos.fila_aptos_size] = new_task;
 [e = *U + &U . _f_aptos 0 * -> . _f_aptos 2 `ux -> -> # *U &U . _f_aptos 0 `ui `ux _new_task ]
 "73
-[; ;kernel.c: 73:     f_aptos.nr_of_tasks++;
+[; ;kernel.c: 73:     f_aptos.fila_aptos_size++;
 [e ++ . _f_aptos 2 -> -> 1 `i `ui ]
 "74
 [; ;kernel.c: 74: }
@@ -780,7 +780,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _get_task_id ]
 [f ]
 "78
-[; ;kernel.c: 78:     return f_aptos.QUEUE[f_aptos.running_task].task_id;
+[; ;kernel.c: 78:     return f_aptos.tasks[f_aptos.running_task].task_id;
 [e ) . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 0 ]
 [e $UE 303  ]
 "79
@@ -799,25 +799,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _task_released `ui ~T0 @X0 1 a ]
 [e = _task_released -> -> 0 `i `ui ]
 "83
-[; ;kernel.c: 83:     for(i = 0; i < f_aptos.nr_of_tasks; i++){
+[; ;kernel.c: 83:     for(i = 0; i < f_aptos.fila_aptos_size; i++){
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 308  ]
 [e :U 305 ]
 {
 "84
-[; ;kernel.c: 84:         if(f_aptos.QUEUE[i].task_state == WAITING) {
+[; ;kernel.c: 84:         if(f_aptos.tasks[i].task_state == WAITING) {
 [e $ ! == -> . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 `ui -> . `E2531 2 `ui 309  ]
 {
 "85
-[; ;kernel.c: 85:             f_aptos.QUEUE[i].task_delay_time--;
+[; ;kernel.c: 85:             f_aptos.tasks[i].task_delay_time--;
 [e -- . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 5 -> -> 1 `i `ui ]
 "86
-[; ;kernel.c: 86:             if(f_aptos.QUEUE[i].task_delay_time == 0) {
+[; ;kernel.c: 86:             if(f_aptos.tasks[i].task_delay_time == 0) {
 [e $ ! == . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 5 -> -> 0 `i `ui 310  ]
 {
 "87
-[; ;kernel.c: 87:                 f_aptos.QUEUE[i].task_state = READY;
+[; ;kernel.c: 87:                 f_aptos.tasks[i].task_state = READY;
 [e = . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 0 ]
 "88
 [; ;kernel.c: 88:                 task_released = 1;
@@ -869,7 +869,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! && != ( _delay_release ..  -> -> 0 `i `ui == -> 1 `i -> 2 `i 312  ]
 {
 "103
-[; ;kernel.c: 103:         do{ (INTCONbits.GIE = 0); if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.QUEUE[f_aptos.running_task].task_state = READY; f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.QUEUE[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
+[; ;kernel.c: 103:         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 315 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -914,7 +914,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 107:         rr_quantum = 8;
 [e = _rr_quantum -> -> 8 `i `ui ]
 "108
-[; ;kernel.c: 108:         do{ (INTCONbits.GIE = 0); if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.QUEUE[f_aptos.running_task].task_state = READY; f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.QUEUE[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
+[; ;kernel.c: 108:         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 324 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -959,7 +959,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 114:             rr_quantum = 8;
 [e = _rr_quantum -> -> 8 `i `ui ]
 "115
-[; ;kernel.c: 115:             do{ (INTCONbits.GIE = 0); if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.QUEUE[f_aptos.running_task].task_state = READY; f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.QUEUE[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
+[; ;kernel.c: 115:             do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 333 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -1021,26 +1021,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _running_task `ui ~T0 @X0 1 a ]
 [e = _running_task . _f_aptos 1 ]
 "130
-[; ;kernel.c: 130:         f_aptos.QUEUE[running_task].task_state = RUNNING;
+[; ;kernel.c: 130:         f_aptos.tasks[running_task].task_state = RUNNING;
 [e = . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 1 ]
 "131
 [; ;kernel.c: 131:         STKPTR = 0;
 [e = _STKPTR -> -> 0 `i `uc ]
 "132
-[; ;kernel.c: 132:         if(f_aptos.QUEUE[running_task].task_context.stack_size > 0) {
+[; ;kernel.c: 132:         if(f_aptos.tasks[running_task].task_context.stack_size > 0) {
 [e $ ! > . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 4 -> -> 0 `i `ui 343  ]
 {
 "133
-[; ;kernel.c: 133:             BSR = f_aptos.QUEUE[running_task].task_context.BSR_reg;
+[; ;kernel.c: 133:             BSR = f_aptos.tasks[running_task].task_context.BSR_reg;
 [e = _BSR -> . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 2 `uc ]
 "134
-[; ;kernel.c: 134:             STATUS = f_aptos.QUEUE[running_task].task_context.STATUS_reg;
+[; ;kernel.c: 134:             STATUS = f_aptos.tasks[running_task].task_context.STATUS_reg;
 [e = _STATUS -> . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 0 `uc ]
 "135
-[; ;kernel.c: 135:             WREG = f_aptos.QUEUE[running_task].task_context.WORK_reg;
+[; ;kernel.c: 135:             WREG = f_aptos.tasks[running_task].task_context.WORK_reg;
 [e = _WREG -> . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 1 `uc ]
 "136
-[; ;kernel.c: 136:             u_int stack_size = f_aptos.QUEUE[running_task].task_context.stack_size;
+[; ;kernel.c: 136:             u_int stack_size = f_aptos.tasks[running_task].task_context.stack_size;
 [v _stack_size `ui ~T0 @X0 1 a ]
 [e = _stack_size . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 4 ]
 "137
@@ -1052,7 +1052,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 138:                 __asm("PUSH");
 [; <" PUSH ;# ">
 "139
-[; ;kernel.c: 139:                 TOS = f_aptos.QUEUE[running_task].task_context.STACK_regs[stack_size-1];
+[; ;kernel.c: 139:                 TOS = f_aptos.tasks[running_task].task_context.STACK_regs[stack_size-1];
 [e = _TOS *U + &U . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 3 * -> - _stack_size -> -> 1 `i `ui `ux -> -> # *U &U . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 3 `ui `ux ]
 "140
 [; ;kernel.c: 140:                 stack_size--;
@@ -1077,7 +1077,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 144:             __asm("PUSH");
 [; <" PUSH ;# ">
 "145
-[; ;kernel.c: 145:             TOS = f_aptos.QUEUE[running_task].task_func;
+[; ;kernel.c: 145:             TOS = f_aptos.tasks[running_task].task_func;
 [e = _TOS -> . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 4 `um ]
 "146
 [; ;kernel.c: 146:         }

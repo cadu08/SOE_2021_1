@@ -476,18 +476,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_tasks.c: 12:    sem_init(&sem_temp_r, 0);
 [e ( _sem_init (2 , &U _sem_temp_r -> 0 `i ]
 "15
-[; ;user_tasks.c: 15:    if(1 == 1){
-[e $ ! == -> 1 `i -> 1 `i 288  ]
+[; ;user_tasks.c: 15:    if(2 == 1){
+[e $ ! == -> 2 `i -> 1 `i 288  ]
 {
 "16
 [; ;user_tasks.c: 16:       __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
 [; <" GLOBAL _thermostat_sensing_1, _ac_controller_1 ;# ">
 "17
-[; ;user_tasks.c: 17:    }else if(1 ==2){
+[; ;user_tasks.c: 17:    }else if(2 ==2){
 }
 [e $U 289  ]
 [e :U 288 ]
-[e $ ! == -> 1 `i -> 2 `i 290  ]
+[e $ ! == -> 2 `i -> 2 `i 290  ]
 {
 "18
 [; ;user_tasks.c: 18:       __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");

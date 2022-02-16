@@ -89,7 +89,7 @@ WAITING_SEM 3
 "8 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\scheduler.c
 [v _scheduler scheduler `R(ui  1 e 2 0 ]
 "17
-[v _ROUND_ROBIN_sched ROUND_ROBIN_sched `R(ui  1 e 2 0 ]
+[v _round_robin_scheduler round_robin_scheduler `R(ui  1 e 2 0 ]
 "2 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
 [v _sem_init sem_init `(v  1 e 1 0 ]
 "10
@@ -118,7 +118,7 @@ WAITING_SEM 3
 [v _sem_temp_w sem_temp_w `S29  1 e 18 0 ]
 "28
 [v _sem_temp_r sem_temp_r `S29  1 e 18 0 ]
-[s S180 . 1 `uc 1 RD0 1 0 :1:0 
+[s S185 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -128,7 +128,7 @@ WAITING_SEM 3
 `uc 1 RD7 1 0 :1:7 
 ]
 "669 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[s S260 . 1 `uc 1 PSP0 1 0 :1:0 
+[s S265 . 1 `uc 1 PSP0 1 0 :1:0 
 `uc 1 PSP1 1 0 :1:1 
 `uc 1 PSP2 1 0 :1:2 
 `uc 1 PSP3 1 0 :1:3 
@@ -137,17 +137,17 @@ WAITING_SEM 3
 `uc 1 PSP6 1 0 :1:6 
 `uc 1 PSP7 1 0 :1:7 
 ]
-[s S269 . 1 `uc 1 . 1 0 :5:0 
+[s S274 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 P1B 1 0 :1:5 
 `uc 1 P1C 1 0 :1:6 
 `uc 1 P1D 1 0 :1:7 
 ]
-[s S274 . 1 `uc 1 . 1 0 :7:0 
+[s S279 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SS2 1 0 :1:7 
 ]
-[u S277 . 1 `S180 1 . 1 0 `S260 1 . 1 0 `S269 1 . 1 0 `S274 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES277  1 e 1 @3971 ]
-[s S211 . 1 `uc 1 LATD0 1 0 :1:0 
+[u S282 . 1 `S185 1 . 1 0 `S265 1 . 1 0 `S274 1 . 1 0 `S279 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES282  1 e 1 @3971 ]
+[s S216 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -157,7 +157,7 @@ WAITING_SEM 3
 `uc 1 LATD7 1 0 :1:7 
 ]
 "1340
-[s S220 . 1 `uc 1 LD0 1 0 :1:0 
+[s S225 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -166,13 +166,13 @@ WAITING_SEM 3
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S229 . 1 `S211 1 . 1 0 `S220 1 . 1 0 ]
-[v _LATDbits LATDbits `VES229  1 e 1 @3980 ]
+[u S234 . 1 `S216 1 . 1 0 `S225 1 . 1 0 ]
+[v _LATDbits LATDbits `VES234  1 e 1 @3980 ]
 "1477
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "2143
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S171 . 1 `uc 1 TRISD0 1 0 :1:0 
+[s S176 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -182,78 +182,78 @@ WAITING_SEM 3
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "2175
-[u S189 . 1 `S171 1 . 1 0 `S180 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES189  1 e 1 @3989 ]
-[s S736 . 1 `uc 1 ADCS 1 0 :3:0 
+[u S194 . 1 `S176 1 . 1 0 `S185 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES194  1 e 1 @3989 ]
+[s S741 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "4640
-[s S741 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S746 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
 `uc 1 ACQT1 1 0 :1:4 
 `uc 1 ACQT2 1 0 :1:5 
 ]
-[u S748 . 1 `S736 1 . 1 0 `S741 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES748  1 e 1 @4032 ]
+[u S753 . 1 `S741 1 . 1 0 `S746 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES753  1 e 1 @4032 ]
 "4690
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-[s S700 . 1 `uc 1 PCFG 1 0 :4:0 
+[s S705 . 1 `uc 1 PCFG 1 0 :4:0 
 `uc 1 VCFG 1 0 :2:4 
 ]
 "4715
-[s S703 . 1 `uc 1 PCFG0 1 0 :1:0 
+[s S708 . 1 `uc 1 PCFG0 1 0 :1:0 
 `uc 1 PCFG1 1 0 :1:1 
 `uc 1 PCFG2 1 0 :1:2 
 `uc 1 PCFG3 1 0 :1:3 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 ]
-[s S710 . 1 `uc 1 . 1 0 :3:0 
+[s S715 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CHSN3 1 0 :1:3 
 `uc 1 VCFG01 1 0 :1:4 
 `uc 1 VCFG11 1 0 :1:5 
 ]
-[u S715 . 1 `S700 1 . 1 0 `S703 1 . 1 0 `S710 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES715  1 e 1 @4033 ]
-[s S632 . 1 `uc 1 . 1 0 :1:0 
+[u S720 . 1 `S705 1 . 1 0 `S708 1 . 1 0 `S715 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES720  1 e 1 @4033 ]
+[s S637 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "4819
-[s S635 . 1 `uc 1 ADON 1 0 :1:0 
+[s S640 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S639 . 1 `uc 1 . 1 0 :1:0 
+[s S644 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[s S646 . 1 `uc 1 . 1 0 :1:0 
+[s S651 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S649 . 1 `uc 1 . 1 0 :1:0 
+[s S654 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S652 . 1 `uc 1 . 1 0 :1:0 
+[s S657 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S655 . 1 `uc 1 . 1 0 :1:0 
+[s S660 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[s S658 . 1 `uc 1 . 1 0 :1:0 
+[s S663 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S661 . 1 `S632 1 . 1 0 `S635 1 . 1 0 `S639 1 . 1 0 `S646 1 . 1 0 `S649 1 . 1 0 `S652 1 . 1 0 `S655 1 . 1 0 `S658 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES661  1 e 1 @4034 ]
+[u S666 . 1 `S637 1 . 1 0 `S640 1 . 1 0 `S644 1 . 1 0 `S651 1 . 1 0 `S654 1 . 1 0 `S657 1 . 1 0 `S660 1 . 1 0 `S663 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES666  1 e 1 @4034 ]
 "4894
 [v _ADRES ADRES `VEus  1 e 2 @4035 ]
-[s S381 . 1 `uc 1 T0PS 1 0 :3:0 
+[s S386 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -261,15 +261,15 @@ WAITING_SEM 3
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "6191
-[s S388 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S393 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 T0PS3 1 0 :1:3 
 `uc 1 . 1 0 :2:4 
 `uc 1 T016BIT 1 0 :1:6 
 ]
-[u S395 . 1 `S381 1 . 1 0 `S388 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES395  1 e 1 @4053 ]
+[u S400 . 1 `S386 1 . 1 0 `S393 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES400  1 e 1 @4053 ]
 "6258
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "6272
@@ -278,7 +278,7 @@ WAITING_SEM 3
 [v _BSR BSR `VEuc  1 e 1 @4064 ]
 "6462
 [v _WREG WREG `VEuc  1 e 1 @4072 ]
-[s S332 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S337 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -288,7 +288,7 @@ WAITING_SEM 3
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6724
-[s S341 . 1 `uc 1 . 1 0 :1:0 
+[s S346 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -297,26 +297,26 @@ WAITING_SEM 3
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S350 . 1 `uc 1 . 1 0 :6:0 
+[s S355 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S354 . 1 `S332 1 . 1 0 `S341 1 . 1 0 `S350 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES354  1 e 1 @4082 ]
+[u S359 . 1 `S337 1 . 1 0 `S346 1 . 1 0 `S355 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES359  1 e 1 @4082 ]
 "6904
 [v _STKPTR STKPTR `VEuc  1 e 1 @4092 ]
 "6977
 [v _TOS TOS `VEum  1 e 3 @4093 ]
 [s S96 context 104 `ui 1 STATUS_reg 2 0 `ui 1 WORK_reg 2 2 `ui 1 BSR_reg 2 4 `[32]um 1 STACK_regs 96 6 `ui 1 stack_size 2 102 ]
 "7 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\kernel.c
-[s S103 tcb 113 `ui 1 task_id 2 0 `ui 1 task_prior 2 2 `E2531 1 task_state 1 4 `S96 1 task_context 104 5 `*.37R(v 1 task_func 2 109 `ui 1 task_delay_time 2 111 ]
-[s S110 r_queue 682 `[6]S103 1 QUEUE 678 0 `ui 1 running_task 2 678 `ui 1 nr_of_tasks 2 680 ]
+[s S103 tcb 113 `ui 1 task_id 2 0 `ui 1 task_priority 2 2 `E2531 1 task_state 1 4 `S96 1 task_context 104 5 `*.37R(v 1 task_func 2 109 `ui 1 task_delay_time 2 111 ]
+[s S110 r_queue 682 `[6]S103 1 tasks 678 0 `ui 1 running_task 2 678 `ui 1 fila_aptos_size 2 680 ]
 [v _f_aptos f_aptos `S110  1 e 682 0 ]
 "8
 [v _rr_quantum rr_quantum `ui  1 e 2 0 ]
 "3 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks.c
-[s S524 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
-[v _pipe_temperature pipe_temperature `S524  1 e 26 0 ]
+[s S529 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
+[v _pipe_temperature pipe_temperature `S529  1 e 26 0 ]
 "4 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\user_tasks_2.c
 [v _room_temperature room_temperature `i  1 e 2 0 ]
 "5
@@ -361,8 +361,8 @@ WAITING_SEM 3
 {
 [s S24 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 [s S29 semaphore 18 `i 1 s_count 2 0 `S24 1 s_queue 16 2 ]
-[s S524 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
-[v create_pipe@pipe pipe `*.39S524  1 p 2 4 ]
+[s S529 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
+[v create_pipe@pipe pipe `*.39S529  1 p 2 4 ]
 "7
 } 0
 "2 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
@@ -379,7 +379,7 @@ WAITING_SEM 3
 {
 [s S96 context 104 `ui 1 STATUS_reg 2 0 `ui 1 WORK_reg 2 2 `ui 1 BSR_reg 2 4 `[32]um 1 STACK_regs 96 6 `ui 1 stack_size 2 102 ]
 "62
-[s S103 tcb 113 `ui 1 task_id 2 0 `ui 1 task_prior 2 2 `E2531 1 task_state 1 4 `S96 1 task_context 104 5 `*.37R(v 1 task_func 2 109 `ui 1 task_delay_time 2 111 ]
+[s S103 tcb 113 `ui 1 task_id 2 0 `ui 1 task_priority 2 2 `E2531 1 task_state 1 4 `S96 1 task_context 104 5 `*.37R(v 1 task_func 2 109 `ui 1 task_delay_time 2 111 ]
 [v OS_create_task@new_task new_task `S103  1 a 113 6 ]
 "60
 [v OS_create_task@prior prior `ui  1 p 2 0 ]
@@ -438,8 +438,8 @@ WAITING_SEM 3
 [s S24 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 "31
 [s S29 semaphore 18 `i 1 s_count 2 0 `S24 1 s_queue 16 2 ]
-[s S524 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
-[v pipe_write@pipe pipe `*.39S524  1 p 2 -2 ]
+[s S529 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
+[v pipe_write@pipe pipe `*.39S529  1 p 2 -2 ]
 [v pipe_write@dado dado `i  1 p 2 -4 ]
 "53
 } 1
@@ -466,11 +466,11 @@ WAITING_SEM 3
 "15
 } 0
 "17
-[v _ROUND_ROBIN_sched ROUND_ROBIN_sched `R(ui  1 e 2 0 ]
+[v _round_robin_scheduler round_robin_scheduler `R(ui  1 e 2 0 ]
 {
 "19
-[v ROUND_ROBIN_sched@next_task next_task `ui  1 a 2 0 ]
-[v ROUND_ROBIN_sched@try try `ui  1 a 2 2 ]
+[v round_robin_scheduler@next_task next_task `ui  1 a 2 0 ]
+[v round_robin_scheduler@try try `ui  1 a 2 2 ]
 "31
 } 4
 "26 C:\Users\caduc\OneDrive\Documentos\GitHub\SOE_2021_1\Trabalho1.X\semaphore.c
@@ -524,8 +524,8 @@ WAITING_SEM 3
 [s S24 sem_queue 16 `[5]ui 1 TASKS 10 0 `ui 1 queue_size 2 10 `ui 1 queue_wait_pos 2 12 `ui 1 queue_post_pos 2 14 ]
 "9
 [s S29 semaphore 18 `i 1 s_count 2 0 `S24 1 s_queue 16 2 ]
-[s S524 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
-[v pipe_read@pipe pipe `*.39S524  1 p 2 -2 ]
+[s S529 pipe 26 `[1]ui 1 msg 2 0 `ui 1 size 2 2 `ui 1 read_pos 2 4 `ui 1 write_pos 2 6 `S29 1 sem 18 8 ]
+[v pipe_read@pipe pipe `*.39S529  1 p 2 -2 ]
 [v pipe_read@dado dado `*.39i  1 p 2 -4 ]
 "30
 } 1

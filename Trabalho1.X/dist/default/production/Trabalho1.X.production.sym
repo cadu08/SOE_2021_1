@@ -13,7 +13,6 @@ _config_timer0 1552 0 CODE 0
 __end_of___awdiv 98E 0 CODE 0
 _WREG FE8 0 ABS 0
 _ac_controller_1 11B6 0 CODE 0
-_ROUND_ROBIN_sched C54 0 CODE 0
 _idle 14D6 0 CODE 0
 _main 13F6 0 CODE 0
 delay_release@i 58 0 COMRAM 1
@@ -31,7 +30,7 @@ __Hirdata 0 0 CODE 0
 __Lirdata 0 0 CODE 0
 __HRAM 0 0 ABS 0
 __LRAM 1 0 ABS 0
-__size_of_ROUND_ROBIN_sched 0 0 ABS 0
+__end_of_round_robin_scheduler D8A 0 CODE 0
 _ADRES FC3 0 ABS 0
 ltemp0 32 0 COMRAM 1
 ttemp0 32 0 COMRAM 1
@@ -152,6 +151,7 @@ __size_of_ac_controller_1 0 0 ABS 0
 _scheduler 1598 0 CODE 0
 __end_of_create_pipe 1300 0 CODE 0
 __size_of_idle 0 0 ABS 0
+__size_of_round_robin_scheduler 0 0 ABS 0
 __size_of_ac_controller_2 0 0 ABS 0
 __end_of_delay_release FA8 0 CODE 0
 _TRISDbits F95 0 ABS 0
@@ -388,12 +388,12 @@ _delay_release EB6 0 CODE 0
 __end_of___wmul 1126 0 CODE 0
 __end_of_sem_post EB6 0 CODE 0
 start_initialization 13AC 0 CODE 0
+_round_robin_scheduler C54 0 CODE 0
 __end_of_turn_off_ac 15A6 0 CODE 0
 __size_of_RESTORE_CONTEXT 0 0 ABS 0
 __end_of_RESTORE_CONTEXT 812 0 CODE 0
 sem_init@val 82 0 BANK0 1
 __initialization 13AC 0 CODE 0
-__end_of_ROUND_ROBIN_sched D8A 0 CODE 0
 create_pipe@pipe 84 0 BANK0 1
 __activetblptr 0 0 ABS 0
 __end_of_config_timer0 156A 0 CODE 0
@@ -415,7 +415,7 @@ bssBIGRAM 112 3BB BIGRAM 112 1
 %locals
 dist/default/production\Trabalho1.X.production.o
 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-C:\Users\caduc\AppData\Local\Temp\s6ss.s
+C:\Users\caduc\AppData\Local\Temp\sc0g.s
 3066 13AC 0 CODE 0
 3068 13AC 0 CODE 0
 3071 13AC 0 CODE 0
@@ -456,8 +456,8 @@ C:\Users\caduc\AppData\Local\Temp\s6ss.s
 main.c
 12 13F6 0 CODE 0
 14 13F6 0 CODE 0
-19 13FA 0 CODE 0
-20 1410 0 CODE 0
+23 13FA 0 CODE 0
+24 1410 0 CODE 0
 28 1426 0 CODE 0
 30 142A 0 CODE 0
 31 142A 0 CODE 0
@@ -508,6 +508,7 @@ user_tasks.c
 8 1432 0 CODE 0
 11 1440 0 CODE 0
 12 1456 0 CODE 0
+17 146C 0 CODE 0
 21 146C 0 CODE 0
 pipe.c
 4 12A8 0 CODE 0
@@ -733,8 +734,8 @@ user_tasks_2.c
 36 134C 0 CODE 0
 37 1350 0 CODE 0
 39 1350 0 CODE 0
-C:\Users\caduc\AppData\Local\Temp\s6ss.s
-8360 8 0 CODE 0
+C:\Users\caduc\AppData\Local\Temp\sc0g.s
+8367 8 0 CODE 0
 kernel.c
 95 8 0 CODE 0
 kernel.c

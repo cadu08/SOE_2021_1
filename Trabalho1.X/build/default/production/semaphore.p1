@@ -38,11 +38,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;./types.h: 38: typedef struct tcb {
 [s S282 `ui 1 `ui 1 `E2531 1 `S281 1 `*F2550 1 `ui 1 ]
-[n S282 tcb task_id task_prior task_state task_context task_func task_delay_time ]
+[n S282 tcb task_id task_priority task_state task_context task_func task_delay_time ]
 "47
 [; ;./types.h: 47: typedef struct r_queue {
 [s S283 `S282 -> 6 `i `ui 1 `ui 1 ]
-[n S283 r_queue QUEUE running_task nr_of_tasks ]
+[n S283 r_queue tasks running_task fila_aptos_size ]
 "12 ./kernel.h
 [; ;./kernel.h: 12: extern faptos_t f_aptos;
 [v _f_aptos `S283 ~T0 @X0 0 e ]
@@ -532,7 +532,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;semaphore.c: 19:         s->s_queue.queue_size++;
 [e ++ . . *U _s 1 1 -> -> 1 `i `ui ]
 "20
-[; ;semaphore.c: 20:         do{ (INTCONbits.GIE = 0); if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING_SEM; f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
+[; ;semaphore.c: 20:         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = WAITING_SEM; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 291 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -594,7 +594,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! <= . *U _s 0 -> 0 `i 298  ]
 {
 "31
-[; ;semaphore.c: 31:         f_aptos.QUEUE[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
+[; ;semaphore.c: 31:         f_aptos.tasks[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
 [e = . *U + &U . _f_aptos 0 * -> *U + &U . . *U _s 1 0 * -> . . *U _s 1 3 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 0 ]
 "32
 [; ;semaphore.c: 32:         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;

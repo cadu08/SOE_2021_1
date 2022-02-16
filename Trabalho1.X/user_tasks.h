@@ -8,7 +8,7 @@
 #ifndef USER_TASKS_H
 #define	USER_TASKS_H
 
-#define EXAMPLE 1
+#define EXAMPLE 2
 
 #include "types.h"
 #include "kernel.h"
