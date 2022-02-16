@@ -4355,13 +4355,15 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 2 "motores.c" 2
+# 1 "motores.c" 2
+
 
 # 1 "./motores.h" 1
 # 10 "./motores.h"
 void turn_off_ac();
 void turn_on_ac();
-# 4 "motores.c" 2
+# 3 "motores.c" 2
+
 
 void turn_off_ac(){
     PORTDbits.RD0 = 0;

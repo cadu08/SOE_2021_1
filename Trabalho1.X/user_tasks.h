@@ -8,6 +8,8 @@
 #ifndef USER_TASKS_H
 #define	USER_TASKS_H
 
+#define EXAMPLE 1
+
 #include "types.h"
 #include "kernel.h"
 #include "semaphore.h"
@@ -17,9 +19,10 @@
 
 
 void config_user_tasks();
-
 void sensoreamento_termostato();
 void ac_controller();
 
+semaphore_t sem_temp_w;
+semaphore_t sem_temp_r;
 
 #endif	/* USER_TASKS_H */

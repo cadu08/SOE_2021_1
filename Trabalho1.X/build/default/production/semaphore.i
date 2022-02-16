@@ -4529,14 +4529,15 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 5 "./types.h" 2
+# 4 "./types.h" 2
+
 # 1 "./user_config.h" 1
 
 
 
 # 1 "./types.h" 1
-# 5 "./user_config.h" 2
-# 6 "./types.h" 2
+# 4 "./user_config.h" 2
+# 5 "./types.h" 2
 # 24 "./types.h"
 typedef unsigned u_int;
 typedef void (*task_ptr) (void);
@@ -4566,7 +4567,8 @@ typedef struct r_queue {
     u_int task_running;
     u_int nr_of_tasks;
 } r_queue_t;
-# 9 "./semaphore.h" 2
+# 8 "./semaphore.h" 2
+
 # 1 "./kernel.h" 1
 
 
@@ -4586,7 +4588,8 @@ typedef struct r_queue {
 u_int scheduler();
 u_int ROUND_ROBIN_sched();
 u_int PRIORITY_sched();
-# 10 "./kernel.h" 2
+# 9 "./kernel.h" 2
+
 
 
 extern r_queue_t READY_QUEUE;
@@ -4610,7 +4613,8 @@ u_int get_task_id();
 u_int delay_release();
 # 102 "./kernel.h"
 void RESTORE_CONTEXT();
-# 10 "./semaphore.h" 2
+# 9 "./semaphore.h" 2
+
 
 
 typedef struct sem_queue {
@@ -4630,7 +4634,8 @@ void sem_wait(semaphore_t* s);
 bool sem_wait_time(semaphore_t* s, int time);
 void sem_post(semaphore_t* s);
 int sem_get_value(semaphore_t s);
-# 2 "semaphore.c" 2
+# 1 "semaphore.c" 2
+
 void sem_init(semaphore_t* s, int val){
     (INTCONbits.GIE = 0);
     s->s_count = val;

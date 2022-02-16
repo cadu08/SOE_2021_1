@@ -7,6 +7,10 @@ void config_user_tasks()
    // inicializa o pipe
    pipe_init(&pipe_temperature, 1);
    
+   // inicializa o semáforo
+   sem_init(&sem_temp_w, 1);
+   sem_init(&sem_temp_r, 0);
+  
    // Coloca tarefas como globais
    __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
 }

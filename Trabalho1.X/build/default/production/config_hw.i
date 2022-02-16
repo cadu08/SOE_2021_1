@@ -4529,7 +4529,8 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 9 "./config_hw.h" 2
+# 8 "./config_hw.h" 2
+
 
 
 
@@ -4547,7 +4548,8 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 void config_timer0();
 void config_ad_conversor();
 void config_flywheel();
-# 6 "config_hw.c" 2
+# 5 "config_hw.c" 2
+
 
 void config_timer0()
 {

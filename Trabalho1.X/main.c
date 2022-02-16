@@ -17,8 +17,18 @@ int main(void) {
    
     // Tarefas do Usuário
     
-    OS_create_task(4, sensoreamento_termostato);
-    OS_create_task(4, ac_controller);
+    if(EXAMPLE == 1)
+    {
+      OS_create_task(4, sensoreamento_termostato);
+      OS_create_task(4, ac_controller);
+    }else if(EXAMPLE == 2)
+    {
+      OS_create_task(4, sensoreamento_termostato);
+      OS_create_task(4, ac_controller); 
+    }
+    
+    
+    
     // Coloca o kernel em execução
     OS_start();
     

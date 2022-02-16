@@ -1,4 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"12 ./semaphore.h
+[; ;./semaphore.h: 12: typedef struct sem_queue {
+[s S284 `ui -> 5 `i `ui 1 `ui 1 `ui 1 ]
+[n S284 sem_queue TASKS queue_size queue_wait_pos queue_post_pos ]
+"18
+[; ;./semaphore.h: 18: typedef struct semaphore{
+[s S285 `i 1 `S284 1 ]
+[n S285 semaphore s_count s_queue ]
 "7 kernel.c
 [; ;kernel.c: 7: r_queue_t READY_QUEUE;
 [c E2531 0 1 2 3 .. ]
@@ -76,9 +84,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26 ./kernel.h
 [; ;./kernel.h: 26: void OS_create_task(u_int prior, task_ptr func);
 [v _OS_create_task `(v ~T0 @X0 0 ef2`ui`*F2570 ]
-[v F2628 `(v ~T0 @X0 0 tf ]
-"19 ./user_tasks.h
-[; ;./user_tasks.h: 19: void config_user_tasks();
+[v F2630 `(v ~T0 @X0 0 tf ]
+"21 ./user_tasks.h
+[; ;./user_tasks.h: 21: void config_user_tasks();
 [v _config_user_tasks `(v ~T0 @X0 0 e? ]
 "23 ./config_hw.h
 [v _config_timer0 `(v ~T0 @X0 0 e? ]
@@ -138,8 +146,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "102 ./kernel.h
 [; ;./kernel.h: 102: void RESTORE_CONTEXT();
 [v _RESTORE_CONTEXT `(v ~T0 @X0 0 e? ]
-[v F2634 `(v ~T0 @X0 0 tf ]
-[v F2637 `(v ~T0 @X0 0 tf ]
+[v F2636 `(v ~T0 @X0 0 tf ]
+[v F2639 `(v ~T0 @X0 0 tf ]
 [t ~ __interrupt . k ]
 [t T42 __interrupt ]
 "6258 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
@@ -565,6 +573,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
+"25 ./user_tasks.h
+[; ;./user_tasks.h: 25: semaphore_t sem_temp_w;
+[v _sem_temp_w `S285 ~T0 @X0 1 e ]
+"26
+[; ;./user_tasks.h: 26: semaphore_t sem_temp_r;
+[v _sem_temp_r `S285 ~T0 @X0 1 e ]
 "13 ./config_hw.h
 [p x PBADEN = OFF ]
 "14
@@ -633,7 +647,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . _READY_QUEUE 1 -> -> 0 `i `ui ]
 "25
 [; ;kernel.c: 25:     OS_create_task(1, idle);
-[e ( _OS_create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2628 ]
+[e ( _OS_create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2630 ]
 "26
 [; ;kernel.c: 26:     __asm("GLOBAL _idle");
 [; <" GLOBAL _idle ;# ">
@@ -725,11 +739,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "60
 [; ;kernel.c: 60: void OS_create_task(u_int prior, task_ptr func){
-[v _OS_create_task `(v ~T0 @X0 1 ef2`ui`*F2634 ]
+[v _OS_create_task `(v ~T0 @X0 1 ef2`ui`*F2636 ]
 {
 [e :U _OS_create_task ]
 [v _prior `ui ~T0 @X0 1 r1 ]
-[v _func `*F2637 ~T0 @X0 1 r2 ]
+[v _func `*F2639 ~T0 @X0 1 r2 ]
 [f ]
 "62
 [; ;kernel.c: 62:     tcb_t new_task;

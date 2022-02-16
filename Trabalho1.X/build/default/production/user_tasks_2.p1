@@ -1,33 +1,27 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "12 ./semaphore.h
 [; ;./semaphore.h: 12: typedef struct sem_queue {
-[s S289 `ui -> 5 `i `ui 1 `ui 1 `ui 1 ]
-[n S289 sem_queue TASKS queue_size queue_wait_pos queue_post_pos ]
+[s S284 `ui -> 5 `i `ui 1 `ui 1 `ui 1 ]
+[n S284 sem_queue TASKS queue_size queue_wait_pos queue_post_pos ]
 "18
 [; ;./semaphore.h: 18: typedef struct semaphore{
-[s S290 `i 1 `S289 1 ]
-[n S290 semaphore s_count s_queue ]
-[p mainexit ]
-"23 ./kernel.h
-[; ;./kernel.h: 23: void OS_config();
-[v _OS_config `(v ~T0 @X0 0 e? ]
-[v F2723 `(v ~T0 @X0 0 tf ]
-"26
-[; ;./kernel.h: 26: void OS_create_task(u_int prior, task_ptr func);
-[v _OS_create_task `(v ~T0 @X0 0 ef2`ui`*F2723 ]
-"22 ./user_tasks.h
-[; ;./user_tasks.h: 22: void sensoreamento_termostato();
-[v _sensoreamento_termostato `(v ~T0 @X0 0 e? ]
-[v F2777 `(v ~T0 @X0 0 tf ]
-"23
-[; ;./user_tasks.h: 23: void ac_controller();
-[v _ac_controller `(v ~T0 @X0 0 e? ]
-[v F2779 `(v ~T0 @X0 0 tf ]
-[v F2781 `(v ~T0 @X0 0 tf ]
-[v F2783 `(v ~T0 @X0 0 tf ]
-"24 ./kernel.h
-[; ;./kernel.h: 24: void OS_start();
-[v _OS_start `(v ~T0 @X0 0 e? ]
+[s S285 `i 1 `S284 1 ]
+[n S285 semaphore s_count s_queue ]
+"25
+[; ;./semaphore.h: 25: void sem_wait(semaphore_t* s);
+[v _sem_wait `(v ~T0 @X0 0 ef1`*S285 ]
+"9 ./thermostat.h
+[; ;./thermostat.h: 9: int thermostat_value();
+[v _thermostat_value `(i ~T0 @X0 0 e? ]
+"27 ./semaphore.h
+[; ;./semaphore.h: 27: void sem_post(semaphore_t* s);
+[v _sem_post `(v ~T0 @X0 0 ef1`*S285 ]
+"11 ./motores.h
+[; ;./motores.h: 11: void turn_on_ac();
+[v _turn_on_ac `(v ~T0 @X0 0 e? ]
+"10
+[; ;./motores.h: 10: void turn_off_ac();
+[v _turn_off_ac `(v ~T0 @X0 0 e? ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -447,70 +441,99 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _index `i ~T0 @X0 1 e ]
 "25 ./user_tasks.h
 [; ;./user_tasks.h: 25: semaphore_t sem_temp_w;
-[v _sem_temp_w `S290 ~T0 @X0 1 e ]
+[v _sem_temp_w `S285 ~T0 @X0 1 e ]
 "26
 [; ;./user_tasks.h: 26: semaphore_t sem_temp_r;
-[v _sem_temp_r `S290 ~T0 @X0 1 e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"14 main.c
-[; ;main.c: 14: int main(void) {
-[v _main `(i ~T0 @X0 1 ef ]
+[v _sem_temp_r `S285 ~T0 @X0 1 e ]
+"4 user_tasks_2.c
+[; ;user_tasks_2.c: 4: int room_temperature;
+[v _room_temperature `i ~T0 @X0 1 e ]
+"9
+[; ;user_tasks_2.c: 9: void sensoreamento_termostato_2()
+[v _sensoreamento_termostato_2 `(v ~T0 @X0 1 ef ]
+"10
+[; ;user_tasks_2.c: 10: {
 {
-[e :U _main ]
+[e :U _sensoreamento_termostato_2 ]
 [f ]
+"11
+[; ;user_tasks_2.c: 11:    while(1)
+[e :U 289 ]
+"12
+[; ;user_tasks_2.c: 12:    {
+{
 "16
-[; ;main.c: 16:     OS_config();
-[e ( _OS_config ..  ]
-"20
-[; ;main.c: 20:     if(1 == 1)
-[e $ ! == -> 1 `i -> 1 `i 293  ]
-"21
-[; ;main.c: 21:     {
-{
-"22
-[; ;main.c: 22:       OS_create_task(4, sensoreamento_termostato);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _sensoreamento_termostato `*F2777 ]
-"23
-[; ;main.c: 23:       OS_create_task(4, ac_controller);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller `*F2779 ]
+[; ;user_tasks_2.c: 16:       sem_wait(&sem_temp_w);
+[e ( _sem_wait (1 &U _sem_temp_w ]
+"19
+[; ;user_tasks_2.c: 19:       room_temperature = thermostat_value();
+[e = _room_temperature ( _thermostat_value ..  ]
 "24
-[; ;main.c: 24:     }else if(1 == 2)
-}
-[e $U 294  ]
-[e :U 293 ]
-[e $ ! == -> 1 `i -> 2 `i 295  ]
+[; ;user_tasks_2.c: 24:       sem_post(&sem_temp_r);
+[e ( _sem_post (1 &U _sem_temp_r ]
 "25
-[; ;main.c: 25:     {
-{
+[; ;user_tasks_2.c: 25:    }
+}
+[e :U 288 ]
+[e $U 289  ]
+[e :U 290 ]
 "26
-[; ;main.c: 26:       OS_create_task(4, sensoreamento_termostato);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _sensoreamento_termostato `*F2781 ]
-"27
-[; ;main.c: 27:       OS_create_task(4, ac_controller);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller `*F2783 ]
+[; ;user_tasks_2.c: 26: }
+[e :UE 287 ]
+}
 "28
-[; ;main.c: 28:     }
+[; ;user_tasks_2.c: 28: void controlador_ar_condicionado_2()
+[v _controlador_ar_condicionado_2 `(v ~T0 @X0 1 ef ]
+"29
+[; ;user_tasks_2.c: 29: {
+{
+[e :U _controlador_ar_condicionado_2 ]
+[f ]
+"30
+[; ;user_tasks_2.c: 30:    while(1)
+[e :U 293 ]
+"31
+[; ;user_tasks_2.c: 31:    {
+{
+"34
+[; ;user_tasks_2.c: 34:       sem_wait(&sem_temp_r);
+[e ( _sem_wait (1 &U _sem_temp_r ]
+"36
+[; ;user_tasks_2.c: 36:       if(room_temperature >= (32 + 2))
+[e $ ! >= _room_temperature + -> 32 `i -> 2 `i 295  ]
+"37
+[; ;user_tasks_2.c: 37:       {
+{
+"38
+[; ;user_tasks_2.c: 38:          turn_on_ac();
+[e ( _turn_on_ac ..  ]
+"39
+[; ;user_tasks_2.c: 39:       }
 }
 [e :U 295 ]
-[e :U 294 ]
-"33
-[; ;main.c: 33:     OS_start();
-[e ( _OS_start ..  ]
-"35
-[; ;main.c: 35:     while(1){
-[e :U 297 ]
+"41
+[; ;user_tasks_2.c: 41:       if(room_temperature <= (32 - 2))
+[e $ ! <= _room_temperature - -> 32 `i -> 2 `i 296  ]
+"42
+[; ;user_tasks_2.c: 42:       {
 {
-"36
-[; ;main.c: 36:     }
+"43
+[; ;user_tasks_2.c: 43:          turn_off_ac();
+[e ( _turn_off_ac ..  ]
+"44
+[; ;user_tasks_2.c: 44:       }
 }
 [e :U 296 ]
-[e $U 297  ]
-[e :U 298 ]
-"38
-[; ;main.c: 38:     return 0;
-[e ) -> 0 `i ]
-[e $UE 292  ]
-"39
-[; ;main.c: 39: }
-[e :UE 292 ]
+"48
+[; ;user_tasks_2.c: 48:       sem_post(&sem_temp_w);
+[e ( _sem_post (1 &U _sem_temp_w ]
+"49
+[; ;user_tasks_2.c: 49:    }
+}
+[e :U 292 ]
+[e $U 293  ]
+[e :U 294 ]
+"50
+[; ;user_tasks_2.c: 50: }
+[e :UE 291 ]
 }

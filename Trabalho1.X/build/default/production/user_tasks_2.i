@@ -1,4 +1,4 @@
-# 1 "user_tasks.c"
+# 1 "user_tasks_2.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "user_tasks.c" 2
+# 1 "user_tasks_2.c" 2
 # 1 "./user_tasks.h" 1
 # 13 "./user_tasks.h"
 # 1 "./types.h" 1
@@ -4682,42 +4682,54 @@ void ac_controller();
 
 semaphore_t sem_temp_w;
 semaphore_t sem_temp_r;
-# 1 "user_tasks.c" 2
+# 1 "user_tasks_2.c" 2
 
 
-pipe_t pipe_temperature;
 
-void config_user_tasks()
+int room_temperature;
+
+
+
+
+void sensoreamento_termostato_2()
 {
-
-   pipe_init(&pipe_temperature, 1);
-
-
-   sem_init(&sem_temp_w, 1);
-   sem_init(&sem_temp_r, 0);
+   while(1)
+   {
 
 
-   __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
+
+      sem_wait(&sem_temp_w);
+
+
+      room_temperature = thermostat_value();
+
+
+
+
+      sem_post(&sem_temp_r);
+   }
 }
 
-void sensoreamento_termostato() {
-    int readed_temperature;
-    while (1) {
-       readed_temperature = thermostat_value();
-       pipe_write(&pipe_temperature, readed_temperature);
-    }
-}
-
-void ac_controller()
+void controlador_ar_condicionado_2()
 {
-   int room_temperature;
-   while (1) {
-      pipe_read(&pipe_temperature, &room_temperature);
+   while(1)
+   {
 
-      if(room_temperature < (32 - 2)){
-         turn_off_ac();
-      }else if(room_temperature > (32 + 2)){
+
+      sem_wait(&sem_temp_r);
+
+      if(room_temperature >= (32 + 2))
+      {
          turn_on_ac();
       }
-    }
+
+      if(room_temperature <= (32 - 2))
+      {
+         turn_off_ac();
+      }
+
+
+
+      sem_post(&sem_temp_w);
+   }
 }

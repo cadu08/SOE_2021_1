@@ -14,6 +14,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;./pipe.h: 21: void pipe_init(pipe_t *pipe, int tamanho);
 [v _pipe_init `(v ~T0 @X0 0 ef2`*S286`i ]
+"24 ./semaphore.h
+[; ;./semaphore.h: 24: void sem_init(semaphore_t* s, int val);
+[v _sem_init `(v ~T0 @X0 0 ef2`*S285`i ]
 "9 ./thermostat.h
 [; ;./thermostat.h: 9: int thermostat_value();
 [v _thermostat_value `(i ~T0 @X0 0 e? ]
@@ -446,6 +449,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
+"25 ./user_tasks.h
+[; ;./user_tasks.h: 25: semaphore_t sem_temp_w;
+[v _sem_temp_w `S285 ~T0 @X0 1 e ]
+"26
+[; ;./user_tasks.h: 26: semaphore_t sem_temp_r;
+[v _sem_temp_r `S285 ~T0 @X0 1 e ]
 "3 user_tasks.c
 [; ;user_tasks.c: 3: pipe_t pipe_temperature;
 [v _pipe_temperature `S286 ~T0 @X0 1 e ]
@@ -461,88 +470,94 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_tasks.c: 8:    pipe_init(&pipe_temperature, 1);
 [e ( _pipe_init (2 , &U _pipe_temperature -> 1 `i ]
 "11
-[; ;user_tasks.c: 11:    __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
-[; <" GLOBAL _sensoreamento_termostato, _ac_controller ;# ">
+[; ;user_tasks.c: 11:    sem_init(&sem_temp_w, 1);
+[e ( _sem_init (2 , &U _sem_temp_w -> 1 `i ]
 "12
-[; ;user_tasks.c: 12: }
+[; ;user_tasks.c: 12:    sem_init(&sem_temp_r, 0);
+[e ( _sem_init (2 , &U _sem_temp_r -> 0 `i ]
+"15
+[; ;user_tasks.c: 15:    __asm("GLOBAL _sensoreamento_termostato, _ac_controller");
+[; <" GLOBAL _sensoreamento_termostato, _ac_controller ;# ">
+"16
+[; ;user_tasks.c: 16: }
 [e :UE 287 ]
 }
-"14
-[; ;user_tasks.c: 14: void sensoreamento_termostato() {
+"18
+[; ;user_tasks.c: 18: void sensoreamento_termostato() {
 [v _sensoreamento_termostato `(v ~T0 @X0 1 ef ]
 {
 [e :U _sensoreamento_termostato ]
 [f ]
-"15
-[; ;user_tasks.c: 15:     int readed_temperature;
+"19
+[; ;user_tasks.c: 19:     int readed_temperature;
 [v _readed_temperature `i ~T0 @X0 1 a ]
-"16
-[; ;user_tasks.c: 16:     while (1) {
+"20
+[; ;user_tasks.c: 20:     while (1) {
 [e :U 290 ]
 {
-"17
-[; ;user_tasks.c: 17:        readed_temperature = thermostat_value();
+"21
+[; ;user_tasks.c: 21:        readed_temperature = thermostat_value();
 [e = _readed_temperature ( _thermostat_value ..  ]
-"18
-[; ;user_tasks.c: 18:        pipe_write(&pipe_temperature, readed_temperature);
+"22
+[; ;user_tasks.c: 22:        pipe_write(&pipe_temperature, readed_temperature);
 [e ( _pipe_write (2 , &U _pipe_temperature _readed_temperature ]
-"19
-[; ;user_tasks.c: 19:     }
+"23
+[; ;user_tasks.c: 23:     }
 }
 [e :U 289 ]
 [e $U 290  ]
 [e :U 291 ]
-"20
-[; ;user_tasks.c: 20: }
+"24
+[; ;user_tasks.c: 24: }
 [e :UE 288 ]
 }
-"22
-[; ;user_tasks.c: 22: void ac_controller()
+"26
+[; ;user_tasks.c: 26: void ac_controller()
 [v _ac_controller `(v ~T0 @X0 1 ef ]
-"23
-[; ;user_tasks.c: 23: {
+"27
+[; ;user_tasks.c: 27: {
 {
 [e :U _ac_controller ]
 [f ]
-"24
-[; ;user_tasks.c: 24:    int room_temperature;
+"28
+[; ;user_tasks.c: 28:    int room_temperature;
 [v _room_temperature `i ~T0 @X0 1 a ]
-"25
-[; ;user_tasks.c: 25:    while (1) {
+"29
+[; ;user_tasks.c: 29:    while (1) {
 [e :U 294 ]
 {
-"26
-[; ;user_tasks.c: 26:       pipe_read(&pipe_temperature, &room_temperature);
+"30
+[; ;user_tasks.c: 30:       pipe_read(&pipe_temperature, &room_temperature);
 [e ( _pipe_read (2 , &U _pipe_temperature &U _room_temperature ]
-"28
-[; ;user_tasks.c: 28:       if(room_temperature < (32 - 2)){
+"32
+[; ;user_tasks.c: 32:       if(room_temperature < (32 - 2)){
 [e $ ! < _room_temperature - -> 32 `i -> 2 `i 296  ]
 {
-"29
-[; ;user_tasks.c: 29:          turn_off_ac();
+"33
+[; ;user_tasks.c: 33:          turn_off_ac();
 [e ( _turn_off_ac ..  ]
-"30
-[; ;user_tasks.c: 30:       }else if(room_temperature > (32 + 2)){
+"34
+[; ;user_tasks.c: 34:       }else if(room_temperature > (32 + 2)){
 }
 [e $U 297  ]
 [e :U 296 ]
 [e $ ! > _room_temperature + -> 32 `i -> 2 `i 298  ]
 {
-"31
-[; ;user_tasks.c: 31:          turn_on_ac();
+"35
+[; ;user_tasks.c: 35:          turn_on_ac();
 [e ( _turn_on_ac ..  ]
-"32
-[; ;user_tasks.c: 32:       }
+"36
+[; ;user_tasks.c: 36:       }
 }
 [e :U 298 ]
 [e :U 297 ]
-"33
-[; ;user_tasks.c: 33:     }
+"37
+[; ;user_tasks.c: 37:     }
 }
 [e :U 293 ]
 [e $U 294  ]
 [e :U 295 ]
-"34
-[; ;user_tasks.c: 34: }
+"38
+[; ;user_tasks.c: 38: }
 [e :UE 292 ]
 }
