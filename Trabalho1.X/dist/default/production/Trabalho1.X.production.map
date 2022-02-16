@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.20\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Trabalho1.X.production.sym \
   --cmf=dist/default/production\Trabalho1.X.production.cmf -z -Q18F4520 \
-  -oC:\Users\caduc\AppData\Local\Temp\s384.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\caduc\AppData\Local\Temp\sd1o.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Trabalho1.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=03BCh-05FFh -pstack=STACK \
   -ACODE=00h-07FFFh -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\caduc\AppData\Local\Temp\s384.o \
+  C:\Users\caduc\AppData\Local\Temp\sd1o.o \
   dist/default/production\Trabalho1.X.production.o 
 
 Object code version is 3.11
@@ -31,7 +31,7 @@ Machine type is 18F4520
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\caduc\AppData\Local\Temp\s384.o
+C:\Users\caduc\AppData\Local\Temp\sd1o.o
                 stack                               3BC      3BC      244      3BC       2
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
@@ -223,7 +223,6 @@ _OS_config                     text5        001476
 _OS_create_task                text9        00123C
 _OS_start                      text1        001588
 _PORTDbits                     (abs)        000F83
-_READY_QUEUE                   bssBIGRAM    000112
 _RESTORE_CONTEXT               text17       0005C0
 _ROUND_ROBIN_sched             text19       000C54
 _STATUS                        (abs)        000FD8
@@ -554,6 +553,7 @@ _config_flywheel               text3        00159A
 _config_timer0                 text2        00155A
 _config_user_tasks             text6        0013F6
 _delay_release                 text30       000EB6
+_f_aptos                       bssBIGRAM    000112
 _idle                          text11       0014DE
 _index                         bssCOMRAM    000007
 _main                          text0        00143A
@@ -963,7 +963,6 @@ Total ram usage:        0 bytes
 		_OS_create_task
 		_delay_release
 		_ISR_timer
-		_PRIORITY_sched
 		_sort_ready_queue
 		_OS_delay
 		_get_task_id
@@ -1171,7 +1170,7 @@ Total ram usage:        0 bytes
 		None
  Auto vars:     Size  Location     Type
   stack_size      2  [STACK] unsigned int 
-  task_running    2  [STACK] unsigned int 
+  running_task    2  [STACK] unsigned int 
  Return value:  Size  Location     Type
                   1  [STACK] void 
  Registers used:
@@ -1320,7 +1319,6 @@ Total ram usage:        0 bytes
 		_ROUND_ROBIN_sched
 		_sem_wait
 		_sem_post
-		_PRIORITY_sched
  This function uses a reentrant model
 
 

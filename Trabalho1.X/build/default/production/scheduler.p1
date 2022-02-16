@@ -3,7 +3,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./scheduler.h: 8: u_int ROUND_ROBIN_sched();
 [v _ROUND_ROBIN_sched `(ui ~T0 @X0 0 e? ]
 "22 scheduler.c
-[; ;scheduler.c: 22:    u_int task_selected = READY_QUEUE.task_running, try = 0;
+[; ;scheduler.c: 22:    u_int task_selected = f_aptos.running_task, try = 0;
 [c E2531 0 1 2 3 .. ]
 [n E2531 . READY RUNNING WAITING WAITING_SEM  ]
 "30 ./types.h
@@ -18,10 +18,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "47
 [; ;./types.h: 47: typedef struct r_queue {
 [s S283 `S282 -> 6 `i `ui 1 `ui 1 ]
-[n S283 r_queue QUEUE task_running nr_of_tasks ]
+[n S283 r_queue QUEUE running_task nr_of_tasks ]
 "12 ./kernel.h
-[; ;./kernel.h: 12: extern r_queue_t READY_QUEUE;
-[v _READY_QUEUE `S283 ~T0 @X0 0 e ]
+[; ;./kernel.h: 12: extern faptos_t f_aptos;
+[v _f_aptos `S283 ~T0 @X0 0 e ]
 "16
 [; ;./kernel.h: 16: void idle();
 [v _idle `(v ~T0 @X0 0 e? ]
@@ -474,9 +474,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _ROUND_ROBIN_sched ]
 [f ]
 "22
-[; ;scheduler.c: 22:    u_int task_selected = READY_QUEUE.task_running, try = 0;
+[; ;scheduler.c: 22:    u_int task_selected = f_aptos.running_task, try = 0;
 [v _task_selected `ui ~T0 @X0 1 a ]
-[e = _task_selected . _READY_QUEUE 1 ]
+[e = _task_selected . _f_aptos 1 ]
 [v _try `ui ~T0 @X0 1 a ]
 [e = _try -> -> 0 `i `ui ]
 "24
@@ -484,11 +484,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 288 ]
 {
 "25
-[; ;scheduler.c: 25:       task_selected = (task_selected+1) % READY_QUEUE.nr_of_tasks;
-[e = _task_selected % + _task_selected -> -> 1 `i `ui . _READY_QUEUE 2 ]
+[; ;scheduler.c: 25:       task_selected = (task_selected+1) % f_aptos.nr_of_tasks;
+[e = _task_selected % + _task_selected -> -> 1 `i `ui . _f_aptos 2 ]
 "26
-[; ;scheduler.c: 26:       if (try == READY_QUEUE.nr_of_tasks) {
-[e $ ! == _try . _READY_QUEUE 2 289  ]
+[; ;scheduler.c: 26:       if (try == f_aptos.nr_of_tasks) {
+[e $ ! == _try . _f_aptos 2 289  ]
 {
 "27
 [; ;scheduler.c: 27:          return 0;
@@ -502,9 +502,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 29:       try++;
 [e ++ _try -> -> 1 `i `ui ]
 "30
-[; ;scheduler.c: 30:    } while (READY_QUEUE.QUEUE[task_selected].task_state != READY ||
+[; ;scheduler.c: 30:    } while (f_aptos.QUEUE[task_selected].task_state != READY ||
 }
-[e $ || != -> . *U + &U . _READY_QUEUE 0 * -> _task_selected `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 `ui -> . `E2531 0 `ui == . *U + &U . _READY_QUEUE 0 * -> _task_selected `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 4 -> &U _idle `*F2584 288  ]
+[e $ || != -> . *U + &U . _f_aptos 0 * -> _task_selected `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 `ui -> . `E2531 0 `ui == . *U + &U . _f_aptos 0 * -> _task_selected `ux -> -> # *U &U . _f_aptos 0 `ui `ux 4 -> &U _idle `*F2584 288  ]
 [e :U 287 ]
 "33
 [; ;scheduler.c: 33:    return task_selected;
@@ -522,123 +522,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _PRIORITY_sched ]
 [f ]
-"38
-[; ;scheduler.c: 38:     for(u_int tentativa = 1; tentativa < READY_QUEUE.nr_of_tasks; tentativa++){
-{
-[v _tentativa `ui ~T0 @X0 1 a ]
-[e = _tentativa -> -> 1 `i `ui ]
-[e $U 294  ]
-[e :U 291 ]
-{
 "39
-[; ;scheduler.c: 39:         possivel = (possivel+1)%(READY_QUEUE.nr_of_tasks);
-[e = _possivel % + _possivel -> -> 1 `i `ui . _READY_QUEUE 2 ]
-"40
-[; ;scheduler.c: 40:         if (READY_QUEUE.QUEUE[possivel].task_state == READY){
-[e $ ! == -> . *U + &U . _READY_QUEUE 0 * -> _possivel `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 `ui -> . `E2531 0 `ui 295  ]
-{
-"41
-[; ;scheduler.c: 41:             if (READY_QUEUE.QUEUE[possivel].task_prior > READY_QUEUE.QUEUE[prox_tarefa].task_prior)
-[e $ ! > . *U + &U . _READY_QUEUE 0 * -> _possivel `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 1 . *U + &U . _READY_QUEUE 0 * -> _prox_tarefa `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 1 296  ]
-"42
-[; ;scheduler.c: 42:                 prox_tarefa = possivel;
-[e = _prox_tarefa _possivel ]
-[e $U 297  ]
-"43
-[; ;scheduler.c: 43:             else if (READY_QUEUE.QUEUE[possivel].task_prior == READY_QUEUE.QUEUE[prox_tarefa].task_prior && prox_tarefa == READY_QUEUE.task_running)
-[e :U 296 ]
-[e $ ! && == . *U + &U . _READY_QUEUE 0 * -> _possivel `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 1 . *U + &U . _READY_QUEUE 0 * -> _prox_tarefa `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 1 == _prox_tarefa . _READY_QUEUE 1 298  ]
-"44
-[; ;scheduler.c: 44:                 prox_tarefa = possivel;
-[e = _prox_tarefa _possivel ]
-[e :U 298 ]
-[e :U 297 ]
-"49
-[; ;scheduler.c: 49:         }
-}
-[e :U 295 ]
-"51
-[; ;scheduler.c: 51:     }
-}
-[e ++ _tentativa -> -> 1 `i `ui ]
-[e :U 294 ]
-[e $ < _tentativa . _READY_QUEUE 2 291  ]
-[e :U 292 ]
-}
-"53
-[; ;scheduler.c: 53:         return prox_tarefa;
-[e ) _prox_tarefa ]
-[e $UE 290  ]
-"56
-[; ;scheduler.c: 56: }
+[; ;scheduler.c: 39: }
 [e :UE 290 ]
 }
-"58
-[; ;scheduler.c: 58: void sort_ready_queue()
+"41
+[; ;scheduler.c: 41: void sort_ready_queue()
 [v _sort_ready_queue `(v ~T0 @X0 1 ef ]
-"59
-[; ;scheduler.c: 59: {
+"42
+[; ;scheduler.c: 42: {
 {
 [e :U _sort_ready_queue ]
 [f ]
-"60
-[; ;scheduler.c: 60:    prox_tarefa = READY_QUEUE.task_running;
-[e = _prox_tarefa . _READY_QUEUE 1 ]
-"61
-[; ;scheduler.c: 61:    u_int i, j;
+"43
+[; ;scheduler.c: 43:    prox_tarefa = f_aptos.running_task;
+[e = _prox_tarefa . _f_aptos 1 ]
+"44
+[; ;scheduler.c: 44:    u_int i, j;
 [v _i `ui ~T0 @X0 1 a ]
 [v _j `ui ~T0 @X0 1 a ]
-"62
-[; ;scheduler.c: 62:    tcb_t aux;
+"45
+[; ;scheduler.c: 45:    tcb_t aux;
 [v _aux `S282 ~T0 @X0 1 a ]
-"64
-[; ;scheduler.c: 64:    for (i = 1; i < READY_QUEUE.nr_of_tasks; i++) {
+"47
+[; ;scheduler.c: 47:    for (i = 1; i < f_aptos.nr_of_tasks; i++) {
 {
 [e = _i -> -> 1 `i `ui ]
-[e $U 303  ]
-[e :U 300 ]
+[e $U 295  ]
+[e :U 292 ]
 {
-"65
-[; ;scheduler.c: 65:       for (j = 1; j < READY_QUEUE.nr_of_tasks-1; j++) {
+"48
+[; ;scheduler.c: 48:       for (j = 1; j < f_aptos.nr_of_tasks-1; j++) {
 {
 [e = _j -> -> 1 `i `ui ]
-[e $U 307  ]
-[e :U 304 ]
+[e $U 299  ]
+[e :U 296 ]
 {
-"66
-[; ;scheduler.c: 66:          if (READY_QUEUE.QUEUE[j].task_prior < READY_QUEUE.QUEUE[j+1].task_prior) {
-[e $ ! < . *U + &U . _READY_QUEUE 0 * -> _j `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 1 . *U + &U . _READY_QUEUE 0 * -> + _j -> -> 1 `i `ui `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 1 308  ]
+"49
+[; ;scheduler.c: 49:          if (f_aptos.QUEUE[j].task_prior < f_aptos.QUEUE[j+1].task_prior) {
+[e $ ! < . *U + &U . _f_aptos 0 * -> _j `ux -> -> # *U &U . _f_aptos 0 `ui `ux 1 . *U + &U . _f_aptos 0 * -> + _j -> -> 1 `i `ui `ux -> -> # *U &U . _f_aptos 0 `ui `ux 1 300  ]
 {
-"67
-[; ;scheduler.c: 67:             aux = READY_QUEUE.QUEUE[j+1];
-[e = _aux *U + &U . _READY_QUEUE 0 * -> + _j -> -> 1 `i `ui `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux ]
-"68
-[; ;scheduler.c: 68:             READY_QUEUE.QUEUE[j+1] = READY_QUEUE.QUEUE[j];
-[e = *U + &U . _READY_QUEUE 0 * -> + _j -> -> 1 `i `ui `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux *U + &U . _READY_QUEUE 0 * -> _j `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux ]
-"69
-[; ;scheduler.c: 69:             READY_QUEUE.QUEUE[j] = aux;
-[e = *U + &U . _READY_QUEUE 0 * -> _j `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux _aux ]
-"70
-[; ;scheduler.c: 70:          }
+"50
+[; ;scheduler.c: 50:             aux = f_aptos.QUEUE[j+1];
+[e = _aux *U + &U . _f_aptos 0 * -> + _j -> -> 1 `i `ui `ux -> -> # *U &U . _f_aptos 0 `ui `ux ]
+"51
+[; ;scheduler.c: 51:             f_aptos.QUEUE[j+1] = f_aptos.QUEUE[j];
+[e = *U + &U . _f_aptos 0 * -> + _j -> -> 1 `i `ui `ux -> -> # *U &U . _f_aptos 0 `ui `ux *U + &U . _f_aptos 0 * -> _j `ux -> -> # *U &U . _f_aptos 0 `ui `ux ]
+"52
+[; ;scheduler.c: 52:             f_aptos.QUEUE[j] = aux;
+[e = *U + &U . _f_aptos 0 * -> _j `ux -> -> # *U &U . _f_aptos 0 `ui `ux _aux ]
+"53
+[; ;scheduler.c: 53:          }
 }
-[e :U 308 ]
-"71
-[; ;scheduler.c: 71:       }
+[e :U 300 ]
+"54
+[; ;scheduler.c: 54:       }
 }
 [e ++ _j -> -> 1 `i `ui ]
-[e :U 307 ]
-[e $ < _j - . _READY_QUEUE 2 -> -> 1 `i `ui 304  ]
-[e :U 305 ]
+[e :U 299 ]
+[e $ < _j - . _f_aptos 2 -> -> 1 `i `ui 296  ]
+[e :U 297 ]
 }
-"72
-[; ;scheduler.c: 72:    }
+"55
+[; ;scheduler.c: 55:    }
 }
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 303 ]
-[e $ < _i . _READY_QUEUE 2 300  ]
-[e :U 301 ]
+[e :U 295 ]
+[e $ < _i . _f_aptos 2 292  ]
+[e :U 293 ]
 }
-"73
-[; ;scheduler.c: 73: }
-[e :UE 299 ]
+"56
+[; ;scheduler.c: 56: }
+[e :UE 291 ]
 }

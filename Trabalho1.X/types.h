@@ -46,9 +46,9 @@ typedef struct tcb {
 
 typedef struct r_queue {
     tcb_t QUEUE[MAX_TASKS+1]; // Tarefas de usuário mais tarefa idle
-    u_int task_running;
+    u_int running_task;
     u_int nr_of_tasks;
-} r_queue_t;
+} faptos_t;
 
 #endif	/* TYPES_H */
 

@@ -27,7 +27,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
 "17 semaphore.c
-[; ;semaphore.c: 17:         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = READY_QUEUE.task_running;
+[; ;semaphore.c: 17:         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = f_aptos.running_task;
 [c E2531 0 1 2 3 .. ]
 [n E2531 . READY RUNNING WAITING WAITING_SEM  ]
 "30 ./types.h
@@ -42,10 +42,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "47
 [; ;./types.h: 47: typedef struct r_queue {
 [s S283 `S282 -> 6 `i `ui 1 `ui 1 ]
-[n S283 r_queue QUEUE task_running nr_of_tasks ]
+[n S283 r_queue QUEUE running_task nr_of_tasks ]
 "12 ./kernel.h
-[; ;./kernel.h: 12: extern r_queue_t READY_QUEUE;
-[v _READY_QUEUE `S283 ~T0 @X0 0 e ]
+[; ;./kernel.h: 12: extern faptos_t f_aptos;
+[v _f_aptos `S283 ~T0 @X0 0 e ]
 "6462 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6462: extern volatile unsigned char WREG __attribute__((address(0xFE8)));
 [v _WREG `Vuc ~T0 @X0 0 e@4072 ]
@@ -61,8 +61,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6904
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6904: extern volatile unsigned char STKPTR __attribute__((address(0xFFC)));
 [v _STKPTR `Vuc ~T0 @X0 0 e@4092 ]
-"102 ./kernel.h
-[; ;./kernel.h: 102: void RESTORE_CONTEXT();
+"56 ./kernel.h
+[; ;./kernel.h: 56: void RESTORE_CONTEXT();
 [v _RESTORE_CONTEXT `(v ~T0 @X0 0 e? ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
@@ -523,8 +523,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! < . *U _s 0 -> 0 `i 288  ]
 {
 "17
-[; ;semaphore.c: 17:         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = READY_QUEUE.task_running;
-[e = *U + &U . . *U _s 1 0 * -> . . *U _s 1 2 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux . _READY_QUEUE 1 ]
+[; ;semaphore.c: 17:         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = f_aptos.running_task;
+[e = *U + &U . . *U _s 1 0 * -> . . *U _s 1 2 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux . _f_aptos 1 ]
 "18
 [; ;semaphore.c: 18:         s->s_queue.queue_wait_pos = (s->s_queue.queue_wait_pos + 1) % 5;
 [e = . . *U _s 1 2 % + . . *U _s 1 2 -> -> 1 `i `ui -> -> 5 `i `ui ]
@@ -532,21 +532,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;semaphore.c: 19:         s->s_queue.queue_size++;
 [e ++ . . *U _s 1 1 -> -> 1 `i `ui ]
 "20
-[; ;semaphore.c: 20:         do{ (INTCONbits.GIE = 0); if(READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size > 0){ index=0; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_state = WAITING_SEM; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.WORK_reg = WREG; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.BSR_reg = BSR; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STATUS_reg = STATUS; READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size = 0; do{ READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
+[; ;semaphore.c: 20:         do{ (INTCONbits.GIE = 0); if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING_SEM; f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.QUEUE[f_aptos.running_task].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 291 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[e $ ! > . . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 3 4 -> -> 0 `i `ui 292  ]
+[e $ ! > . . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 4 -> -> 0 `i `ui 292  ]
 {
 [e = _index -> 0 `i ]
-[e = . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 . `E2531 3 ]
-[e = . . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 3 1 -> _WREG `ui ]
-[e = . . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 3 2 -> _BSR `ui ]
-[e = . . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 3 0 -> _STATUS `ui ]
-[e = . . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 3 4 -> -> 0 `i `ui ]
+[e = . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 3 ]
+[e = . . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 1 -> _WREG `ui ]
+[e = . . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 2 -> _BSR `ui ]
+[e = . . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 0 -> _STATUS `ui ]
+[e = . . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 4 -> -> 0 `i `ui ]
 [e :U 295 ]
 {
-[e = *U + &U . . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 3 3 * -> -> _index `ui `ux -> -> # *U &U . . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 3 3 `ui `ux _TOS ]
+[e = *U + &U . . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 3 * -> -> _index `ui `ux -> -> # *U &U . . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 3 `ui `ux _TOS ]
 [e ++ _index -> 1 `i ]
 [; <" POP ;# ">
 }
@@ -556,7 +556,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 296  ]
 [e :U 292 ]
 {
-[e = . *U + &U . _READY_QUEUE 0 * -> . _READY_QUEUE 1 `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 . `E2531 3 ]
+[e = . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 3 ]
 }
 [e :U 296 ]
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
@@ -594,8 +594,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! <= . *U _s 0 -> 0 `i 298  ]
 {
 "31
-[; ;semaphore.c: 31:         READY_QUEUE.QUEUE[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
-[e = . *U + &U . _READY_QUEUE 0 * -> *U + &U . . *U _s 1 0 * -> . . *U _s 1 3 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux `ux -> -> # *U &U . _READY_QUEUE 0 `ui `ux 2 . `E2531 0 ]
+[; ;semaphore.c: 31:         f_aptos.QUEUE[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
+[e = . *U + &U . _f_aptos 0 * -> *U + &U . . *U _s 1 0 * -> . . *U _s 1 3 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 0 ]
 "32
 [; ;semaphore.c: 32:         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;
 [e = . . *U _s 1 3 % + . . *U _s 1 3 -> -> 1 `i `ui -> -> 5 `i `ui ]

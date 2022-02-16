@@ -201,7 +201,6 @@ __ptext2 155A 0 CODE 0
 __Htext4 0 0 ABS 0
 __Ltext4 0 0 ABS 0
 __ptext3 159A 0 CODE 0
-_READY_QUEUE 112 0 BIGRAM 1
 __Htext5 0 0 ABS 0
 __size_of_config_ad_conversor 0 0 ABS 0
 __Ltext5 0 0 ABS 0
@@ -270,6 +269,7 @@ __ramtop 600 0 RAM 0
 __mediumconst 0 0 MEDIUMCONST 0
 __end_of_thermostat_sensing_1 14DE 0 CODE 0
 __size_of_main 0 0 ABS 0
+_f_aptos 112 0 BIGRAM 1
 __Hconst 0 0 CONST 0
 __Lconst 0 0 CONST 0
 __Hspace_4 60000E 0 ABS 0
@@ -418,10 +418,10 @@ bssBIGRAM 112 3BB BIGRAM 112 1
 %locals
 dist/default/production\Trabalho1.X.production.o
 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-C:\Users\caduc\AppData\Local\Temp\s384.s
-3068 13AC 0 CODE 0
-3070 13AC 0 CODE 0
-3073 13AC 0 CODE 0
+C:\Users\caduc\AppData\Local\Temp\sd1o.s
+3067 13AC 0 CODE 0
+3069 13AC 0 CODE 0
+3072 13AC 0 CODE 0
 3124 13AC 0 CODE 0
 3125 13AE 0 CODE 0
 3126 13B0 0 CODE 0
@@ -737,8 +737,8 @@ user_tasks_2.c
 36 134C 0 CODE 0
 37 1350 0 CODE 0
 39 1350 0 CODE 0
-C:\Users\caduc\AppData\Local\Temp\s384.s
-8388 8 0 CODE 0
+C:\Users\caduc\AppData\Local\Temp\sd1o.s
+8386 8 0 CODE 0
 kernel.c
 95 8 0 CODE 0
 kernel.c

@@ -9,7 +9,7 @@
 #include "scheduler.h"
 
 // Variáveis Globais
-extern r_queue_t READY_QUEUE; 
+extern faptos_t f_aptos; 
 int index;
 
 // Tarefa idle
@@ -34,96 +34,26 @@ u_int delay_release();
 #define SAVE_CONTEXT(state)\
 do{\
     di();\
-    if(READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size > 0){\
+    if(f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size > 0){\
         index=0;\
-        READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_state = state;\
-        READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.WORK_reg = WREG;\
-        READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.BSR_reg = BSR;\
-        READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STATUS_reg = STATUS;\
-        READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size = 0;\
+        f_aptos.QUEUE[f_aptos.running_task].task_state = state;\
+        f_aptos.QUEUE[f_aptos.running_task].task_context.WORK_reg = WREG;\
+        f_aptos.QUEUE[f_aptos.running_task].task_context.BSR_reg = BSR;\
+        f_aptos.QUEUE[f_aptos.running_task].task_context.STATUS_reg = STATUS;\
+        f_aptos.QUEUE[f_aptos.running_task].task_context.stack_size = 0;\
         do{\
-            READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STACK_regs[index] = TOS;\
+            f_aptos.QUEUE[f_aptos.running_task].task_context.STACK_regs[index] = TOS;\
             index++;\
             __asm("POP");\
         } while(STKPTR);\
     }\
     else{\
-        READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_state = state;\
+        f_aptos.QUEUE[f_aptos.running_task].task_state = state;\
     }\
     ei();\
 }while(0);
 
-
-//#define SAVE_CONTEXT(state) \
-//do{ \
-//    di(); \
-//    u_int task_running = READY_QUEUE.task_running; \
-//    if(READY_QUEUE.QUEUE[task_running].task_state == RUNNING) { \
-//        READY_QUEUE.QUEUE[task_running].task_context.BSR_reg = BSR; \
-//        READY_QUEUE.QUEUE[task_running].task_context.STATUS_reg = STATUS; \
-//        READY_QUEUE.QUEUE[task_running].task_context.WORK_reg = WREG; \
-//        u_int stack_size = 0; \
-//        do { \
-//            READY_QUEUE.QUEUE[task_running].task_context.STACK_regs[stack_size] = TOS; \
-//            stack_size++; \
-//            asm("POP"); \
-//        } while (STKPTR); \
-//        READY_QUEUE.QUEUE[task_running].task_context.stack_size = stack_size; \
-//        READY_QUEUE.QUEUE[task_running].task_state = state; \
-//    } \
-//    ei(); \
-//} while(0); \
-
-
-
-//#define RESTORE_CONTEXT() \
-//do {\
-//    di();\
-//    READY_QUEUE.task_running = scheduler();\
-//    if(READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size==0){\
-//        TOS = READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_func;\
-//    }\
-//    else{\
-//        READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_state = RUNNING;\
-//        WREG = READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.WORK_reg;\
-//        BSR = READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.BSR_reg;\
-//        STATUS = READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STATUS_reg;\
-//        index = READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.stack_size-1;\
-//        STKPTR = 0;\
-//        while(index){\
-//            __asm("PUSH");\
-//            TOS = READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_context.STACK_regs[index];\
-//            index --;\
-//        }\
-//    }\
-//    ei();\
-//} while (0)\
-
 void RESTORE_CONTEXT();
-//#define RESTORE_CONTEXT() \
-//do{ \
-//    di(); \
-//    READY_QUEUE.task_running = scheduler(); \
-//    u_int task_running = READY_QUEUE.task_running; \
-//    READY_QUEUE.QUEUE[task_running].task_state = RUNNING; \
-//    STKPTR = 0; \
-//    if(READY_QUEUE.QUEUE[task_running].task_context.stack_size > 0) { \
-//        BSR = READY_QUEUE.QUEUE[task_running].task_context.BSR_reg; \
-//        STATUS = READY_QUEUE.QUEUE[task_running].task_context.STATUS_reg; \
-//        WREG = READY_QUEUE.QUEUE[task_running].task_context.WORK_reg; \
-//        u_int stack_size = READY_QUEUE.QUEUE[task_running].task_context.stack_size; \
-//        while (stack_size) { \
-//            asm("PUSH"); \
-//            TOS = READY_QUEUE.QUEUE[task_running].task_context.STACK_regs[stack_size-1]; \
-//            stack_size--; \
-//        } \
-//    } \
-//    else { \
-//        asm("PUSH"); \
-//        TOS = READY_QUEUE.QUEUE[task_running].task_func; \
-//    } \
-//    ei(); \
-//} while(0);\
 
 #endif	/* KERNEL_H */
 

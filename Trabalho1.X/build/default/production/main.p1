@@ -474,11 +474,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 21:     {
 {
 "22
-[; ;main.c: 22:       OS_create_task(4, thermostat_sensing_1);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _thermostat_sensing_1 `*F2779 ]
+[; ;main.c: 22:       OS_create_task(2, thermostat_sensing_1);
+[e ( _OS_create_task (2 , -> -> 2 `i `ui -> &U _thermostat_sensing_1 `*F2779 ]
 "23
-[; ;main.c: 23:       OS_create_task(4, ac_controller_1);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller_1 `*F2781 ]
+[; ;main.c: 23:       OS_create_task(3, ac_controller_1);
+[e ( _OS_create_task (2 , -> -> 3 `i `ui -> &U _ac_controller_1 `*F2781 ]
 "24
 [; ;main.c: 24:     }else if(2 == 2)
 }
@@ -489,11 +489,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 25:     {
 {
 "26
-[; ;main.c: 26:       OS_create_task(4, thermostat_sensing_2);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _thermostat_sensing_2 `*F2783 ]
+[; ;main.c: 26:       OS_create_task(2, thermostat_sensing_2);
+[e ( _OS_create_task (2 , -> -> 2 `i `ui -> &U _thermostat_sensing_2 `*F2783 ]
 "27
-[; ;main.c: 27:       OS_create_task(4, ac_controller_2);
-[e ( _OS_create_task (2 , -> -> 4 `i `ui -> &U _ac_controller_2 `*F2785 ]
+[; ;main.c: 27:       OS_create_task(3, ac_controller_2);
+[e ( _OS_create_task (2 , -> -> 3 `i `ui -> &U _ac_controller_2 `*F2785 ]
 "28
 [; ;main.c: 28:     }
 }

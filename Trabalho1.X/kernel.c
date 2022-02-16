@@ -4,7 +4,7 @@
 #include "user_config.h"
 
 // Variáveis Globais
-r_queue_t READY_QUEUE;
+faptos_t f_aptos;
 u_int rr_quantum = RR_QUANTUM;
 
 // Tarefa idle
@@ -18,8 +18,8 @@ void idle(){
 
 void OS_config(){
     // Configura alguns registradores e variáveis do SO
-    READY_QUEUE.nr_of_tasks = 0;
-    READY_QUEUE.task_running = 0;
+    f_aptos.nr_of_tasks = 0;
+    f_aptos.running_task = 0;
     
     // cria a tarefa idle
     OS_create_task(MIN_PRIOR, idle);
@@ -49,9 +49,9 @@ void OS_start(){
 void OS_delay(u_int time){
     // Faz com que a tarefa aguarde por um tempo (sleep)
     di();
-    //READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_delay_time = time;
+    //READY_QUEUE.QUEUE[READY_QUEUE.running_task].task_delay_time = time;
     SAVE_CONTEXT(WAITING);
-    READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_delay_time = time;
+    f_aptos.QUEUE[f_aptos.running_task].task_delay_time = time;
     RESTORE_CONTEXT();
     
     ei();
@@ -69,22 +69,22 @@ void OS_create_task(u_int prior, task_ptr func){
     
     
     // Inclui nova tarefa na fila de aptos
-    READY_QUEUE.QUEUE[READY_QUEUE.nr_of_tasks] = new_task;
-    READY_QUEUE.nr_of_tasks++;
+    f_aptos.QUEUE[f_aptos.nr_of_tasks] = new_task;
+    f_aptos.nr_of_tasks++;
 }
 
 u_int get_task_id(){
     // Retorna o identificados da tarefa que está em execução
-    return READY_QUEUE.QUEUE[READY_QUEUE.task_running].task_id;
+    return f_aptos.QUEUE[f_aptos.running_task].task_id;
 }
 
 u_int delay_release(){
     u_int i, task_released = FALSE;
-    for(i = 0; i < READY_QUEUE.nr_of_tasks; i++){
-        if(READY_QUEUE.QUEUE[i].task_state == WAITING) {
-            READY_QUEUE.QUEUE[i].task_delay_time--;
-            if(READY_QUEUE.QUEUE[i].task_delay_time == 0) {
-                READY_QUEUE.QUEUE[i].task_state = READY;
+    for(i = 0; i < f_aptos.nr_of_tasks; i++){
+        if(f_aptos.QUEUE[i].task_state == WAITING) {
+            f_aptos.QUEUE[i].task_delay_time--;
+            if(f_aptos.QUEUE[i].task_delay_time == 0) {
+                f_aptos.QUEUE[i].task_state = READY;
                 task_released = TRUE;
             }
         }
@@ -125,24 +125,24 @@ void __interrupt() ISR_timer()
 void RESTORE_CONTEXT(){
     do{ 
         di(); 
-        READY_QUEUE.task_running = scheduler(); 
-        u_int task_running = READY_QUEUE.task_running; 
-        READY_QUEUE.QUEUE[task_running].task_state = RUNNING; 
+        f_aptos.running_task = scheduler(); 
+        u_int running_task = f_aptos.running_task; 
+        f_aptos.QUEUE[running_task].task_state = RUNNING; 
         STKPTR = 0; 
-        if(READY_QUEUE.QUEUE[task_running].task_context.stack_size > 0) { 
-            BSR = READY_QUEUE.QUEUE[task_running].task_context.BSR_reg; 
-            STATUS = READY_QUEUE.QUEUE[task_running].task_context.STATUS_reg; 
-            WREG = READY_QUEUE.QUEUE[task_running].task_context.WORK_reg; 
-            u_int stack_size = READY_QUEUE.QUEUE[task_running].task_context.stack_size; 
+        if(f_aptos.QUEUE[running_task].task_context.stack_size > 0) { 
+            BSR = f_aptos.QUEUE[running_task].task_context.BSR_reg; 
+            STATUS = f_aptos.QUEUE[running_task].task_context.STATUS_reg; 
+            WREG = f_aptos.QUEUE[running_task].task_context.WORK_reg; 
+            u_int stack_size = f_aptos.QUEUE[running_task].task_context.stack_size; 
             while (stack_size) { 
                 asm("PUSH"); 
-                TOS = READY_QUEUE.QUEUE[task_running].task_context.STACK_regs[stack_size-1]; 
+                TOS = f_aptos.QUEUE[running_task].task_context.STACK_regs[stack_size-1]; 
                 stack_size--; 
             } 
         } 
         else { 
             asm("PUSH"); 
-            TOS = READY_QUEUE.QUEUE[task_running].task_func; 
+            TOS = f_aptos.QUEUE[running_task].task_func; 
         } 
     ei(); 
     } while(0); 

@@ -4671,9 +4671,9 @@ typedef struct tcb {
 
 typedef struct r_queue {
     tcb_t QUEUE[5 +1];
-    u_int task_running;
+    u_int running_task;
     u_int nr_of_tasks;
-} r_queue_t;
+} faptos_t;
 # 8 "./kernel.h" 2
 
 # 1 "./scheduler.h" 1
@@ -4690,7 +4690,7 @@ u_int PRIORITY_sched();
 
 
 
-extern r_queue_t READY_QUEUE;
+extern faptos_t f_aptos;
 int index;
 
 
@@ -4709,7 +4709,7 @@ u_int get_task_id();
 
 
 u_int delay_release();
-# 102 "./kernel.h"
+# 56 "./kernel.h"
 void RESTORE_CONTEXT();
 # 8 "main.c" 2
 
@@ -4804,12 +4804,12 @@ int main(void) {
 
     if(2 == 1)
     {
-      OS_create_task(4, thermostat_sensing_1);
-      OS_create_task(4, ac_controller_1);
+      OS_create_task(2, thermostat_sensing_1);
+      OS_create_task(3, ac_controller_1);
     }else if(2 == 2)
     {
-      OS_create_task(4, thermostat_sensing_2);
-      OS_create_task(4, ac_controller_2);
+      OS_create_task(2, thermostat_sensing_2);
+      OS_create_task(3, ac_controller_2);
     }
 
 

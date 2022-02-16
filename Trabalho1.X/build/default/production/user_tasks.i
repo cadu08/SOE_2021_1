@@ -4558,9 +4558,9 @@ typedef struct tcb {
 
 typedef struct r_queue {
     tcb_t QUEUE[5 +1];
-    u_int task_running;
+    u_int running_task;
     u_int nr_of_tasks;
-} r_queue_t;
+} faptos_t;
 # 13 "./user_tasks.h" 2
 
 # 1 "./kernel.h" 1
@@ -4586,7 +4586,7 @@ u_int PRIORITY_sched();
 
 
 
-extern r_queue_t READY_QUEUE;
+extern faptos_t f_aptos;
 int index;
 
 
@@ -4605,7 +4605,7 @@ u_int get_task_id();
 
 
 u_int delay_release();
-# 102 "./kernel.h"
+# 56 "./kernel.h"
 void RESTORE_CONTEXT();
 # 14 "./user_tasks.h" 2
 
