@@ -4563,7 +4563,7 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t tasks[5 +1];
+    tcb_t tasks[3 +1];
     u_int running_task;
     u_int fila_aptos_size;
 } faptos_t;
@@ -4573,7 +4573,7 @@ typedef struct r_queue {
 
 u_int scheduler();
 u_int round_robin_scheduler();
-u_int PRIORITY_sched();
+u_int priority_scheduler();
 # 5 "scheduler.c" 2
 
 # 1 "./kernel.h" 1
@@ -4589,8 +4589,8 @@ void __attribute__((picinterrupt(("")))) ISR_timer();
 
 
 
-void OS_config();
-void OS_start();
+void config_os();
+void start_os();
 void OS_delay(u_int time);
 void OS_create_task(u_int prior, task_ptr func);
 u_int get_task_id();
@@ -4627,32 +4627,24 @@ u_int round_robin_scheduler()
    return next_task;
 }
 
-u_int PRIORITY_sched()
+u_int priority_scheduler()
 {
-   u_int next_task = f_aptos.running_task;
-   u_int max_priority = f_aptos.tasks[(next_task+1) % f_aptos.fila_aptos_size].task_priority;
-   u_int initial_value_max_priority = max_priority;
-   u_int initial_position_max_priority = (next_task+1) % f_aptos.fila_aptos_size;
-   int i = 0;
+   u_int next_task = f_aptos.running_task, trial = 0;
+   u_int major_priority_task = next_task;
 
-   for(i = 0; i < f_aptos.fila_aptos_size; i++)
-   {
-      if(i != f_aptos.running_task)
-      {
+   do {
+      next_task = (next_task+1) % f_aptos.fila_aptos_size;
 
-         if(f_aptos.tasks[i].task_priority < max_priority && f_aptos.tasks[i].task_state == READY)
-         {
-            max_priority = f_aptos.tasks[i].task_priority;
-            next_task = i;
-         }
+      if(f_aptos.tasks[next_task].task_priority <
+            f_aptos.tasks[major_priority_task].task_priority){
+         major_priority_task = next_task;
       }
+   } while (f_aptos.fila_aptos_size != trial ||
+           f_aptos.tasks[next_task].task_func == idle);
+
+   if (f_aptos.tasks[major_priority_task].task_state != READY){
+      return 0;
    }
 
-
-   if(max_priority == initial_value_max_priority && f_aptos.tasks[initial_position_max_priority].task_state == READY)
-   {
-     max_priority = initial_value_max_priority;
-     next_task = initial_position_max_priority;
-   }
-   return next_task;
+   return major_priority_task;
 }

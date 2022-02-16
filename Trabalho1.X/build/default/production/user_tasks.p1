@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "12 ./semaphore.h
 [; ;./semaphore.h: 12: typedef struct sem_queue {
-[s S284 `ui -> 5 `i `ui 1 `ui 1 `ui 1 ]
+[s S284 `ui -> 3 `i `ui 1 `ui 1 `ui 1 ]
 [n S284 sem_queue TASKS queue_size queue_wait_pos queue_post_pos ]
 "18
 [; ;./semaphore.h: 18: typedef struct semaphore{
@@ -14,9 +14,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;./pipe.h: 21: void create_pipe(pipe_t *pipe);
 [v _create_pipe `(v ~T0 @X0 0 ef1`*S286 ]
-"24 ./semaphore.h
-[; ;./semaphore.h: 24: void sem_init(semaphore_t* s, int val);
-[v _sem_init `(v ~T0 @X0 0 ef2`*S285`i ]
 "9 ./thermostat.h
 [; ;./thermostat.h: 9: int thermostat_value();
 [v _thermostat_value `(i ~T0 @X0 0 e? ]
@@ -32,6 +29,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7
 [; ;./ac_controller.h: 7: void turn_on_ac();
 [v _turn_on_ac `(v ~T0 @X0 0 e? ]
+"277 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 277:     struct {
+[s S17 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S17 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"287
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 287:     struct {
+[s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S18 . INT0 INT1 INT2 CCP2 KBI0 KBI1 KBI2 KBI3 ]
+"297
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 297:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . AN12 AN10 AN8 AN9 AN11 PGM PGC PGD ]
+"307
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 307:     struct {
+[s S20 :1 `uc 1 ]
+[n S20 . FLT0 ]
+"310
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 310:     struct {
+[s S21 :3 `uc 1 :1 `uc 1 ]
+[n S21 . . CCP2_PA2 ]
+"276
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 276: typedef union {
+[u S16 `S17 1 `S18 1 `S19 1 `S20 1 `S21 1 ]
+[n S16 . . . . . . ]
+"315
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 315: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
+[v _PORTBbits `VS16 ~T0 @X0 0 e@3969 ]
+"1319
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1319:     struct {
+[s S54 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S54 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"1329
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1329:     struct {
+[s S55 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S55 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
+"1318
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1318: typedef union {
+[u S53 `S54 1 `S55 1 ]
+[n S53 . . . ]
+"1340
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1340: extern volatile LATDbits_t LATDbits __attribute__((address(0xF8C)));
+[v _LATDbits `VS53 ~T0 @X0 0 e@3980 ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -449,12 +488,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
-"27 ./user_tasks.h
-[; ;./user_tasks.h: 27: semaphore_t sem_temp_w;
-[v _sem_temp_w `S285 ~T0 @X0 1 e ]
-"28
-[; ;./user_tasks.h: 28: semaphore_t sem_temp_r;
-[v _sem_temp_r `S285 ~T0 @X0 1 e ]
 "3 user_tasks.c
 [; ;user_tasks.c: 3: pipe_t pipe_temperature;
 [v _pipe_temperature `S286 ~T0 @X0 1 e ]
@@ -470,113 +503,140 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_tasks.c: 8:    create_pipe(&pipe_temperature);
 [e ( _create_pipe (1 &U _pipe_temperature ]
 "11
-[; ;user_tasks.c: 11:    sem_init(&sem_temp_w, 1);
-[e ( _sem_init (2 , &U _sem_temp_w -> 1 `i ]
-"12
-[; ;user_tasks.c: 12:    sem_init(&sem_temp_r, 0);
-[e ( _sem_init (2 , &U _sem_temp_r -> 0 `i ]
-"15
-[; ;user_tasks.c: 15:    if(2 == 1){
+[; ;user_tasks.c: 11:    if(2 == 1){
 [e $ ! == -> 2 `i -> 1 `i 288  ]
 {
-"16
-[; ;user_tasks.c: 16:       __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
+"12
+[; ;user_tasks.c: 12:       __asm("GLOBAL _thermostat_sensing_1, _ac_controller_1");
 [; <" GLOBAL _thermostat_sensing_1, _ac_controller_1 ;# ">
-"17
-[; ;user_tasks.c: 17:    }else if(2 ==2){
+"13
+[; ;user_tasks.c: 13:    }else if(2 ==2){
 }
 [e $U 289  ]
 [e :U 288 ]
 [e $ ! == -> 2 `i -> 2 `i 290  ]
 {
-"18
-[; ;user_tasks.c: 18:       __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");
+"14
+[; ;user_tasks.c: 14:       __asm("GLOBAL _thermostat_sensing_2, _ac_controller_2");
 [; <" GLOBAL _thermostat_sensing_2, _ac_controller_2 ;# ">
-"19
-[; ;user_tasks.c: 19:    }
+"15
+[; ;user_tasks.c: 15:    }
 }
 [e :U 290 ]
 [e :U 289 ]
-"21
-[; ;user_tasks.c: 21: }
+"17
+[; ;user_tasks.c: 17: }
 [e :UE 287 ]
 }
-"23
-[; ;user_tasks.c: 23: void thermostat_sensing_1() {
+"19
+[; ;user_tasks.c: 19: void thermostat_sensing_1() {
 [v _thermostat_sensing_1 `(v ~T0 @X0 1 ef ]
 {
 [e :U _thermostat_sensing_1 ]
 [f ]
-"24
-[; ;user_tasks.c: 24:     int readed_temperature;
+"20
+[; ;user_tasks.c: 20:     int readed_temperature;
 [v _readed_temperature `i ~T0 @X0 1 a ]
-"25
-[; ;user_tasks.c: 25:     while (1) {
+"21
+[; ;user_tasks.c: 21:     while (1) {
 [e :U 293 ]
 {
-"26
-[; ;user_tasks.c: 26:        readed_temperature = thermostat_value();
+"22
+[; ;user_tasks.c: 22:        readed_temperature = thermostat_value();
 [e = _readed_temperature ( _thermostat_value ..  ]
-"27
-[; ;user_tasks.c: 27:        pipe_write(&pipe_temperature, readed_temperature);
+"23
+[; ;user_tasks.c: 23:        pipe_write(&pipe_temperature, readed_temperature);
 [e ( _pipe_write (2 , &U _pipe_temperature _readed_temperature ]
-"28
-[; ;user_tasks.c: 28:     }
+"24
+[; ;user_tasks.c: 24:     }
 }
 [e :U 292 ]
 [e $U 293  ]
 [e :U 294 ]
-"29
-[; ;user_tasks.c: 29: }
+"25
+[; ;user_tasks.c: 25: }
 [e :UE 291 ]
 }
-"31
-[; ;user_tasks.c: 31: void ac_controller_1()
+"27
+[; ;user_tasks.c: 27: void ac_controller_1()
 [v _ac_controller_1 `(v ~T0 @X0 1 ef ]
-"32
-[; ;user_tasks.c: 32: {
+"28
+[; ;user_tasks.c: 28: {
 {
 [e :U _ac_controller_1 ]
 [f ]
-"33
-[; ;user_tasks.c: 33:    int room_temperature;
+"29
+[; ;user_tasks.c: 29:    int room_temperature;
 [v _room_temperature `i ~T0 @X0 1 a ]
-"34
-[; ;user_tasks.c: 34:    while (1) {
+"30
+[; ;user_tasks.c: 30:    while (1) {
 [e :U 297 ]
 {
-"35
-[; ;user_tasks.c: 35:       pipe_read(&pipe_temperature, &room_temperature);
+"31
+[; ;user_tasks.c: 31:       pipe_read(&pipe_temperature, &room_temperature);
 [e ( _pipe_read (2 , &U _pipe_temperature &U _room_temperature ]
-"37
-[; ;user_tasks.c: 37:       if(room_temperature < (32 - 2)){
+"33
+[; ;user_tasks.c: 33:       if(room_temperature < (32 - 2)){
 [e $ ! < _room_temperature - -> 32 `i -> 2 `i 299  ]
 {
-"38
-[; ;user_tasks.c: 38:          turn_off_ac();
+"34
+[; ;user_tasks.c: 34:          turn_off_ac();
 [e ( _turn_off_ac ..  ]
-"39
-[; ;user_tasks.c: 39:       }else if(room_temperature > (32 + 2)){
+"35
+[; ;user_tasks.c: 35:       }else if(room_temperature > (32 + 2)){
 }
 [e $U 300  ]
 [e :U 299 ]
 [e $ ! > _room_temperature + -> 32 `i -> 2 `i 301  ]
 {
-"40
-[; ;user_tasks.c: 40:          turn_on_ac();
+"36
+[; ;user_tasks.c: 36:          turn_on_ac();
 [e ( _turn_on_ac ..  ]
-"41
-[; ;user_tasks.c: 41:       }
+"37
+[; ;user_tasks.c: 37:       }
 }
 [e :U 301 ]
 [e :U 300 ]
-"42
-[; ;user_tasks.c: 42:     }
+"38
+[; ;user_tasks.c: 38:     }
 }
 [e :U 296 ]
 [e $U 297  ]
 [e :U 298 ]
-"43
-[; ;user_tasks.c: 43: }
+"39
+[; ;user_tasks.c: 39: }
 [e :UE 295 ]
+}
+"41
+[; ;user_tasks.c: 41: void smoke_sensing() {
+[v _smoke_sensing `(v ~T0 @X0 1 ef ]
+{
+[e :U _smoke_sensing ]
+[f ]
+"42
+[; ;user_tasks.c: 42:     while (1) {
+[e :U 304 ]
+{
+"43
+[; ;user_tasks.c: 43:        if(PORTBbits.RB0)
+[e $ ! != -> . . _PORTBbits 0 0 `i -> 0 `i 306  ]
+"44
+[; ;user_tasks.c: 44:        {
+{
+"45
+[; ;user_tasks.c: 45:           LATDbits.LD0 = 1;
+[e = . . _LATDbits 1 0 -> -> 1 `i `uc ]
+"46
+[; ;user_tasks.c: 46:        }
+}
+[e :U 306 ]
+"47
+[; ;user_tasks.c: 47:     }
+}
+[e :U 303 ]
+[e $U 304  ]
+[e :U 305 ]
+"48
+[; ;user_tasks.c: 48: }
+[e :UE 302 ]
 }

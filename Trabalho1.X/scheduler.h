@@ -6,7 +6,7 @@
 
 u_int scheduler();
 u_int round_robin_scheduler();
-u_int PRIORITY_sched();
+u_int priority_scheduler();
 
 #endif	/* SCHEDULER_H */
 

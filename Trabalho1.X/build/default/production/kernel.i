@@ -4563,7 +4563,7 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t tasks[5 +1];
+    tcb_t tasks[3 +1];
     u_int running_task;
     u_int fila_aptos_size;
 } faptos_t;
@@ -4578,7 +4578,7 @@ typedef struct r_queue {
 
 u_int scheduler();
 u_int round_robin_scheduler();
-u_int PRIORITY_sched();
+u_int priority_scheduler();
 # 9 "./kernel.h" 2
 
 
@@ -4594,8 +4594,8 @@ void __attribute__((picinterrupt(("")))) ISR_timer();
 
 
 
-void OS_config();
-void OS_start();
+void config_os();
+void start_os();
 void OS_delay(u_int time);
 void OS_create_task(u_int prior, task_ptr func);
 u_int get_task_id();
@@ -4607,11 +4607,11 @@ void RESTORE_CONTEXT();
 # 1 "kernel.c" 2
 
 # 1 "./user_tasks.h" 1
-# 15 "./user_tasks.h"
+# 17 "./user_tasks.h"
 # 1 "./semaphore.h" 1
 # 12 "./semaphore.h"
 typedef struct sem_queue {
-    u_int TASKS[5];
+    u_int TASKS[3];
     u_int queue_size;
     u_int queue_wait_pos;
     u_int queue_post_pos;
@@ -4627,7 +4627,7 @@ void sem_wait(semaphore_t* s);
 bool sem_wait_time(semaphore_t* s, int time);
 void sem_post(semaphore_t* s);
 int sem_get_value(semaphore_t s);
-# 15 "./user_tasks.h" 2
+# 17 "./user_tasks.h" 2
 
 # 1 "./pipe.h" 1
 
@@ -4653,7 +4653,7 @@ typedef struct pipe {
 void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
-# 16 "./user_tasks.h" 2
+# 18 "./user_tasks.h" 2
 
 # 1 "./ac_controller.h" 1
 
@@ -4663,7 +4663,7 @@ void pipe_write(pipe_t *pipe, int dado);
 
 void turn_off_ac();
 void turn_on_ac();
-# 17 "./user_tasks.h" 2
+# 19 "./user_tasks.h" 2
 
 # 1 "./thermostat.h" 1
 
@@ -4675,7 +4675,8 @@ void turn_on_ac();
 
 
 int thermostat_value();
-# 18 "./user_tasks.h" 2
+# 20 "./user_tasks.h" 2
+
 
 
 
@@ -4684,9 +4685,7 @@ void thermostat_sensing_1();
 void thermostat_sensing_2();
 void ac_controller_1();
 void ac_controller_2();
-
-semaphore_t sem_temp_w;
-semaphore_t sem_temp_r;
+void smoke_sensing();
 # 2 "kernel.c" 2
 
 # 1 "./config_hw.h" 1
@@ -4703,7 +4702,7 @@ semaphore_t sem_temp_r;
 
 void config_timer0();
 void config_ad_conversor();
-void config_flywheel();
+void io_config();
 # 3 "kernel.c" 2
 
 
@@ -4721,7 +4720,7 @@ void idle(){
     }
 }
 
-void OS_config(){
+void config_os(){
 
     f_aptos.fila_aptos_size = 0;
     f_aptos.running_task = 0;
@@ -4734,11 +4733,11 @@ void OS_config(){
     config_user_tasks();
 }
 
-void OS_start(){
+void start_os(){
     config_timer0();
 
 
-    config_flywheel();
+    io_config();
 
 
 

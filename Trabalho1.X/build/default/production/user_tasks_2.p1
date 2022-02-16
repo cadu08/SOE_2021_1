@@ -1,12 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"12 ./semaphore.h
-[; ;./semaphore.h: 12: typedef struct sem_queue {
-[s S284 `ui -> 5 `i `ui 1 `ui 1 `ui 1 ]
-[n S284 sem_queue TASKS queue_size queue_wait_pos queue_post_pos ]
-"18
-[; ;./semaphore.h: 18: typedef struct semaphore{
-[s S285 `i 1 `S284 1 ]
-[n S285 semaphore s_count s_queue ]
 "9 ./thermostat.h
 [; ;./thermostat.h: 9: int thermostat_value();
 [v _thermostat_value `(i ~T0 @X0 0 e? ]
@@ -433,12 +425,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./kernel.h
 [; ;./kernel.h: 13: int index;
 [v _index `i ~T0 @X0 1 e ]
-"27 ./user_tasks.h
-[; ;./user_tasks.h: 27: semaphore_t sem_temp_w;
-[v _sem_temp_w `S285 ~T0 @X0 1 e ]
-"28
-[; ;./user_tasks.h: 28: semaphore_t sem_temp_r;
-[v _sem_temp_r `S285 ~T0 @X0 1 e ]
 "4 user_tasks_2.c
 [; ;user_tasks_2.c: 4: int room_temperature;
 [v _room_temperature `i ~T0 @X0 1 e ]

@@ -4559,7 +4559,7 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t tasks[5 +1];
+    tcb_t tasks[3 +1];
     u_int running_task;
     u_int fila_aptos_size;
 } faptos_t;
@@ -4592,7 +4592,7 @@ typedef struct r_queue {
 
 u_int scheduler();
 u_int round_robin_scheduler();
-u_int PRIORITY_sched();
+u_int priority_scheduler();
 # 9 "./kernel.h" 2
 
 
@@ -4608,8 +4608,8 @@ void __attribute__((picinterrupt(("")))) ISR_timer();
 
 
 
-void OS_config();
-void OS_start();
+void config_os();
+void start_os();
 void OS_delay(u_int time);
 void OS_create_task(u_int prior, task_ptr func);
 u_int get_task_id();
@@ -4623,7 +4623,7 @@ void RESTORE_CONTEXT();
 
 
 typedef struct sem_queue {
-    u_int TASKS[5];
+    u_int TASKS[3];
     u_int queue_size;
     u_int queue_wait_pos;
     u_int queue_post_pos;

@@ -20,8 +20,8 @@ void __interrupt() ISR_timer();
  
 // Chamadas de sistema
 
-void OS_config();
-void OS_start();
+void config_os();
+void start_os();
 void OS_delay(u_int time);
 void OS_create_task(u_int prior, task_ptr func);
 u_int get_task_id();

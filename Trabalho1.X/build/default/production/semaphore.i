@@ -4563,7 +4563,7 @@ typedef struct tcb {
 } tcb_t;
 
 typedef struct r_queue {
-    tcb_t tasks[5 +1];
+    tcb_t tasks[3 +1];
     u_int running_task;
     u_int fila_aptos_size;
 } faptos_t;
@@ -4587,7 +4587,7 @@ typedef struct r_queue {
 
 u_int scheduler();
 u_int round_robin_scheduler();
-u_int PRIORITY_sched();
+u_int priority_scheduler();
 # 9 "./kernel.h" 2
 
 
@@ -4603,8 +4603,8 @@ void __attribute__((picinterrupt(("")))) ISR_timer();
 
 
 
-void OS_config();
-void OS_start();
+void config_os();
+void start_os();
 void OS_delay(u_int time);
 void OS_create_task(u_int prior, task_ptr func);
 u_int get_task_id();
@@ -4618,7 +4618,7 @@ void RESTORE_CONTEXT();
 
 
 typedef struct sem_queue {
-    u_int TASKS[5];
+    u_int TASKS[3];
     u_int queue_size;
     u_int queue_wait_pos;
     u_int queue_post_pos;
@@ -4652,7 +4652,7 @@ void sem_wait(semaphore_t* s){
 
 
         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = f_aptos.running_task;
-        s->s_queue.queue_wait_pos = (s->s_queue.queue_wait_pos + 1) % 5;
+        s->s_queue.queue_wait_pos = (s->s_queue.queue_wait_pos + 1) % 3;
         s->s_queue.queue_size++;
         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = WAITING_SEM; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = WAITING_SEM; } (INTCONbits.GIE = 1);}while(0);;
         RESTORE_CONTEXT();
@@ -4666,7 +4666,7 @@ void sem_post(semaphore_t* s){
     if(s->s_count <= 0) {
 
         f_aptos.tasks[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
-        s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;
+        s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%3;
         s->s_queue.queue_size--;
     }
     (INTCONbits.GIE = 1);

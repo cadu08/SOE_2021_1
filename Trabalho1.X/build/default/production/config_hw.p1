@@ -118,6 +118,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2143
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2143: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
 [v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"1699
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -622,15 +625,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 282 ]
 }
 "38
-[; ;config_hw.c: 38: void config_flywheel(){
-[v _config_flywheel `(v ~T0 @X0 1 ef ]
+[; ;config_hw.c: 38: void io_config(){
+[v _io_config `(v ~T0 @X0 1 ef ]
 {
-[e :U _config_flywheel ]
+[e :U _io_config ]
 [f ]
 "40
 [; ;config_hw.c: 40:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"41
-[; ;config_hw.c: 41: }
+"43
+[; ;config_hw.c: 43:     TRISB = 0xFF;
+[e = _TRISB -> -> 255 `i `uc ]
+"44
+[; ;config_hw.c: 44: }
 [e :UE 283 ]
 }

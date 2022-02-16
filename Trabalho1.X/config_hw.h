@@ -22,7 +22,7 @@
 
 void config_timer0();
 void config_ad_conversor();
-void config_flywheel();
+void io_config();
 
 #endif	/* CONFIG_HW_H */
 

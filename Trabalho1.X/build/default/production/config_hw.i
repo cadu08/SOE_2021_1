@@ -4547,7 +4547,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 void config_timer0();
 void config_ad_conversor();
-void config_flywheel();
+void io_config();
 # 5 "config_hw.c" 2
 
 
@@ -4582,7 +4582,10 @@ void config_ad_conversor(){
     ADCON2bits.ADCS = 0b110;
 }
 
-void config_flywheel(){
+void io_config(){
 
     TRISD = 0x00;
+
+
+    TRISB = 0xFF;
 }

@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-#define MAX_TASKS 5
+#define MAX_TASKS 3
 #define RR_QUANTUM 8
 #define CONVERSOR_AD TRUE
 #define MOTORES TRUE
@@ -18,7 +18,7 @@
  * EDF_SCHEDULER
  */
 
-#define DEFAULT_SCHEDULER RR_SCHEDULER
+#define DEFAULT_SCHEDULER RR_SCHEDULER //PRIORITY_SCHEDULER//RR_SCHEDULER
 
 #endif	/* USER_CONFIG_H */
 

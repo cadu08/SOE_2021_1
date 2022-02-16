@@ -35,7 +35,10 @@ void config_ad_conversor(){
     ADCON2bits.ADCS = 0b110;    // FOSC/64
 }
 
-void config_flywheel(){
+void io_config(){
     // pinos são de saída:
     TRISD = 0x00;
+    
+    //pinos são de entrada:
+    TRISB = 0xFF;
 }

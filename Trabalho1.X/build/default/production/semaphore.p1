@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "12 ./semaphore.h
 [; ;./semaphore.h: 12: typedef struct sem_queue {
-[s S284 `ui -> 5 `i `ui 1 `ui 1 `ui 1 ]
+[s S284 `ui -> 3 `i `ui 1 `ui 1 `ui 1 ]
 [n S284 sem_queue TASKS queue_size queue_wait_pos queue_post_pos ]
 "18
 [; ;./semaphore.h: 18: typedef struct semaphore{
@@ -41,7 +41,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S282 tcb task_id task_priority task_state task_context task_func task_delay_time ]
 "47
 [; ;./types.h: 47: typedef struct r_queue {
-[s S283 `S282 -> 6 `i `ui 1 `ui 1 ]
+[s S283 `S282 -> 4 `i `ui 1 `ui 1 ]
 [n S283 r_queue tasks running_task fila_aptos_size ]
 "12 ./kernel.h
 [; ;./kernel.h: 12: extern faptos_t f_aptos;
@@ -526,8 +526,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;semaphore.c: 17:         s->s_queue.TASKS[s->s_queue.queue_wait_pos] = f_aptos.running_task;
 [e = *U + &U . . *U _s 1 0 * -> . . *U _s 1 2 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux . _f_aptos 1 ]
 "18
-[; ;semaphore.c: 18:         s->s_queue.queue_wait_pos = (s->s_queue.queue_wait_pos + 1) % 5;
-[e = . . *U _s 1 2 % + . . *U _s 1 2 -> -> 1 `i `ui -> -> 5 `i `ui ]
+[; ;semaphore.c: 18:         s->s_queue.queue_wait_pos = (s->s_queue.queue_wait_pos + 1) % 3;
+[e = . . *U _s 1 2 % + . . *U _s 1 2 -> -> 1 `i `ui -> -> 3 `i `ui ]
 "19
 [; ;semaphore.c: 19:         s->s_queue.queue_size++;
 [e ++ . . *U _s 1 1 -> -> 1 `i `ui ]
@@ -597,8 +597,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;semaphore.c: 31:         f_aptos.tasks[s->s_queue.TASKS[s->s_queue.queue_post_pos]].task_state = READY;
 [e = . *U + &U . _f_aptos 0 * -> *U + &U . . *U _s 1 0 * -> . . *U _s 1 3 `ux -> -> # *U &U . . *U _s 1 0 `ui `ux `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 0 ]
 "32
-[; ;semaphore.c: 32:         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%5;
-[e = . . *U _s 1 3 % + . . *U _s 1 3 -> -> 1 `i `ui -> -> 5 `i `ui ]
+[; ;semaphore.c: 32:         s->s_queue.queue_post_pos = (s->s_queue.queue_post_pos+1)%3;
+[e = . . *U _s 1 3 % + . . *U _s 1 3 -> -> 1 `i `ui -> -> 3 `i `ui ]
 "33
 [; ;semaphore.c: 33:         s->s_queue.queue_size--;
 [e -- . . *U _s 1 1 -> -> 1 `i `ui ]

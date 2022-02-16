@@ -11,21 +11,23 @@
 
 int main(void) {
     
-    OS_config();
+    config_os();
    
     // Tarefas do Usuário    
     if(EXAMPLE == 1)
     {
+      //OS_create_task(1, smoke_sensing);
       OS_create_task(2, thermostat_sensing_1);
-      OS_create_task(3, ac_controller_1);
+      OS_create_task(2, ac_controller_1);
     }else if(EXAMPLE == 2)
     {
+      //OS_create_task(1, smoke_sensing);
       OS_create_task(2, thermostat_sensing_2);
-      OS_create_task(3, ac_controller_2); 
+      OS_create_task(2, ac_controller_2); 
     }
     
     // Coloca o kernel em execução
-    OS_start();
+    start_os();
     
     while(1){
     }

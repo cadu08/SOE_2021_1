@@ -6,10 +6,6 @@ void config_user_tasks()
 {   
    // inicializa o pipe
    create_pipe(&pipe_temperature);
-   
-   // inicializa o semáforo
-   sem_init(&sem_temp_w, 1);
-   sem_init(&sem_temp_r, 0);
   
    // Coloca tarefas como globais
    if(EXAMPLE == 1){
@@ -40,4 +36,13 @@ void ac_controller_1()
          turn_on_ac();
       }
     }   
+}
+
+void smoke_sensing() {
+    while (1) {
+       if(SMOKE_SENSOR)
+       {
+          FIRE_LED = 1;
+       }
+    }
 }

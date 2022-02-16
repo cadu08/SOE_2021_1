@@ -16,7 +16,7 @@ void idle(){
     }
 }
 
-void OS_config(){
+void config_os(){
     // Configura alguns registradores e variáveis do SO
     f_aptos.fila_aptos_size = 0;
     f_aptos.running_task = 0;
@@ -29,11 +29,11 @@ void OS_config(){
     config_user_tasks();
 }
 
-void OS_start(){
+void start_os(){
     config_timer0();
     // Inicializa motores
 #if MOTORES
-    config_flywheel();   
+    io_config();   
 #endif
     // inicializa conversor AD
 #if CONVERSOR_AD
@@ -99,11 +99,11 @@ void __interrupt() ISR_timer()
     INTCONbits.TMR0IF = 0;
     rr_quantum--;
     // Verifica se existem tarefas que estão aguardando estouro de delay
-    if (delay_release() && DEFAULT_SCHEDULER == PRIOR_SCHEDULER) {
+    if (delay_release() && DEFAULT_SCHEDULER == PRIORITY_SCHEDULER) {
         SAVE_CONTEXT(READY);
         RESTORE_CONTEXT();
     }
-    if (rr_quantum == 0 && DEFAULT_SCHEDULER == PRIOR_SCHEDULER) {
+    if (rr_quantum == 0 && DEFAULT_SCHEDULER == PRIORITY_SCHEDULER) {
         rr_quantum = RR_QUANTUM;
         SAVE_CONTEXT(READY);
         RESTORE_CONTEXT();

@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "12 ./semaphore.h
 [; ;./semaphore.h: 12: typedef struct sem_queue {
-[s S284 `ui -> 5 `i `ui 1 `ui 1 `ui 1 ]
+[s S284 `ui -> 3 `i `ui 1 `ui 1 `ui 1 ]
 [n S284 sem_queue TASKS queue_size queue_wait_pos queue_post_pos ]
 "18
 [; ;./semaphore.h: 18: typedef struct semaphore{
