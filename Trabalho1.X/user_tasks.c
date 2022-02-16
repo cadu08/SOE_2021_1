@@ -4,6 +4,12 @@ pipe_t pipe_temperature;
 
 void config_user_tasks()
 {   
+    //Configura PORTD como saída
+    TRISD = 0x00;
+    
+    //Configura PORTB como entrada
+    TRISB = 0xFF;
+   
    // inicializa o pipe
    create_pipe(&pipe_temperature);
   

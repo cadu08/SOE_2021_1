@@ -73,19 +73,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
 [v F2570 `(v ~T0 @X0 0 tf ]
-"26 ./kernel.h
-[; ;./kernel.h: 26: void OS_create_task(u_int prior, task_ptr func);
-[v _OS_create_task `(v ~T0 @X0 0 ef2`ui`*F2570 ]
+"25 ./kernel.h
+[; ;./kernel.h: 25: void create_task(u_int priority, task_ptr func);
+[v _create_task `(v ~T0 @X0 0 ef2`ui`*F2570 ]
 [v F2630 `(v ~T0 @X0 0 tf ]
-"24 ./user_tasks.h
-[; ;./user_tasks.h: 24: void config_user_tasks();
+"20 ./user_tasks.h
+[; ;./user_tasks.h: 20: void config_user_tasks();
 [v _config_user_tasks `(v ~T0 @X0 0 e? ]
-"23 ./config_hw.h
+"22 ./config_hw.h
 [v _config_timer0 `(v ~T0 @X0 0 e? ]
-"25
-[v _io_config `(v ~T0 @X0 0 e? ]
-"24
-[v _config_ad_conversor `(v ~T0 @X0 0 e? ]
 "6698 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6698:     struct {
 [s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -135,8 +131,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6904
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6904: extern volatile unsigned char STKPTR __attribute__((address(0xFFC)));
 [v _STKPTR `Vuc ~T0 @X0 0 e@4092 ]
-"56 ./kernel.h
-[; ;./kernel.h: 56: void RESTORE_CONTEXT();
+"54 ./kernel.h
+[; ;./kernel.h: 54: void RESTORE_CONTEXT();
 [v _RESTORE_CONTEXT `(v ~T0 @X0 0 e? ]
 [v F2636 `(v ~T0 @X0 0 tf ]
 [v F2639 `(v ~T0 @X0 0 tf ]
@@ -632,8 +628,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;kernel.c: 22:     f_aptos.running_task = 0;
 [e = . _f_aptos 1 -> -> 0 `i `ui ]
 "25
-[; ;kernel.c: 25:     OS_create_task(1, idle);
-[e ( _OS_create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2630 ]
+[; ;kernel.c: 25:     create_task(1, idle);
+[e ( _create_task (2 , -> -> 1 `i `ui -> &U _idle `*F2630 ]
 "26
 [; ;kernel.c: 26:     __asm("GLOBAL _idle");
 [; <" GLOBAL _idle ;# ">
@@ -653,34 +649,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;kernel.c: 33:     config_timer0();
 [e ( _config_timer0 ..  ]
-"36
-[; ;kernel.c: 36:     io_config();
-[e ( _io_config ..  ]
-"40
-[; ;kernel.c: 40:     config_ad_conversor();
-[e ( _config_ad_conversor ..  ]
-"43
-[; ;kernel.c: 43:     (INTCONbits.GIE = 1);
+"34
+[; ;kernel.c: 34:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"44
-[; ;kernel.c: 44:     T0CONbits.TMR0ON;
+"35
+[; ;kernel.c: 35:     T0CONbits.TMR0ON;
 [e . . _T0CONbits 0 5 ]
-"46
-[; ;kernel.c: 46: }
+"36
+[; ;kernel.c: 36: }
 [e :UE 292 ]
 }
-"49
-[; ;kernel.c: 49: void OS_delay(u_int time){
+"39
+[; ;kernel.c: 39: void OS_delay(u_int time){
 [v _OS_delay `(v ~T0 @X0 1 ef1`ui ]
 {
 [e :U _OS_delay ]
 [v _time `ui ~T0 @X0 1 r1 ]
 [f ]
-"51
-[; ;kernel.c: 51:     (INTCONbits.GIE = 0);
+"41
+[; ;kernel.c: 41:     (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"53
-[; ;kernel.c: 53:     do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = WAITING; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = WAITING; } (INTCONbits.GIE = 1);}while(0);;
+"43
+[; ;kernel.c: 43:     do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = WAITING; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = WAITING; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 296 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -710,152 +700,152 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 }
 [e :U 295 ]
-"54
-[; ;kernel.c: 54:     f_aptos.tasks[f_aptos.running_task].task_delay_time = time;
+"44
+[; ;kernel.c: 44:     f_aptos.tasks[f_aptos.running_task].task_delay_time = time;
 [e = . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 5 _time ]
-"55
-[; ;kernel.c: 55:     RESTORE_CONTEXT();
+"45
+[; ;kernel.c: 45:     RESTORE_CONTEXT();
 [e ( _RESTORE_CONTEXT ..  ]
-"57
-[; ;kernel.c: 57:     (INTCONbits.GIE = 1);
+"47
+[; ;kernel.c: 47:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"58
-[; ;kernel.c: 58: }
+"48
+[; ;kernel.c: 48: }
 [e :UE 293 ]
 }
-"60
-[; ;kernel.c: 60: void OS_create_task(u_int prior, task_ptr func){
-[v _OS_create_task `(v ~T0 @X0 1 ef2`ui`*F2636 ]
+"50
+[; ;kernel.c: 50: void create_task(u_int priority, task_ptr func){
+[v _create_task `(v ~T0 @X0 1 ef2`ui`*F2636 ]
 {
-[e :U _OS_create_task ]
-[v _prior `ui ~T0 @X0 1 r1 ]
+[e :U _create_task ]
+[v _priority `ui ~T0 @X0 1 r1 ]
 [v _func `*F2639 ~T0 @X0 1 r2 ]
 [f ]
-"62
-[; ;kernel.c: 62:     tcb_t new_task;
+"52
+[; ;kernel.c: 52:     tcb_t new_task;
 [v _new_task `S282 ~T0 @X0 1 a ]
-"64
-[; ;kernel.c: 64:     new_task.task_priority = prior;
-[e = . _new_task 1 _prior ]
-"65
-[; ;kernel.c: 65:     new_task.task_func = func;
+"54
+[; ;kernel.c: 54:     new_task.task_priority = priority;
+[e = . _new_task 1 _priority ]
+"55
+[; ;kernel.c: 55:     new_task.task_func = func;
 [e = . _new_task 4 _func ]
-"66
-[; ;kernel.c: 66:     new_task.task_state = READY;
+"56
+[; ;kernel.c: 56:     new_task.task_state = READY;
 [e = . _new_task 2 . `E2531 0 ]
-"67
-[; ;kernel.c: 67:     new_task.task_context.stack_size = 0;
+"57
+[; ;kernel.c: 57:     new_task.task_context.stack_size = 0;
 [e = . . _new_task 3 4 -> -> 0 `i `ui ]
-"68
-[; ;kernel.c: 68:     new_task.task_delay_time = 0;
+"58
+[; ;kernel.c: 58:     new_task.task_delay_time = 0;
 [e = . _new_task 5 -> -> 0 `i `ui ]
-"72
-[; ;kernel.c: 72:     f_aptos.tasks[f_aptos.fila_aptos_size] = new_task;
+"62
+[; ;kernel.c: 62:     f_aptos.tasks[f_aptos.fila_aptos_size] = new_task;
 [e = *U + &U . _f_aptos 0 * -> . _f_aptos 2 `ux -> -> # *U &U . _f_aptos 0 `ui `ux _new_task ]
-"73
-[; ;kernel.c: 73:     f_aptos.fila_aptos_size++;
+"63
+[; ;kernel.c: 63:     f_aptos.fila_aptos_size++;
 [e ++ . _f_aptos 2 -> -> 1 `i `ui ]
-"74
-[; ;kernel.c: 74: }
+"64
+[; ;kernel.c: 64: }
 [e :UE 302 ]
 }
-"76
-[; ;kernel.c: 76: u_int get_task_id(){
+"66
+[; ;kernel.c: 66: u_int get_task_id(){
 [v _get_task_id `(ui ~T0 @X0 1 ef ]
 {
 [e :U _get_task_id ]
 [f ]
-"78
-[; ;kernel.c: 78:     return f_aptos.tasks[f_aptos.running_task].task_id;
+"68
+[; ;kernel.c: 68:     return f_aptos.tasks[f_aptos.running_task].task_id;
 [e ) . *U + &U . _f_aptos 0 * -> . _f_aptos 1 `ux -> -> # *U &U . _f_aptos 0 `ui `ux 0 ]
 [e $UE 303  ]
-"79
-[; ;kernel.c: 79: }
+"69
+[; ;kernel.c: 69: }
 [e :UE 303 ]
 }
-"81
-[; ;kernel.c: 81: u_int delay_release(){
+"71
+[; ;kernel.c: 71: u_int delay_release(){
 [v _delay_release `(ui ~T0 @X0 1 ef ]
 {
 [e :U _delay_release ]
 [f ]
-"82
-[; ;kernel.c: 82:     u_int i, task_released = 0;
+"72
+[; ;kernel.c: 72:     u_int i, task_released = 0;
 [v _i `ui ~T0 @X0 1 a ]
 [v _task_released `ui ~T0 @X0 1 a ]
 [e = _task_released -> -> 0 `i `ui ]
-"83
-[; ;kernel.c: 83:     for(i = 0; i < f_aptos.fila_aptos_size; i++){
+"73
+[; ;kernel.c: 73:     for(i = 0; i < f_aptos.fila_aptos_size; i++){
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 308  ]
 [e :U 305 ]
 {
-"84
-[; ;kernel.c: 84:         if(f_aptos.tasks[i].task_state == WAITING) {
+"74
+[; ;kernel.c: 74:         if(f_aptos.tasks[i].task_state == WAITING) {
 [e $ ! == -> . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 `ui -> . `E2531 2 `ui 309  ]
 {
-"85
-[; ;kernel.c: 85:             f_aptos.tasks[i].task_delay_time--;
+"75
+[; ;kernel.c: 75:             f_aptos.tasks[i].task_delay_time--;
 [e -- . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 5 -> -> 1 `i `ui ]
-"86
-[; ;kernel.c: 86:             if(f_aptos.tasks[i].task_delay_time == 0) {
+"76
+[; ;kernel.c: 76:             if(f_aptos.tasks[i].task_delay_time == 0) {
 [e $ ! == . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 5 -> -> 0 `i `ui 310  ]
 {
-"87
-[; ;kernel.c: 87:                 f_aptos.tasks[i].task_state = READY;
+"77
+[; ;kernel.c: 77:                 f_aptos.tasks[i].task_state = READY;
 [e = . *U + &U . _f_aptos 0 * -> _i `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 0 ]
-"88
-[; ;kernel.c: 88:                 task_released = 1;
+"78
+[; ;kernel.c: 78:                 task_released = 1;
 [e = _task_released -> -> 1 `i `ui ]
-"89
-[; ;kernel.c: 89:             }
+"79
+[; ;kernel.c: 79:             }
 }
 [e :U 310 ]
-"90
-[; ;kernel.c: 90:         }
+"80
+[; ;kernel.c: 80:         }
 }
 [e :U 309 ]
-"91
-[; ;kernel.c: 91:     }
+"81
+[; ;kernel.c: 81:     }
 }
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 308 ]
 [e $ < _i . _f_aptos 2 305  ]
 [e :U 306 ]
 }
-"92
-[; ;kernel.c: 92:     return task_released;
+"82
+[; ;kernel.c: 82:     return task_released;
 [e ) _task_released ]
 [e $UE 304  ]
-"93
-[; ;kernel.c: 93: }
+"83
+[; ;kernel.c: 83: }
 [e :UE 304 ]
 }
 [v $root$_ISR_timer `(v ~T0 @X0 0 e ]
-"95
-[; ;kernel.c: 95: void __attribute__((picinterrupt(("")))) ISR_timer()
+"85
+[; ;kernel.c: 85: void __attribute__((picinterrupt(("")))) ISR_timer()
 [v _ISR_timer `(v ~T42 @X0 1 ef ]
-"96
-[; ;kernel.c: 96: {
+"86
+[; ;kernel.c: 86: {
 {
 [e :U _ISR_timer ]
 [f ]
-"98
-[; ;kernel.c: 98:     TMR0L = 0;
+"88
+[; ;kernel.c: 88:     TMR0L = 0;
 [e = _TMR0L -> -> 0 `i `uc ]
-"99
-[; ;kernel.c: 99:     INTCONbits.TMR0IF = 0;
+"89
+[; ;kernel.c: 89:     INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"100
-[; ;kernel.c: 100:     rr_quantum--;
+"90
+[; ;kernel.c: 90:     rr_quantum--;
 [e -- _rr_quantum -> -> 1 `i `ui ]
-"102
-[; ;kernel.c: 102:     if (delay_release() && 1 == 2) {
+"92
+[; ;kernel.c: 92:     if (delay_release() && 1 == 2) {
 [e $ ! && != ( _delay_release ..  -> -> 0 `i `ui == -> 1 `i -> 2 `i 312  ]
 {
-"103
-[; ;kernel.c: 103:         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
+"93
+[; ;kernel.c: 93:         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 315 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -885,22 +875,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 }
 [e :U 314 ]
-"104
-[; ;kernel.c: 104:         RESTORE_CONTEXT();
+"94
+[; ;kernel.c: 94:         RESTORE_CONTEXT();
 [e ( _RESTORE_CONTEXT ..  ]
-"105
-[; ;kernel.c: 105:     }
+"95
+[; ;kernel.c: 95:     }
 }
 [e :U 312 ]
-"106
-[; ;kernel.c: 106:     if (rr_quantum == 0 && 1 == 2) {
+"96
+[; ;kernel.c: 96:     if (rr_quantum == 0 && 1 == 2) {
 [e $ ! && == _rr_quantum -> -> 0 `i `ui == -> 1 `i -> 2 `i 321  ]
 {
-"107
-[; ;kernel.c: 107:         rr_quantum = 8;
+"97
+[; ;kernel.c: 97:         rr_quantum = 8;
 [e = _rr_quantum -> -> 8 `i `ui ]
-"108
-[; ;kernel.c: 108:         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
+"98
+[; ;kernel.c: 98:         do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 324 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -930,22 +920,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 }
 [e :U 323 ]
-"109
-[; ;kernel.c: 109:         RESTORE_CONTEXT();
+"99
+[; ;kernel.c: 99:         RESTORE_CONTEXT();
 [e ( _RESTORE_CONTEXT ..  ]
-"110
-[; ;kernel.c: 110:     }
+"100
+[; ;kernel.c: 100:     }
 }
 [e :U 321 ]
-"113
-[; ;kernel.c: 113:         if(rr_quantum == 0){
+"103
+[; ;kernel.c: 103:         if(rr_quantum == 0){
 [e $ ! == _rr_quantum -> -> 0 `i `ui 330  ]
 {
-"114
-[; ;kernel.c: 114:             rr_quantum = 8;
+"104
+[; ;kernel.c: 104:             rr_quantum = 8;
 [e = _rr_quantum -> -> 8 `i `ui ]
-"115
-[; ;kernel.c: 115:             do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
+"105
+[; ;kernel.c: 105:             do{ (INTCONbits.GIE = 0); if(f_aptos.tasks[f_aptos.running_task].task_context.stack_size > 0){ index=0; f_aptos.tasks[f_aptos.running_task].task_state = READY; f_aptos.tasks[f_aptos.running_task].task_context.WORK_reg = WREG; f_aptos.tasks[f_aptos.running_task].task_context.BSR_reg = BSR; f_aptos.tasks[f_aptos.running_task].task_context.STATUS_reg = STATUS; f_aptos.tasks[f_aptos.running_task].task_context.stack_size = 0; do{ f_aptos.tasks[f_aptos.running_task].task_context.STACK_regs[index] = TOS; index++; __asm("POP"); } while(STKPTR); } else{ f_aptos.tasks[f_aptos.running_task].task_state = READY; } (INTCONbits.GIE = 1);}while(0);;
 [e :U 333 ]
 {
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
@@ -975,108 +965,108 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 }
 [e :U 332 ]
-"116
-[; ;kernel.c: 116:             RESTORE_CONTEXT();
+"106
+[; ;kernel.c: 106:             RESTORE_CONTEXT();
 [e ( _RESTORE_CONTEXT ..  ]
-"117
-[; ;kernel.c: 117:         }
+"107
+[; ;kernel.c: 107:         }
 }
 [e :U 330 ]
-"123
-[; ;kernel.c: 123: }
+"113
+[; ;kernel.c: 113: }
 [e :UE 311 ]
 }
-"125
-[; ;kernel.c: 125: void RESTORE_CONTEXT(){
+"115
+[; ;kernel.c: 115: void RESTORE_CONTEXT(){
 [v _RESTORE_CONTEXT `(v ~T0 @X0 1 ef ]
 {
 [e :U _RESTORE_CONTEXT ]
 [f ]
-"126
-[; ;kernel.c: 126:     do{
+"116
+[; ;kernel.c: 116:     do{
 [e :U 342 ]
 {
-"127
-[; ;kernel.c: 127:         (INTCONbits.GIE = 0);
+"117
+[; ;kernel.c: 117:         (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"128
-[; ;kernel.c: 128:         f_aptos.running_task = scheduler();
+"118
+[; ;kernel.c: 118:         f_aptos.running_task = scheduler();
 [e = . _f_aptos 1 ( _scheduler ..  ]
-"129
-[; ;kernel.c: 129:         u_int running_task = f_aptos.running_task;
+"119
+[; ;kernel.c: 119:         u_int running_task = f_aptos.running_task;
 [v _running_task `ui ~T0 @X0 1 a ]
 [e = _running_task . _f_aptos 1 ]
-"130
-[; ;kernel.c: 130:         f_aptos.tasks[running_task].task_state = RUNNING;
+"120
+[; ;kernel.c: 120:         f_aptos.tasks[running_task].task_state = RUNNING;
 [e = . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 2 . `E2531 1 ]
-"131
-[; ;kernel.c: 131:         STKPTR = 0;
+"121
+[; ;kernel.c: 121:         STKPTR = 0;
 [e = _STKPTR -> -> 0 `i `uc ]
-"132
-[; ;kernel.c: 132:         if(f_aptos.tasks[running_task].task_context.stack_size > 0) {
+"122
+[; ;kernel.c: 122:         if(f_aptos.tasks[running_task].task_context.stack_size > 0) {
 [e $ ! > . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 4 -> -> 0 `i `ui 343  ]
 {
-"133
-[; ;kernel.c: 133:             BSR = f_aptos.tasks[running_task].task_context.BSR_reg;
+"123
+[; ;kernel.c: 123:             BSR = f_aptos.tasks[running_task].task_context.BSR_reg;
 [e = _BSR -> . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 2 `uc ]
-"134
-[; ;kernel.c: 134:             STATUS = f_aptos.tasks[running_task].task_context.STATUS_reg;
+"124
+[; ;kernel.c: 124:             STATUS = f_aptos.tasks[running_task].task_context.STATUS_reg;
 [e = _STATUS -> . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 0 `uc ]
-"135
-[; ;kernel.c: 135:             WREG = f_aptos.tasks[running_task].task_context.WORK_reg;
+"125
+[; ;kernel.c: 125:             WREG = f_aptos.tasks[running_task].task_context.WORK_reg;
 [e = _WREG -> . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 1 `uc ]
-"136
-[; ;kernel.c: 136:             u_int stack_size = f_aptos.tasks[running_task].task_context.stack_size;
+"126
+[; ;kernel.c: 126:             u_int stack_size = f_aptos.tasks[running_task].task_context.stack_size;
 [v _stack_size `ui ~T0 @X0 1 a ]
 [e = _stack_size . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 4 ]
-"137
-[; ;kernel.c: 137:             while (stack_size) {
+"127
+[; ;kernel.c: 127:             while (stack_size) {
 [e $U 344  ]
 [e :U 345 ]
 {
-"138
-[; ;kernel.c: 138:                 __asm("PUSH");
+"128
+[; ;kernel.c: 128:                 __asm("PUSH");
 [; <" PUSH ;# ">
-"139
-[; ;kernel.c: 139:                 TOS = f_aptos.tasks[running_task].task_context.STACK_regs[stack_size-1];
+"129
+[; ;kernel.c: 129:                 TOS = f_aptos.tasks[running_task].task_context.STACK_regs[stack_size-1];
 [e = _TOS *U + &U . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 3 * -> - _stack_size -> -> 1 `i `ui `ux -> -> # *U &U . . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 3 3 `ui `ux ]
-"140
-[; ;kernel.c: 140:                 stack_size--;
+"130
+[; ;kernel.c: 130:                 stack_size--;
 [e -- _stack_size -> -> 1 `i `ui ]
-"141
-[; ;kernel.c: 141:             }
+"131
+[; ;kernel.c: 131:             }
 }
 [e :U 344 ]
-"137
-[; ;kernel.c: 137:             while (stack_size) {
+"127
+[; ;kernel.c: 127:             while (stack_size) {
 [e $ != _stack_size -> -> 0 `i `ui 345  ]
 [e :U 346 ]
-"142
-[; ;kernel.c: 142:         }
+"132
+[; ;kernel.c: 132:         }
 }
 [e $U 347  ]
-"143
-[; ;kernel.c: 143:         else {
+"133
+[; ;kernel.c: 133:         else {
 [e :U 343 ]
 {
-"144
-[; ;kernel.c: 144:             __asm("PUSH");
+"134
+[; ;kernel.c: 134:             __asm("PUSH");
 [; <" PUSH ;# ">
-"145
-[; ;kernel.c: 145:             TOS = f_aptos.tasks[running_task].task_func;
+"135
+[; ;kernel.c: 135:             TOS = f_aptos.tasks[running_task].task_func;
 [e = _TOS -> . *U + &U . _f_aptos 0 * -> _running_task `ux -> -> # *U &U . _f_aptos 0 `ui `ux 4 `um ]
-"146
-[; ;kernel.c: 146:         }
+"136
+[; ;kernel.c: 136:         }
 }
 [e :U 347 ]
-"147
-[; ;kernel.c: 147:     (INTCONbits.GIE = 1);
+"137
+[; ;kernel.c: 137:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"148
-[; ;kernel.c: 148:     } while(0);
+"138
+[; ;kernel.c: 138:     } while(0);
 }
 [e :U 341 ]
-"149
-[; ;kernel.c: 149: }
+"139
+[; ;kernel.c: 139: }
 [e :UE 339 ]
 }

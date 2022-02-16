@@ -4699,21 +4699,20 @@ void idle();
 void __attribute__((picinterrupt(("")))) ISR_timer();
 
 
-
 void config_os();
 void start_os();
 void OS_delay(u_int time);
-void OS_create_task(u_int prior, task_ptr func);
+void create_task(u_int priority, task_ptr func);
 u_int get_task_id();
 
 
 u_int delay_release();
-# 56 "./kernel.h"
+# 54 "./kernel.h"
 void RESTORE_CONTEXT();
 # 7 "main.c" 2
 
 # 1 "./user_tasks.h" 1
-# 17 "./user_tasks.h"
+# 15 "./user_tasks.h"
 # 1 "./semaphore.h" 1
 # 12 "./semaphore.h"
 typedef struct sem_queue {
@@ -4725,7 +4724,6 @@ typedef struct sem_queue {
 typedef struct semaphore{
     int s_count;
     sem_queue_t s_queue;
-
 } semaphore_t;
 
 void sem_init(semaphore_t* s, int val);
@@ -4733,7 +4731,7 @@ void sem_wait(semaphore_t* s);
 bool sem_wait_time(semaphore_t* s, int time);
 void sem_post(semaphore_t* s);
 int sem_get_value(semaphore_t s);
-# 17 "./user_tasks.h" 2
+# 15 "./user_tasks.h" 2
 
 # 1 "./pipe.h" 1
 
@@ -4759,7 +4757,7 @@ typedef struct pipe {
 void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
-# 18 "./user_tasks.h" 2
+# 16 "./user_tasks.h" 2
 
 # 1 "./ac_controller.h" 1
 
@@ -4769,7 +4767,7 @@ void pipe_write(pipe_t *pipe, int dado);
 
 void turn_off_ac();
 void turn_on_ac();
-# 19 "./user_tasks.h" 2
+# 17 "./user_tasks.h" 2
 
 # 1 "./thermostat.h" 1
 
@@ -4778,12 +4776,8 @@ void turn_on_ac();
 
 
 
-
-
 int thermostat_value();
-# 20 "./user_tasks.h" 2
-
-
+# 18 "./user_tasks.h" 2
 
 
 void config_user_tasks();
@@ -4802,16 +4796,16 @@ int main(void) {
     config_os();
 
 
-    if(2 == 1)
+    if(1 == 1)
     {
 
-      OS_create_task(2, thermostat_sensing_1);
-      OS_create_task(2, ac_controller_1);
-    }else if(2 == 2)
+      create_task(2, thermostat_sensing_1);
+      create_task(2, ac_controller_1);
+    }else if(1 == 2)
     {
 
-      OS_create_task(2, thermostat_sensing_2);
-      OS_create_task(2, ac_controller_2);
+      create_task(2, thermostat_sensing_2);
+      create_task(2, ac_controller_2);
     }
 
 

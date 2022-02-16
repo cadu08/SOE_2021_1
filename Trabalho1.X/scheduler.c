@@ -1,5 +1,5 @@
 /**
- * Sistema Operacional Embarcado - Projeto de 2021.1
+ * Sistema Operacional Embarcado - Projeto de 2021.2
  */
 
 #include "scheduler.h"

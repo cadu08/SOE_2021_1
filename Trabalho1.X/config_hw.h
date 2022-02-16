@@ -19,9 +19,8 @@
 #pragma config FCMEN = OFF      
 #pragma config LVP = OFF        
 
-
 void config_timer0();
-void config_ad_conversor();
+void config_ad_converter();
 void io_config();
 
 #endif	/* CONFIG_HW_H */

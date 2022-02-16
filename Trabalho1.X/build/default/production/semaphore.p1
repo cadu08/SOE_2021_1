@@ -61,8 +61,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6904
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6904: extern volatile unsigned char STKPTR __attribute__((address(0xFFC)));
 [v _STKPTR `Vuc ~T0 @X0 0 e@4092 ]
-"56 ./kernel.h
-[; ;./kernel.h: 56: void RESTORE_CONTEXT();
+"54 ./kernel.h
+[; ;./kernel.h: 54: void RESTORE_CONTEXT();
 [v _RESTORE_CONTEXT `(v ~T0 @X0 0 e? ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");

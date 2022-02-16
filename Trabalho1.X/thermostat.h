@@ -1,14 +1,9 @@
-#ifndef CONVERSOR_H
-#define	CONVERSOR_H
+#ifndef THERMOSTAT_H
+#define	THERMOSTAT_H
 
 #include "types.h"
 #include "semaphore.h"
 
-#define ROT_PIN PORTAbits.RA1
-
 int thermostat_value();
 
-#endif	/* CONVERSOR_H */
-
-
-
+#endif	/* THERMOSTAT_H */

@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"9 ./thermostat.h
-[; ;./thermostat.h: 9: int thermostat_value();
+"7 ./thermostat.h
+[; ;./thermostat.h: 7: int thermostat_value();
 [v _thermostat_value `(i ~T0 @X0 0 e? ]
 "7 ./ac_controller.h
 [; ;./ac_controller.h: 7: void turn_on_ac();
@@ -520,20 +520,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_tasks_2.c: 37:          }
 }
 [e :U 298 ]
-"39
-[; ;user_tasks_2.c: 39:          bsem_room_temperature = 0;
+"38
+[; ;user_tasks_2.c: 38:          bsem_room_temperature = 0;
 [e = _bsem_room_temperature -> -> 0 `i `uc ]
-"40
-[; ;user_tasks_2.c: 40:       }
+"39
+[; ;user_tasks_2.c: 39:       }
 }
 [e :U 296 ]
-"41
-[; ;user_tasks_2.c: 41:    }
+"40
+[; ;user_tasks_2.c: 40:    }
 }
 [e :U 293 ]
 [e $U 294  ]
 [e :U 295 ]
-"42
-[; ;user_tasks_2.c: 42: }
+"41
+[; ;user_tasks_2.c: 41: }
 [e :UE 292 ]
 }

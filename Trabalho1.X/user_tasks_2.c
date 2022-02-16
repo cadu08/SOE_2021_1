@@ -34,8 +34,7 @@ void ac_controller_2()
          if(room_temperature <= (SETTED_TEMPERATURE - 2))
          {
             turn_off_ac();
-         }
-         
+         }   
          bsem_room_temperature = FALSE;
       }
    }

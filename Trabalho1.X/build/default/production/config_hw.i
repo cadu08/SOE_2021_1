@@ -4544,9 +4544,8 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 #pragma config FCMEN = OFF
 #pragma config LVP = OFF
 
-
 void config_timer0();
-void config_ad_conversor();
+void config_ad_converter();
 void io_config();
 # 5 "config_hw.c" 2
 
@@ -4561,31 +4560,4 @@ void config_timer0()
    T0CONbits.T0PS = 0b010;
    T0CONbits.T0CS = 0;
    TMR0L = 0;
-}
-
-void config_ad_conversor(){
-
-    TRISA = 0b00000001;
-    ADCON0bits.CHS = 0b0000;
-
-    ADCON1bits.VCFG1 = 0;
-    ADCON1bits.VCFG0 = 0;
-
-    ADCON1bits.PCFG = 0b0000;
-    ADCON1 = 0x0E;
-
-
-    ADCON2bits.ADFM = 1;
-
-    ADCON2bits.ACQT = 0b111;
-    ADCON0bits.ADON = 1;
-    ADCON2bits.ADCS = 0b110;
-}
-
-void io_config(){
-
-    TRISD = 0x00;
-
-
-    TRISB = 0xFF;
 }

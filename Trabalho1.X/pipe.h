@@ -23,4 +23,3 @@ void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
 
 #endif	/* PIPE_H */
-

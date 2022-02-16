@@ -4607,16 +4607,15 @@ void idle();
 void __attribute__((picinterrupt(("")))) ISR_timer();
 
 
-
 void config_os();
 void start_os();
 void OS_delay(u_int time);
-void OS_create_task(u_int prior, task_ptr func);
+void create_task(u_int priority, task_ptr func);
 u_int get_task_id();
 
 
 u_int delay_release();
-# 56 "./kernel.h"
+# 54 "./kernel.h"
 void RESTORE_CONTEXT();
 # 9 "./semaphore.h" 2
 
@@ -4631,7 +4630,6 @@ typedef struct sem_queue {
 typedef struct semaphore{
     int s_count;
     sem_queue_t s_queue;
-
 } semaphore_t;
 
 void sem_init(semaphore_t* s, int val);
@@ -4640,8 +4638,6 @@ bool sem_wait_time(semaphore_t* s, int time);
 void sem_post(semaphore_t* s);
 int sem_get_value(semaphore_t s);
 # 5 "./thermostat.h" 2
-
-
 
 
 int thermostat_value();

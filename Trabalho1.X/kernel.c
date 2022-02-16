@@ -22,7 +22,7 @@ void config_os(){
     f_aptos.running_task = 0;
     
     // cria a tarefa idle
-    OS_create_task(MIN_PRIOR, idle);
+    create_task(MIN_PRIOR, idle);
     __asm("GLOBAL _idle");
     
     // chama rotina que configura tarefas de usuário
@@ -31,18 +31,8 @@ void config_os(){
 
 void start_os(){
     config_timer0();
-    // Inicializa motores
-#if MOTORES
-    io_config();   
-#endif
-    // inicializa conversor AD
-#if CONVERSOR_AD
-    config_ad_conversor();
-#endif
-    
     ei();
     T0CONbits.TMR0ON;
-    
 }
 
 // Chamadas de Sistema
@@ -57,11 +47,11 @@ void OS_delay(u_int time){
     ei();
 }
 
-void OS_create_task(u_int prior, task_ptr func){
+void create_task(u_int priority, task_ptr func){
     // Cria uma nova tarefa e a insere na fila de aptos
     tcb_t new_task;
     
-    new_task.task_priority = prior;
+    new_task.task_priority = priority;
     new_task.task_func = func;
     new_task.task_state = READY;
     new_task.task_context.stack_size = 0;

@@ -4593,21 +4593,20 @@ void idle();
 void __attribute__((picinterrupt(("")))) ISR_timer();
 
 
-
 void config_os();
 void start_os();
 void OS_delay(u_int time);
-void OS_create_task(u_int prior, task_ptr func);
+void create_task(u_int priority, task_ptr func);
 u_int get_task_id();
 
 
 u_int delay_release();
-# 56 "./kernel.h"
+# 54 "./kernel.h"
 void RESTORE_CONTEXT();
 # 1 "kernel.c" 2
 
 # 1 "./user_tasks.h" 1
-# 17 "./user_tasks.h"
+# 15 "./user_tasks.h"
 # 1 "./semaphore.h" 1
 # 12 "./semaphore.h"
 typedef struct sem_queue {
@@ -4619,7 +4618,6 @@ typedef struct sem_queue {
 typedef struct semaphore{
     int s_count;
     sem_queue_t s_queue;
-
 } semaphore_t;
 
 void sem_init(semaphore_t* s, int val);
@@ -4627,7 +4625,7 @@ void sem_wait(semaphore_t* s);
 bool sem_wait_time(semaphore_t* s, int time);
 void sem_post(semaphore_t* s);
 int sem_get_value(semaphore_t s);
-# 17 "./user_tasks.h" 2
+# 15 "./user_tasks.h" 2
 
 # 1 "./pipe.h" 1
 
@@ -4653,7 +4651,7 @@ typedef struct pipe {
 void create_pipe(pipe_t *pipe);
 void pipe_read(pipe_t * pipe, int *dado);
 void pipe_write(pipe_t *pipe, int dado);
-# 18 "./user_tasks.h" 2
+# 16 "./user_tasks.h" 2
 
 # 1 "./ac_controller.h" 1
 
@@ -4663,7 +4661,7 @@ void pipe_write(pipe_t *pipe, int dado);
 
 void turn_off_ac();
 void turn_on_ac();
-# 19 "./user_tasks.h" 2
+# 17 "./user_tasks.h" 2
 
 # 1 "./thermostat.h" 1
 
@@ -4672,12 +4670,8 @@ void turn_on_ac();
 
 
 
-
-
 int thermostat_value();
-# 20 "./user_tasks.h" 2
-
-
+# 18 "./user_tasks.h" 2
 
 
 void config_user_tasks();
@@ -4699,9 +4693,8 @@ void smoke_sensing();
 #pragma config FCMEN = OFF
 #pragma config LVP = OFF
 
-
 void config_timer0();
-void config_ad_conversor();
+void config_ad_converter();
 void io_config();
 # 3 "kernel.c" 2
 
@@ -4726,7 +4719,7 @@ void config_os(){
     f_aptos.running_task = 0;
 
 
-    OS_create_task(1, idle);
+    create_task(1, idle);
     __asm("GLOBAL _idle");
 
 
@@ -4735,18 +4728,8 @@ void config_os(){
 
 void start_os(){
     config_timer0();
-
-
-    io_config();
-
-
-
-    config_ad_conversor();
-
-
     (INTCONbits.GIE = 1);
     T0CONbits.TMR0ON;
-
 }
 
 
@@ -4761,11 +4744,11 @@ void OS_delay(u_int time){
     (INTCONbits.GIE = 1);
 }
 
-void OS_create_task(u_int prior, task_ptr func){
+void create_task(u_int priority, task_ptr func){
 
     tcb_t new_task;
 
-    new_task.task_priority = prior;
+    new_task.task_priority = priority;
     new_task.task_func = func;
     new_task.task_state = READY;
     new_task.task_context.stack_size = 0;

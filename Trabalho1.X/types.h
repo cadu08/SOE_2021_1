@@ -51,4 +51,3 @@ typedef struct r_queue {
 } faptos_t;
 
 #endif	/* TYPES_H */
-

@@ -1,5 +1,5 @@
 /* 
- * Projeto de Sistemas Operacionais Embarcados
+ * Sistemas Operacionais Embarcados
  */
 
 #ifndef SEMAPHORE_H
@@ -17,8 +17,7 @@ typedef struct sem_queue {
 } sem_queue_t;
 typedef struct semaphore{
     int s_count;
-    sem_queue_t s_queue;
-    
+    sem_queue_t s_queue;    
 } semaphore_t;
 
 void sem_init(semaphore_t* s, int val);
@@ -27,6 +26,4 @@ bool sem_wait_time(semaphore_t* s, int time);
 void sem_post(semaphore_t* s);
 int sem_get_value(semaphore_t s);
 
-
 #endif	/* SEMAPHORE_H */
-

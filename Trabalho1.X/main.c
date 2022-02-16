@@ -1,5 +1,5 @@
 /*
- * Sistema Operacional Embarcado - Projeto de 2021.1
+ * Sistema Operacional Embarcado - Projeto de 2021.2
  */
 
 #include <xc.h>
@@ -16,14 +16,14 @@ int main(void) {
     // Tarefas do Usuário    
     if(EXAMPLE == 1)
     {
-      //OS_create_task(1, smoke_sensing);
-      OS_create_task(2, thermostat_sensing_1);
-      OS_create_task(2, ac_controller_1);
+      //create_task(1, smoke_sensing);
+      create_task(2, thermostat_sensing_1);
+      create_task(2, ac_controller_1);
     }else if(EXAMPLE == 2)
     {
-      //OS_create_task(1, smoke_sensing);
-      OS_create_task(2, thermostat_sensing_2);
-      OS_create_task(2, ac_controller_2); 
+      //create_task(1, smoke_sensing);
+      create_task(2, thermostat_sensing_2);
+      create_task(2, ac_controller_2); 
     }
     
     // Coloca o kernel em execução

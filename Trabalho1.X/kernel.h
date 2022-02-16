@@ -1,5 +1,5 @@
 /* 
- * Projeto de Sistemas Operacionais Embarcados
+ * Sistemas Operacionais Embarcados
  */
 
 #ifndef KERNEL_H
@@ -19,18 +19,16 @@ void idle();
 void __interrupt() ISR_timer();
  
 // Chamadas de sistema
-
 void config_os();
 void start_os();
 void OS_delay(u_int time);
-void OS_create_task(u_int prior, task_ptr func);
+void create_task(u_int priority, task_ptr func);
 u_int get_task_id();
 
 // rotinas auxiliares
 u_int delay_release();
 
 // Despachante
-
 #define SAVE_CONTEXT(state)\
 do{\
     di();\
@@ -56,4 +54,3 @@ do{\
 void RESTORE_CONTEXT();
 
 #endif	/* KERNEL_H */
-

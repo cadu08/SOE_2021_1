@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.20\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Trabalho1.X.production.sym \
   --cmf=dist/default/production\Trabalho1.X.production.cmf -z -Q18F4520 \
-  -oC:\Users\caduc\AppData\Local\Temp\sdio.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\caduc\AppData\Local\Temp\s6s.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Trabalho1.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=02B9h-05FFh -pstack=STACK \
   -ACODE=00h-07FFFh -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\caduc\AppData\Local\Temp\sdio.o \
+  C:\Users\caduc\AppData\Local\Temp\s6s.o \
   dist/default/production\Trabalho1.X.production.o 
 
 Object code version is 3.11
@@ -31,7 +31,7 @@ Machine type is 18F4520
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\caduc\AppData\Local\Temp\sdio.o
+C:\Users\caduc\AppData\Local\Temp\s6s.o
                 stack                               2B9      2B9      347      2B9       2
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
@@ -42,36 +42,34 @@ dist/default/production\Trabalho1.X.production.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 temp                                 21       21       20        1       1
-                text30                              EB6      EB6       F2        4       0
+                text28                              EB6      EB6       F2        4       0
                 intcode_body                        312      312      2AE        4       0
-                text28                             12A8     12A8       58        4       0
-                text27                             14DA     14DA       26        4       0
-                text26                              AF2      AF2      162        4       0
-                text25                             1560     1560        4        4       0
-                text24                             155C     155C        4        4       0
-                text23                             11B6     11B6       86        4       0
-                text22                             1518     1518       16        4       0
-                text21                              FA8      FA8       E8        4       0
-                text20                              D8A      D8A      12C        4       0
-                text19                              C54      C54      136        4       0
-                text18                             1556     1556        6        4       0
-                text17                              5C0      5C0      252        4       0
-                text16                               14       14      2FE        4       0
-                text15                              98E      98E      164        4       0
-                text14                              812      812      17C        4       0
-                text13                             1126     1126       90        4       0
-                text12                             141E     141E       34        4       0
-                text11                             1484     1484       30        4       0
-                text10                             1090     1090       96        4       0
-                text9                              123C     123C       6C        4       0
+                text26                             12A8     12A8       58        4       0
+                text25                             14B4     14B4       26        4       0
+                text24                              AF2      AF2      162        4       0
+                text23                             1530     1530        4        4       0
+                text22                             152C     152C        4        4       0
+                text21                             11B6     11B6       86        4       0
+                text20                             14F2     14F2       16        4       0
+                text19                              FA8      FA8       E8        4       0
+                text18                              D8A      D8A      12C        4       0
+                text17                              C54      C54      136        4       0
+                text16                             1526     1526        6        4       0
+                text15                              5C0      5C0      252        4       0
+                text14                               14       14      2FE        4       0
+                text13                              98E      98E      164        4       0
+                text12                              812      812      17C        4       0
+                text11                             1126     1126       90        4       0
+                text10                             141E     141E       34        4       0
+                text9                              1484     1484       30        4       0
                 text8                              1356     1356       52        4       0
                 text7                              1300     1300       56        4       0
-                text6                              1540     1540        E        4       0
-                text5                              1452     1452       32        4       0
-                text4                              14B4     14B4       26        4       0
-                text3                              1500     1500       18        4       0
-                text2                              154E     154E        8        4       0
-                text1                              152E     152E       12        4       0
+                text6                              1508     1508       14        4       0
+                text5                              1090     1090       96        4       0
+                text4                              123C     123C       6C        4       0
+                text3                              1452     1452       32        4       0
+                text2                              14DA     14DA       18        4       0
+                text1                              151C     151C        A        4       0
                 text0                              13E6     13E6       38        4       0
                 cstackCOMRAM                          1        1       20        1       1
                 cstackBANK0                          80       80       71       80       1
@@ -79,7 +77,7 @@ dist/default/production\Trabalho1.X.production.o
                 dataCOMRAM                           5C       5C        2        1       1
                 bssCOMRAM                            41       41       1B        1       1
                 cinit                              13A8     13A8       3E        4       0
-                idataCOMRAM                        1564     1564        2        4       0
+                idataCOMRAM                        1534     1534        2        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -89,39 +87,37 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8        4         0
                 init                                  C        C        8         0
                 reset_vec                             0        0        4         0
-                text30                              EB6      EB6       F2         0
+                text28                              EB6      EB6       F2         0
                 intcode_body                        312      312      2AE         0
-                text28                             12A8     12A8       58         0
-                text27                             14DA     14DA       26         0
-                text26                              AF2      AF2      162         0
-                text25                             1560     1560        4         0
-                text24                             155C     155C        4         0
-                text23                             11B6     11B6       86         0
-                text22                             1518     1518       16         0
-                text21                              FA8      FA8       E8         0
-                text20                              D8A      D8A      12C         0
-                text19                              C54      C54      136         0
-                text18                             1556     1556        6         0
-                text17                              5C0      5C0      252         0
-                text16                               14       14      2FE         0
-                text15                              98E      98E      164         0
-                text14                              812      812      17C         0
-                text13                             1126     1126       90         0
-                text12                             141E     141E       34         0
-                text11                             1484     1484       30         0
-                text10                             1090     1090       96         0
-                text9                              123C     123C       6C         0
+                text26                             12A8     12A8       58         0
+                text25                             14B4     14B4       26         0
+                text24                              AF2      AF2      162         0
+                text23                             1530     1530        4         0
+                text22                             152C     152C        4         0
+                text21                             11B6     11B6       86         0
+                text20                             14F2     14F2       16         0
+                text19                              FA8      FA8       E8         0
+                text18                              D8A      D8A      12C         0
+                text17                              C54      C54      136         0
+                text16                             1526     1526        6         0
+                text15                              5C0      5C0      252         0
+                text14                               14       14      2FE         0
+                text13                              98E      98E      164         0
+                text12                              812      812      17C         0
+                text11                             1126     1126       90         0
+                text10                             141E     141E       34         0
+                text9                              1484     1484       30         0
                 text8                              1356     1356       52         0
                 text7                              1300     1300       56         0
-                text6                              1540     1540        E         0
-                text5                              1452     1452       32         0
-                text4                              14B4     14B4       26         0
-                text3                              1500     1500       18         0
-                text2                              154E     154E        8         0
-                text1                              152E     152E       12         0
+                text6                              1508     1508       14         0
+                text5                              1090     1090       96         0
+                text4                              123C     123C       6C         0
+                text3                              1452     1452       32         0
+                text2                              14DA     14DA       18         0
+                text1                              151C     151C        A         0
                 text0                              13E6     13E6       38         0
                 cinit                              13A8     13A8       3E         0
-                idataCOMRAM                        1564     1564        2         0
+                idataCOMRAM                        1534     1534        2         0
 
         CLASS   CONST          
 
@@ -173,7 +169,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 cstackCOMRAM                   000001  00005D  00005E         1       1  COMRAM  
-                intcode                        000008  00155E  001566         4       0  CODE    
+                intcode                        000008  00152E  001536         4       0  CODE    
                 cstackBANK0                    000080  000071  0000F1        80       1  BANK0   
                 bssBIGRAM                      0000F1  0001C8  0002B9        F1       1  BIGRAM  
                 stack                          0002B9  000347  000600       2B9       2  STACK   
@@ -189,24 +185,20 @@ UNUSED ADDRESS RANGES
         BIGRAM           00005E-00007F               22
                          0002B9-0005FF              347
         CODE             000004-000007                4
-                         001566-007FFF             6A9A
+                         001536-007FFF             6ACA
         COMRAM           00005E-00007F               22
         CONST            000004-000007                4
-                         001566-007FFF             6A9A
+                         001536-007FFF             6ACA
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      001566-007FFF             6A9A
+        MEDIUMCONST      001536-007FFF             6ACA
         RAM              0002B9-0005FF              100
         SFR              000F80-000FFF               80
-        SMALLCONST       001566-007FFF              100
+        SMALLCONST       001536-007FFF              100
 
                                   Symbol Table
 
 ?_delay_release                 cstackCOMRAM 000001
-OS_create_task@func             cstackCOMRAM 00001D
-OS_create_task@new_task         cstackBANK0  000080
-OS_create_task@prior            cstackCOMRAM 00001B
 _ADCON0bits                     (abs)        000FC2
-_ADCON1                         (abs)        000FC1
 _ADCON1bits                     (abs)        000FC1
 _ADCON2bits                     (abs)        000FC0
 _ADRES                          (abs)        000FC3
@@ -214,16 +206,14 @@ _BSR                            (abs)        000FE0
 _INTCONbits                     (abs)        000FF2
 _ISR_timer                      intcode      000008
 _LATDbits                       (abs)        000F8C
-_OS_create_task                 text9        00123C
 _PORTBbits                      (abs)        000F81
 _PORTDbits                      (abs)        000F83
-_RESTORE_CONTEXT                text17       0005C0
+_RESTORE_CONTEXT                text15       0005C0
 _STATUS                         (abs)        000FD8
 _STKPTR                         (abs)        000FFC
 _T0CONbits                      (abs)        000FD5
 _TMR0L                          (abs)        000FD6
 _TOS                            (abs)        000FFD
-_TRISA                          (abs)        000F92
 _TRISB                          (abs)        000F93
 _TRISD                          (abs)        000F95
 _TRISDbits                      (abs)        000F95
@@ -282,7 +272,7 @@ __Hreset_vec                    reset_vec    000004
 __Hrparam                       rparam       000000
 __Hsfr                          sfr          000000
 __Hsmallconst                   smallconst   000000
-__Hspace_0                      (abs)        001566
+__Hspace_0                      (abs)        001536
 __Hspace_1                      (abs)        0002B9
 __Hspace_2                      (abs)        000600
 __Hspace_4                      (abs)        60000E
@@ -310,11 +300,9 @@ __Htext23                       text23       000000
 __Htext24                       text24       000000
 __Htext25                       text25       000000
 __Htext26                       text26       000000
-__Htext27                       text27       000000
 __Htext28                       text28       000000
+__Htext29                       text29       000000
 __Htext3                        text3        000000
-__Htext30                       text30       000000
-__Htext31                       text31       000000
 __Htext4                        text4        000000
 __Htext5                        text5        000000
 __Htext6                        text6        000000
@@ -403,64 +391,60 @@ __Ltext23                       text23       000000
 __Ltext24                       text24       000000
 __Ltext25                       text25       000000
 __Ltext26                       text26       000000
-__Ltext27                       text27       000000
 __Ltext28                       text28       000000
+__Ltext29                       text29       000000
 __Ltext3                        text3        000000
-__Ltext30                       text30       000000
-__Ltext31                       text31       000000
 __Ltext4                        text4        000000
 __Ltext5                        text5        000000
 __Ltext6                        text6        000000
 __Ltext7                        text7        000000
 __Ltext8                        text8        000000
 __Ltext9                        text9        000000
-__S0                            (abs)        001566
+__S0                            (abs)        001536
 __S1                            (abs)        0002B9
 __S2                            (abs)        000600
 __S4                            (abs)        000000
 __S5                            (abs)        000000
-___awdiv                        text14       000812
+___awdiv                        text12       000812
 ___inthi_sp                     stack        0003D2
 ___intlo_sp                     stack        0004E9
-___lwmod                        text21       000FA8
+___lwmod                        text19       000FA8
 ___param_bank                   (abs)        000000
 ___rparam_used                  (abs)        000001
 ___sp                           stack        0002B9
-___wmul                         text10       001090
+___wmul                         text5        001090
 __accesstop                     (abs)        000080
 __activetblptr                  (abs)        000000
 __end_of_ISR_timer              intcode_body 0005C0
-__end_of_OS_create_task         text9        0012A8
-__end_of_RESTORE_CONTEXT        text17       000812
-__end_of___awdiv                text14       00098E
-__end_of___lwmod                text21       001090
-__end_of___wmul                 text10       001126
+__end_of_RESTORE_CONTEXT        text15       000812
+__end_of___awdiv                text12       00098E
+__end_of___lwmod                text19       001090
+__end_of___wmul                 text5        001126
 __end_of__initialization        cinit        0013E0
-__end_of_ac_controller_1        text23       00123C
-__end_of_ac_controller_2        text28       001300
-__end_of_config_ad_conversor    text4        0014DA
-__end_of_config_os              text5        001484
-__end_of_config_timer0          text3        001518
-__end_of_config_user_tasks      text6        00154E
+__end_of_ac_controller_1        text21       00123C
+__end_of_ac_controller_2        text26       001300
+__end_of_config_os              text3        001484
+__end_of_config_timer0          text2        0014F2
+__end_of_config_user_tasks      text6        00151C
 __end_of_create_pipe            text7        001356
-__end_of_delay_release          text30       000FA8
-__end_of_idle                   text11       0014B4
-__end_of_io_config              text2        001556
+__end_of_create_task            text4        0012A8
+__end_of_delay_release          text28       000FA8
+__end_of_idle                   text9        0014B4
 __end_of_main                   text0        00141E
-__end_of_pipe_read              text26       000C54
-__end_of_pipe_write             text15       000AF2
-__end_of_round_robin_scheduler  text19       000D8A
-__end_of_scheduler              text18       00155C
-__end_of_sem_get_value          text22       00152E
+__end_of_pipe_read              text24       000C54
+__end_of_pipe_write             text13       000AF2
+__end_of_round_robin_scheduler  text17       000D8A
+__end_of_scheduler              text16       00152C
+__end_of_sem_get_value          text20       001508
 __end_of_sem_init               text8        0013A8
-__end_of_sem_post               text20       000EB6
-__end_of_sem_wait               text16       000312
-__end_of_start_os               text1        001540
-__end_of_thermostat_sensing_1   text12       001452
-__end_of_thermostat_sensing_2   text27       001500
-__end_of_thermostat_value       text13       0011B6
-__end_of_turn_off_ac            text25       001564
-__end_of_turn_on_ac             text24       001560
+__end_of_sem_post               text18       000EB6
+__end_of_sem_wait               text14       000312
+__end_of_start_os               text1        001526
+__end_of_thermostat_sensing_1   text10       001452
+__end_of_thermostat_sensing_2   text25       0014DA
+__end_of_thermostat_value       text11       0011B6
+__end_of_turn_off_ac            text23       001534
+__end_of_turn_on_ac             text22       001530
 __initialization                cinit        0013A8
 __mediumconst                   mediumconst  000000
 __pbssBIGRAM                    bssBIGRAM    0000F1
@@ -469,57 +453,53 @@ __pcinit                        cinit        0013A8
 __pcstackBANK0                  cstackBANK0  000080
 __pcstackCOMRAM                 cstackCOMRAM 000001
 __pdataCOMRAM                   dataCOMRAM   00005C
-__pidataCOMRAM                  idataCOMRAM  001564
+__pidataCOMRAM                  idataCOMRAM  001534
 __pintcode                      intcode      000008
 __pintcode_body                 intcode_body 000312
 __ptext0                        text0        0013E6
-__ptext1                        text1        00152E
-__ptext10                       text10       001090
-__ptext11                       text11       001484
-__ptext12                       text12       00141E
-__ptext13                       text13       001126
-__ptext14                       text14       000812
-__ptext15                       text15       00098E
-__ptext16                       text16       000014
-__ptext17                       text17       0005C0
-__ptext18                       text18       001556
-__ptext19                       text19       000C54
-__ptext2                        text2        00154E
-__ptext20                       text20       000D8A
-__ptext21                       text21       000FA8
-__ptext22                       text22       001518
-__ptext23                       text23       0011B6
-__ptext24                       text24       00155C
-__ptext25                       text25       001560
-__ptext26                       text26       000AF2
-__ptext27                       text27       0014DA
-__ptext28                       text28       0012A8
-__ptext3                        text3        001500
-__ptext30                       text30       000EB6
-__ptext31                       text31       000000
-__ptext4                        text4        0014B4
-__ptext5                        text5        001452
-__ptext6                        text6        001540
+__ptext1                        text1        00151C
+__ptext10                       text10       00141E
+__ptext11                       text11       001126
+__ptext12                       text12       000812
+__ptext13                       text13       00098E
+__ptext14                       text14       000014
+__ptext15                       text15       0005C0
+__ptext16                       text16       001526
+__ptext17                       text17       000C54
+__ptext18                       text18       000D8A
+__ptext19                       text19       000FA8
+__ptext2                        text2        0014DA
+__ptext20                       text20       0014F2
+__ptext21                       text21       0011B6
+__ptext22                       text22       00152C
+__ptext23                       text23       001530
+__ptext24                       text24       000AF2
+__ptext25                       text25       0014B4
+__ptext26                       text26       0012A8
+__ptext28                       text28       000EB6
+__ptext29                       text29       000000
+__ptext3                        text3        001452
+__ptext4                        text4        00123C
+__ptext5                        text5        001090
+__ptext6                        text6        001508
 __ptext7                        text7        001300
 __ptext8                        text8        001356
-__ptext9                        text9        00123C
+__ptext9                        text9        001484
 __ramtop                        ramtop       000600
 __size_of_ISR_timer             (abs)        000000
-__size_of_OS_create_task        (abs)        000000
 __size_of_RESTORE_CONTEXT       (abs)        000000
 __size_of___awdiv               (abs)        000000
 __size_of___lwmod               (abs)        000000
 __size_of___wmul                (abs)        000000
 __size_of_ac_controller_1       (abs)        000000
 __size_of_ac_controller_2       (abs)        000000
-__size_of_config_ad_conversor   (abs)        000000
 __size_of_config_os             (abs)        000000
 __size_of_config_timer0         (abs)        000000
 __size_of_config_user_tasks     (abs)        000000
 __size_of_create_pipe           (abs)        000000
+__size_of_create_task           (abs)        000000
 __size_of_delay_release         (abs)        000000
 __size_of_idle                  (abs)        000000
-__size_of_io_config             (abs)        000000
 __size_of_main                  (abs)        000000
 __size_of_pipe_read             (abs)        000000
 __size_of_pipe_write            (abs)        000000
@@ -536,39 +516,41 @@ __size_of_thermostat_value      (abs)        000000
 __size_of_turn_off_ac           (abs)        000000
 __size_of_turn_on_ac            (abs)        000000
 __smallconst                    smallconst   000000
-_ac_controller_1                text23       0011B6
-_ac_controller_2                text28       0012A8
+_ac_controller_1                text21       0011B6
+_ac_controller_2                text26       0012A8
 _bsem_room_temperature          bssCOMRAM    000045
-_config_ad_conversor            text4        0014B4
-_config_os                      text5        001452
-_config_timer0                  text3        001500
-_config_user_tasks              text6        001540
+_config_os                      text3        001452
+_config_timer0                  text2        0014DA
+_config_user_tasks              text6        001508
 _create_pipe                    text7        001300
-_delay_release                  text30       000EB6
+_create_task                    text4        00123C
+_delay_release                  text28       000EB6
 _f_aptos                        bssBIGRAM    0000F1
-_idle                           text11       001484
+_idle                           text9        001484
 _index                          bssCOMRAM    000043
-_io_config                      text2        00154E
 _main                           text0        0013E6
-_pipe_read                      text26       000AF2
+_pipe_read                      text24       000AF2
 _pipe_temperature               bssCOMRAM    000046
-_pipe_write                     text15       00098E
+_pipe_write                     text13       00098E
 _room_temperature               bssCOMRAM    000041
-_round_robin_scheduler          text19       000C54
+_round_robin_scheduler          text17       000C54
 _rr_quantum                     dataCOMRAM   00005C
-_scheduler                      text18       001556
-_sem_get_value                  text22       001518
+_scheduler                      text16       001526
+_sem_get_value                  text20       0014F2
 _sem_init                       text8        001356
-_sem_post                       text20       000D8A
-_sem_wait                       text16       000014
-_start_os                       text1        00152E
-_thermostat_sensing_1           text12       00141E
-_thermostat_sensing_2           text27       0014DA
-_thermostat_value               text13       001126
-_turn_off_ac                    text25       001560
-_turn_on_ac                     text24       00155C
+_sem_post                       text18       000D8A
+_sem_wait                       text14       000014
+_start_os                       text1        00151C
+_thermostat_sensing_1           text10       00141E
+_thermostat_sensing_2           text25       0014B4
+_thermostat_value               text11       001126
+_turn_off_ac                    text23       001530
+_turn_on_ac                     text22       00152C
 btemp                           temp         000021
 create_pipe@pipe                cstackCOMRAM 00001F
+create_task@func                cstackCOMRAM 00001D
+create_task@new_task            cstackBANK0  000080
+create_task@priority            cstackCOMRAM 00001B
 delay_release@i                 cstackCOMRAM 000007
 delay_release@task_released     cstackCOMRAM 000005
 end_of_initialization           cinit        0013E0
@@ -631,8 +613,8 @@ FUNCTION INFORMATION:
 Total ram usage:        0 bytes
  Hardware stack levels required when called:   16
  This function calls:
-		_OS_create_task
 		_config_os
+		_create_task
 		_start_os
  This function is called by:
 		Startup code after reset
@@ -663,77 +645,15 @@ Total ram usage:        0 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:   13
  This function calls:
-		_config_ad_conversor
 		_config_timer0
-		_io_config
  This function is called by:
 		_main
- This function uses a non-reentrant model
-
-
- *************** function _io_config *****************
- Defined at:
-		line 38 in file "config_hw.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-      Params:         0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0
-      Totals:         0       0       0       0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:   12
- This function calls:
-		Nothing
- This function is called by:
-		_start_os
  This function uses a non-reentrant model
 
 
  *************** function _config_timer0 *****************
  Defined at:
 		line 7 in file "config_hw.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-      Params:         0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0
-      Totals:         0       0       0       0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:   12
- This function calls:
-		Nothing
- This function is called by:
-		_start_os
- This function uses a non-reentrant model
-
-
- *************** function _config_ad_conversor *****************
- Defined at:
-		line 19 in file "config_hw.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -785,11 +705,81 @@ Total ram usage:        0 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:   15
  This function calls:
-		_OS_create_task
 		_config_user_tasks
+		_create_task
  This function is called by:
 		_main
  This function uses a non-reentrant model
+
+
+ *************** function _create_task *****************
+ Defined at:
+		line 50 in file "kernel.c"
+ Parameters:    Size  Location     Type
+  priority        2   26[COMRAM] unsigned int 
+  func            2   28[COMRAM] PTR FTN()void 
+		 -> idle(1), ac_controller_2(1), thermostat_sensing_2(1), ac_controller_1(1), 
+		 -> thermostat_sensing_1(1), 
+ Auto vars:     Size  Location     Type
+  new_task      113    0[BANK0 ] struct tcb
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, btemp, btemp+1, btemp+11, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         4       0       0       0       0       0       0
+      Locals:         0     113       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0
+      Totals:         6     113       0       0       0       0       0
+Total ram usage:      119 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   13
+ This function calls:
+		___wmul
+ This function is called by:
+		_main
+		_config_os
+ This function uses a non-reentrant model
+
+
+ *************** function ___wmul *****************
+ Defined at:
+		line 15 in file "C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\Umul16.c"
+ Parameters:    Size  Location     Type
+  multiplier      2  [STACK] unsigned int 
+  multiplicand    2  [STACK] unsigned int 
+ Auto vars:     Size  Location     Type
+  product         2  [STACK] unsigned int 
+ Return value:  Size  Location     Type
+                  2  [STACK] unsigned int 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, btemp, btemp+1, btemp+11, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0
+      Totals:         0       0       0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   12
+ This function calls:
+		Nothing
+ This function is called by:
+		_create_task
+		_delay_release
+		_ISR_timer
+		_priority_scheduler
+		_OS_delay
+		_get_task_id
+ This function uses a reentrant model
 
 
  *************** function _config_user_tasks *****************
@@ -885,76 +875,6 @@ Total ram usage:        4 bytes
  This function uses a non-reentrant model
 
 
- *************** function _OS_create_task *****************
- Defined at:
-		line 60 in file "kernel.c"
- Parameters:    Size  Location     Type
-  prior           2   26[COMRAM] unsigned int 
-  func            2   28[COMRAM] PTR FTN()void 
-		 -> idle(1), ac_controller_2(1), thermostat_sensing_2(1), ac_controller_1(1), 
-		 -> thermostat_sensing_1(1), 
- Auto vars:     Size  Location     Type
-  new_task      113    0[BANK0 ] struct tcb
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, btemp, btemp+1, btemp+11, prodl, prodh
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-      Params:         4       0       0       0       0       0       0
-      Locals:         0     113       0       0       0       0       0
-      Temps:          2       0       0       0       0       0       0
-      Totals:         6     113       0       0       0       0       0
-Total ram usage:      119 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:   13
- This function calls:
-		___wmul
- This function is called by:
-		_main
-		_config_os
- This function uses a non-reentrant model
-
-
- *************** function ___wmul *****************
- Defined at:
-		line 15 in file "C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\Umul16.c"
- Parameters:    Size  Location     Type
-  multiplier      2  [STACK] unsigned int 
-  multiplicand    2  [STACK] unsigned int 
- Auto vars:     Size  Location     Type
-  product         2  [STACK] unsigned int 
- Return value:  Size  Location     Type
-                  2  [STACK] unsigned int 
- Registers used:
-		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, btemp, btemp+1, btemp+11, prodl, prodh
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-      Params:         0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0
-      Totals:         0       0       0       0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:   12
- This function calls:
-		Nothing
- This function is called by:
-		_OS_create_task
-		_delay_release
-		_ISR_timer
-		_priority_scheduler
-		_OS_delay
-		_get_task_id
- This function uses a reentrant model
-
-
  *************** function _idle *****************
  Defined at:
 		line 11 in file "kernel.c"
@@ -989,7 +909,7 @@ Total ram usage:        0 bytes
 
  *************** function _thermostat_sensing_1 *****************
  Defined at:
-		line 19 in file "user_tasks.c"
+		line 25 in file "user_tasks.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1152,7 +1072,7 @@ Total ram usage:        0 bytes
 
  *************** function _RESTORE_CONTEXT *****************
  Defined at:
-		line 125 in file "kernel.c"
+		line 115 in file "kernel.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1343,7 +1263,7 @@ Total ram usage:        0 bytes
 
  *************** function _ac_controller_1 *****************
  Defined at:
-		line 27 in file "user_tasks.c"
+		line 33 in file "user_tasks.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1533,7 +1453,7 @@ Total ram usage:        0 bytes
 
  *************** function _ISR_timer *****************
  Defined at:
-		line 95 in file "kernel.c"
+		line 85 in file "kernel.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1565,7 +1485,7 @@ Total ram usage:       18 bytes
 
  *************** function _delay_release *****************
  Defined at:
-		line 81 in file "kernel.c"
+		line 71 in file "kernel.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1601,13 +1521,13 @@ Module		Function		Class		Link	Load	Size
 semaphore.c
 		_sem_wait      		CODE           	0014	0000	767
 		_sem_init      		CODE           	1356	0000	83
-		_sem_get_value 		CODE           	1518	0000	23
+		_sem_get_value 		CODE           	14F2	0000	23
 		_sem_post      		CODE           	0D8A	0000	301
 
 semaphore.c estimated size: 1174
 
 user_tasks_2.c
-		_thermostat_sensing_2		CODE           	14DA	0000	39
+		_thermostat_sensing_2		CODE           	14B4	0000	39
 		_ac_controller_2		CODE           	12A8	0000	89
 
 user_tasks_2.c estimated size: 128
@@ -1623,15 +1543,15 @@ C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\lwmod.c
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\lwmod.c estimated size: 233
 
 kernel.c
+		_create_task   		CODE           	123C	0000	109
 		_delay_release 		CODE           	0EB6	0000	243
 		_ISR_timer     		CODE           	0008	0000	691
-		_OS_create_task		CODE           	123C	0000	109
 		_idle          		CODE           	1484	0000	49
-		_start_os      		CODE           	152E	0000	19
+		_start_os      		CODE           	151C	0000	11
 		_config_os     		CODE           	1452	0000	51
 		_RESTORE_CONTEXT		CODE           	05C0	0000	595
 
-kernel.c estimated size: 1757
+kernel.c estimated size: 1749
 
 shared
 		__initialization		CODE           	13A8	0000	57
@@ -1639,11 +1559,9 @@ shared
 shared estimated size: 57
 
 config_hw.c
-		_io_config     		CODE           	154E	0000	9
-		_config_ad_conversor		CODE           	14B4	0000	39
-		_config_timer0 		CODE           	1500	0000	25
+		_config_timer0 		CODE           	14DA	0000	25
 
-config_hw.c estimated size: 73
+config_hw.c estimated size: 25
 
 pipe.c
 		_pipe_read     		CODE           	0AF2	0000	355
@@ -1659,13 +1577,13 @@ thermostat.c estimated size: 145
 
 scheduler.c
 		_round_robin_scheduler		CODE           	0C54	0000	311
-		_scheduler     		CODE           	1556	0000	7
+		_scheduler     		CODE           	1526	0000	7
 
 scheduler.c estimated size: 318
 
 ac_controller.c
-		_turn_on_ac    		CODE           	155C	0000	5
-		_turn_off_ac   		CODE           	1560	0000	5
+		_turn_on_ac    		CODE           	152C	0000	5
+		_turn_off_ac   		CODE           	1530	0000	5
 
 ac_controller.c estimated size: 10
 
@@ -1675,11 +1593,11 @@ C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\awdiv.c
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\awdiv.c estimated size: 381
 
 user_tasks.c
-		_config_user_tasks		CODE           	1540	0000	15
+		_config_user_tasks		CODE           	1508	0000	21
 		_thermostat_sensing_1		CODE           	141E	0000	53
 		_ac_controller_1		CODE           	11B6	0000	135
 
-user_tasks.c estimated size: 203
+user_tasks.c estimated size: 209
 
 main.c
 		_main          		CODE           	13E6	0000	57
